@@ -3,6 +3,11 @@
  */
 angular.module('isf.registration')
 
-.controller('registration-controller', function(){
+.controller('registration-controller', function($scope, countries, $state){
+  $scope.countries = countries;
+
+  $scope.proceed = function(){
+    $state.go('base.regSuccess')
+  };
 
 });
