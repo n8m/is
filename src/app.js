@@ -5,5 +5,6 @@ angular.module('ipf', [
   'ui.router',
   'ui.bootstrap',
   'ipf.router',
-  'ipf.profile'
+  'ipf.profile',
+  'ipf.register'
 ]);

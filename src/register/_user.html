@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group" data-bind="app/user/registration/NotEmpty">
+            <label class="control-label" for="name">First name<em>*</em> :</label>
+            <input type="text" maxlength="15" ng-model="user.dataUser.firstName" name="dataUser[firstName]" id="name" class="form-control input-sm" autocomplete="off" value="" required>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group" data-bind="app/user/registration/NotEmpty">
+            <label class="control-label" for="last_name">Last name<em>*</em> :</label>
+            <input type="text" maxlength="15" ng-model="user.dataUser.lastName" name="dataUser[lastName]" id="last_name" class="form-control input-sm" autocomplete="off" value="" required>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group" data-bind="app/user/registration/Company">
+            <label class="control-label" for="company">Company Name<em>*</em> :</label>
+            <input ng-repeat="companyname in user.dataUser.companyNames" ng-model="companyname.name" autocomplete="off" type="text" class="form-control input-sm company-names" placeholder="Company name" name="dataUser[companyName]" id="company" value="" required>
+            <input type="button" value="+" ng-click="addNewCompany()" class="add-company">
+            <input type="button" value="-" ng-click="removeCompany()" class="remove-company">
+        </div>
+    </div>
+</div>

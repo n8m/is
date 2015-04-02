@@ -1,0 +1,43 @@
+<div class="pricing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="header-title text-center">Sign Up for an account</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-colored">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-7 text-center">
+                            <h1>Lorem ipsum</h1>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam commodo a diam sit amet pellentesque. Vivamus malesuada purus molestie lacus eleifend lobortis.</p>
+                            <h1>
+                                <i class="glyphicon glyphicon-cloud"></i>
+                            </h1>
+                        </div>
+                        <div class="col-md-5 sign-up-form">
+                            <form role="form" name="registerForm" id="registerForm" method="post" novalidate ng-submit="registerUser($event, registerForm)">
+                                <input type="hidden" ng-model="action" value="create">
+                                <div ng-include="'app/profile/registration/_credentials.html'"></div>
+                                <div ng-include="'app/profile/registration/_contact.html'"></div>
+                                <div ng-include="'app/profile/registration/_user.html'"></div>
+                                <div ng-include="'app/profile/registration/_agreement.html'"></div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-signup btn-block" ng-click="">Register</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

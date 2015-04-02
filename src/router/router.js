@@ -20,7 +20,7 @@ angular.module('ipf.router', [])
     //home is a parent state which isn't require authentication
     .state('base', {
       url: '/',
-      template: '<ui-view></ui-view>'
+      templateUrl: 'base/base.html'
     })
     .state('base.register', {
       url: 'register'
