@@ -6,5 +6,6 @@ angular.module('isf', [
   'ui.bootstrap',
   'isf.router',
   'isf.profile',
-  'isf.registration'
+  'isf.registration',
+  'isf.server'
 ]);
