@@ -18,7 +18,7 @@ module.exports = function(options) {
         quotes: true
       }))
       .pipe($.angularTemplatecache('templateCacheHtml.js', {
-        module: 'ipf'
+        module: 'isf'
       }))
       .pipe(gulp.dest(options.tmp + '/partials/'));
   });

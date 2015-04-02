@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('ipf', [
+angular.module('isf', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'ipf.router',
-  'ipf.profile',
-  'ipf.register'
+  'isf.router',
+  'isf.profile',
+  'isf.register'
 ]);

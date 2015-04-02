@@ -1,7 +1,7 @@
 /**
  * Created by fyodorkhruschov on 02.04.15.
  */
-angular.module('ipf.router', [])
+angular.module('isf.router', [])
 
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
