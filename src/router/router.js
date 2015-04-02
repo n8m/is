@@ -22,6 +22,10 @@ angular.module('isf.router', [])
       url: '/',
       templateUrl: 'base/base.html'
     })
+    .state('base.pricing', {
+      url: 'pricing',
+      templateUrl: 'register/pricing.html'
+    })
     .state('base.register', {
       url: 'register'
     })
