@@ -17,9 +17,7 @@
     <div class="col-md-12">
         <div class="form-group" data-bind="app/user/registration/Company">
             <label class="control-label" for="company">Company Name<em>*</em> :</label>
-            <input ng-repeat="companyname in user.dataUser.companyNames" ng-model="companyname.name" autocomplete="off" type="text" class="form-control input-sm company-names" placeholder="Company name" name="dataUser[companyName]" id="company" value="" required>
-            <input type="button" value="+" ng-click="addNewCompany()" class="add-company">
-            <input type="button" value="-" ng-click="removeCompany()" class="remove-company">
+            <input ng-model="companyname.name" autocomplete="off" type="text" class="form-control input-sm company-names" name="companyName" id="company" value="" required>
         </div>
     </div>
 </div>

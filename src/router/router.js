@@ -11,11 +11,11 @@ angular.module('isf.router', [])
       url: '/home',
       template: '<ui-view></ui-view>'
     })
-    .state('home.profile', {
-      url: '/profile',
-      templateUrl: 'profile/profile.html',
-      controller: 'profile-controller'
-    })
+    //.state('home.profile', {
+    //  url: '/profile',
+    //  templateUrl: 'profile/profile.html',
+    //  controller: 'profile-controller'
+    //})
 
     //home is a parent state which isn't require authentication
     .state('base', {
@@ -24,10 +24,11 @@ angular.module('isf.router', [])
     })
     .state('base.pricing', {
       url: 'pricing',
-      templateUrl: 'register/pricing.html'
+      templateUrl: 'registration/pricing.html'
     })
-    .state('base.register', {
-      url: 'register'
+    .state('base.registration', {
+      url: 'profile/registration',
+      templateUrl: 'registration/registration.html'
     })
     .state('base.login',{
       url: 'login'
