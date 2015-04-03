@@ -3,7 +3,7 @@
  */
 angular.module('isf.dashboard')
 
-.controller('dashboard-controller', function($scope, server, auth, $rootScope){
+.controller('dashboard-controller', function($scope, server, auth, $rootScope, $state){
 
   var token = auth.getToken();
 
@@ -14,6 +14,7 @@ angular.module('isf.dashboard')
     })
   } else{
     $rootScope.loggedIn = false;
+    $state.go('base');
   }
 
 
