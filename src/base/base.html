@@ -16,9 +16,9 @@
         <li><a href="#/">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/profile/login">Login</a></li>
-        <li><a href="#/pricing">Sign Up</a></li>
-        <li><a href="#/profile/cabinet/1">Account Settings</a></li>
+        <li ng-show="!loggedIn"><a href="#/profile/login">Login</a></li>
+        <li ng-show="!loggedIn"><a href="#/pricing">Sign Up</a></li>
+        <li ng-show="loggedIn"><a href="#/profile/cabinet/1">Account Settings</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

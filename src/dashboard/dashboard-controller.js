@@ -3,14 +3,17 @@
  */
 angular.module('isf.dashboard')
 
-.controller('dashboard-controller', function($scope, server, auth){
+.controller('dashboard-controller', function($scope, server, auth, $rootScope){
 
   var token = auth.getToken();
 
   if(token){
-    server.get('/api/profile/login/asdfljasdlfkj').then(function(data){
+    server.get('/api/profile/login/' + token).then(function(data){
+      $rootScope.loggedIn = true;
       console.log(data);
     })
+  } else{
+    $rootScope.loggedIn = false;
   }
 
 
