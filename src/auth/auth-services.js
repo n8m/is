@@ -4,5 +4,12 @@
 angular.module('isf.auth')
 
 .factory('auth', function(){
+  var authService = {
+    setToken: function(token){
+
+    };
+  };
+
+  return authService;
 
 });
