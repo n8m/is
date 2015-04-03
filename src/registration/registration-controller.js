@@ -3,7 +3,7 @@
  */
 angular.module('isf.registration')
 
-.controller('registration-controller', function($scope, countries, $state){
+.controller('registration-controller', function($scope, countries, $state, server){
   $scope.countries = countries;
 
   $scope.user = {
@@ -11,8 +11,11 @@ angular.module('isf.registration')
   };
 
   $scope.proceed = function(){
-    console.log($scope.user);
-    $state.go('base.regSuccess')
+    server.post('profile/registration').then(function(){
+      $state.go('base.regSuccess')
+    }, function(response){
+      console.log(response);
+    })
   };
 
 
