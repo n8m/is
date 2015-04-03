@@ -7,5 +7,6 @@ angular.module('isf', [
   'isf.router',
   'isf.profile',
   'isf.registration',
-  'isf.server'
+  'isf.server',
+  'isf.login'
 ]);
