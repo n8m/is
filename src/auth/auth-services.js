@@ -7,7 +7,7 @@ angular.module('isf.auth')
   var authService = {
     setToken: function(token){
       $http.defaults.headers.common.Authorization = 'Bearer ' + token;
-    };
+    }
   };
 
   return authService;
