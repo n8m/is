@@ -12,7 +12,8 @@ angular.module('isf.login')
 
     $scope.login = function(){
       server.post('/oauth', $scope.user).then(function(data){
-        $state.go('main.dashboard');
+        auth.setToken(data.access_token);
+        $state.go('base.dashboard');
         console.log(data);
       }, function(response){
         console.log(response);

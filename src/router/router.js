@@ -5,19 +5,11 @@ angular.module('isf.router', [])
 
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
-    //home is a parent state which require authentication
-    //@todo: add check for auth
-    .state('home', {
-      url: '/home',
-      template: '<ui-view></ui-view>'
-    })
-    .state('home.dashboard', {
+    .state('base.dashboard', {
       url: '/dashboard',
       templateUrl: 'dashboard/dashboard.html',
       controller: 'dashboard-controller'
     })
-
-    //home is a parent state which isn't require authentication
     .state('base', {
       url: '/',
       templateUrl: 'base/base.html'
@@ -39,7 +31,6 @@ angular.module('isf.router', [])
       controller: 'login-controller',
       templateUrl: 'login/login.html'
     });
-
 
 
   $urlRouterProvider.otherwise('/');
