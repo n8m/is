@@ -2,7 +2,7 @@
 
 angular.module('isf.server')
 
-  .service('Server', ['$http','$q','$rootScope', function ($http, $q, $rootScope) {
+  .service('server', ['$http','$q','$rootScope', function ($http, $q, $rootScope) {
 
     var httpRoot = '/api/',
         deferredRequests = [];
