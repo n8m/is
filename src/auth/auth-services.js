@@ -3,10 +3,18 @@
  */
 angular.module('isf.auth')
 
-.factory('auth', function($http){
+.factory('auth', function($http, $rootScope){
+
+    var accessToken;
+
   var authService = {
     setToken: function(token){
+      accessToken = token;
+      $rootScope.loggedIn = true;
       $http.defaults.headers.common.Authorization = 'Bearer ' + token;
+    },
+    getToken: function(){
+      return accessToken;
     }
   };
 

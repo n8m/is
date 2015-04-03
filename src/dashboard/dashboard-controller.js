@@ -3,8 +3,9 @@
  */
 angular.module('isf.dashboard')
 
-.controller('dashboard-controller', function($scope, server){
-  server.get('/api/profile/login/').then(function(data){
+.controller('dashboard-controller', function($scope, server, auth){
+
+  server.get('/api/profile/login/' + auth.getToken()).then(function(data){
     console.log(data);
   })
 });
