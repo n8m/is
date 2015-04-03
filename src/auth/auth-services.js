@@ -9,6 +9,7 @@ angular.module('isf.auth')
 
   var authService = {
     setToken: function(token){
+      console.log(token);
       accessToken = token;
       $rootScope.loggedIn = true;
       $http.defaults.headers.common.Authorization = 'Bearer ' + token;
