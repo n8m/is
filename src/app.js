@@ -9,5 +9,6 @@ angular.module('isf', [
   'isf.registration',
   'isf.server',
   'isf.login',
-  'isf.auth'
+  'isf.auth',
+  'isf.dashboard'
 ]);

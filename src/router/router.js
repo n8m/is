@@ -6,7 +6,7 @@ angular.module('isf.router', [])
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('base.dashboard', {
-      url: '/dashboard',
+      url: 'dashboard',
       templateUrl: 'dashboard/dashboard.html',
       controller: 'dashboard-controller'
     })

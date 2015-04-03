@@ -5,4 +5,4 @@ angular.module('isf.dashboard')
 
 .controller('dashboard-controller', function(){
 
-})
+});
