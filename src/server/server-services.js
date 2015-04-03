@@ -30,7 +30,7 @@ angular.module('isf.server')
 
         url = httpRoot + resource;
 
-        $http({method:'GET',url:url,headers:{'Authorization': 'Basic ' + $rootScope.authToken},params:filter})
+        $http({method:'GET',url:url,params:filter})
           .success(function(data,status,headers,request) {
             deferred.resolve(data);
           })
@@ -65,7 +65,7 @@ angular.module('isf.server')
 
         url = httpRoot + resource;
 
-        $http({method:'POST',url:url,data:payload,headers:{'Authorization': 'Basic ' + $rootScope.authToken},params:filter})
+        $http({method:'POST',url:url,data:payload,params:filter})
           .success(function(data,status,headers,request) {
             if(data) {
               deferred.resolve({'data': data, 'headers': headers});
@@ -102,7 +102,7 @@ angular.module('isf.server')
 
         url = httpRoot + resource;
 
-        $http({method:'PUT',url:url,data:payload,headers:{'Authorization': 'Basic ' + $rootScope.authToken},params:filter})
+        $http({method:'PUT',url:url,data:payload,params:filter})
           .success(function(data,status,headers,request) {
             if(data) {
               deferred.resolve({'data': data, 'headers': headers});
@@ -138,7 +138,7 @@ angular.module('isf.server')
         var deferred = $q.defer();
         var url = httpRoot + resource;
 
-        $http({method:'DELETE',url:url,headers:{'Authorization': 'Basic ' + $rootScope.authToken}})
+        $http({method:'DELETE',url:url})
           .success(function(data,status,headers,request) {
             if(data) {
               deferred.resolve({'data': data, 'headers': headers});
