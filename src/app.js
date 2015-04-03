@@ -8,5 +8,6 @@ angular.module('isf', [
   'isf.profile',
   'isf.registration',
   'isf.server',
-  'isf.login'
+  'isf.login',
+  'isf.auth'
 ]);
