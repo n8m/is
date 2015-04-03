@@ -7,7 +7,7 @@ angular.module('isf.login')
 
     $scope.user = {
       grant_type: 'password',
-      cliend_id: 'testclient2'
+      client_id: 'testclient2'
     };
 
     $scope.login = function(){
