@@ -3,7 +3,7 @@
  */
 angular.module('isf.login')
 
-.controller('login-controller', function($scope, server, auth){
+.controller('login-controller', function($scope, server, auth, $state){
 
     $scope.user = {
       grant_type: 'password',
@@ -12,6 +12,7 @@ angular.module('isf.login')
 
     $scope.login = function(){
       server.post('/oauth', $scope.user).then(function(data){
+        $state.go('main.dashboard');
         console.log(data);
       }, function(response){
         console.log(response);
