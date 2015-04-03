@@ -11,7 +11,7 @@ angular.module('isf.registration')
   };
 
   $scope.proceed = function(){
-    server.post('profile/registration', $scope.user).then(function(){
+    server.post('/api/profile/registration', $scope.user).then(function(){
       $state.go('base.regSuccess')
     }, function(response){
       console.log(response);

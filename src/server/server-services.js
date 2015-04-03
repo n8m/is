@@ -4,7 +4,7 @@ angular.module('isf.server')
 
   .service('server', ['$http','$q','$rootScope', function ($http, $q, $rootScope) {
 
-    var httpRoot = '/api/',
+    var httpRoot = '',
         deferredRequests = [];
 
     // TODO: Listen for Event, then re-submit all the deferred requests

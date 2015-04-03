@@ -12,7 +12,7 @@ angular.module('isf.login')
 
     $scope.login = function(){
       console.log($scope.user);
-      //server.post('/oauth', $scope.user);
+      server.post('/oauth', $scope.user);
     }
 
 
