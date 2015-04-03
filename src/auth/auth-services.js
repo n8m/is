@@ -17,8 +17,9 @@ angular.module('isf.auth')
     getToken: function(){
       if(accessToken){
         return accessToken;
-      } elseP
-      return false;
+      } else{
+        return false;
+      }
     }
   };
 
