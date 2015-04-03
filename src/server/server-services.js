@@ -11,19 +11,7 @@ angular.module('isf.server')
     //for (var i = 0; i < deferredRequests.length; i++) { ... }
 
     var service = {
-      /**
-       * @ngdoc method
-       * @methodOf App.ServerServices.service:Server
-       * @name App.ServerServices.service:Server#get
-       *
-       * @description
-       * Makes a GET request to the resource specified
-       *
-       * @param {string} resource The API endpoint
-       * @param {Boolean=} filter Optional filter to apply to the resource
-       * @param {Boolean=} cache Optional flag to tell Angular whether it should cache this request
-       * @returns {HttpPromise} Future object
-       */
+
       get: function (resource, filter) {
 
         var url, deferred = $q.defer();
@@ -47,19 +35,7 @@ angular.module('isf.server')
 
         return deferred.promise;
       },
-      /**
-       * @ngdoc method
-       * @methodOf App.ServerServices.service:Server
-       * @name App.ServerServices.service:Server#post
-       *
-       * @description
-       * Makes a POST request to the resource specified
-       *
-       * @param {string} resource The API endpoint
-       * @param {Object} payload The payload provided with the POST
-       * @param {Boolean=} filter Optional filter to apply to the resource
-       * @returns {HttpPromise} Future object
-       */
+
       post: function (resource, payload, filter) {
         var url, deferred = $q.defer();
 
@@ -84,19 +60,7 @@ angular.module('isf.server')
           });
         return deferred.promise;
       },
-      /**
-       * @ngdoc method
-       * @methodOf App.ServerServices.service:Server
-       * @name App.ServerServices.service:Server#put
-       *
-       * @description
-       * Makes a PUT request to the resource specified
-       *
-       * @param {string} resource The API endpoint
-       * @param {Object} payload The payload provided with the POST
-       * @param {Boolean=} filter Optional filter to apply to the resource
-       * @returns {HttpPromise} Future object
-       */
+
       put: function (resource, payload, filter) {
         var url, deferred = $q.defer();
 
@@ -121,19 +85,7 @@ angular.module('isf.server')
           });
         return deferred.promise;
       },
-      /**
-       * @ngdoc method
-       * @methodOf App.ServerServices.service:Server
-       * @name App.ServerServices.service:Server#delete
-       *
-       * @description
-       * Makes a DELETE request to the resource specified
-       *
-       * @param {string} resource The API endpoint
-       * @param {Object} payload The payload provided with the POST
-       * @param {Boolean=} filter Optional filter to apply to the resource
-       * @returns {HttpPromise} Future object
-       */
+
       delete: function (resource) {
         var deferred = $q.defer();
         var url = httpRoot + resource;

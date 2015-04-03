@@ -3,10 +3,10 @@
  */
 angular.module('isf.auth')
 
-.factory('auth', function(){
+.factory('auth', function($http){
   var authService = {
     setToken: function(token){
-
+      $http.defaults.headers.common.Authorization = 'Bearer ' + token;
     };
   };
 
