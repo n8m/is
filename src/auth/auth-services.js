@@ -15,7 +15,10 @@ angular.module('isf.auth')
       $http.defaults.headers.common.Authorization = 'Bearer ' + token;
     },
     getToken: function(){
-      return accessToken;
+      if(accessToken){
+        return accessToken;
+      } elseP
+      return false;
     }
   };
 

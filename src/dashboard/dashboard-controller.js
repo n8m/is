@@ -5,7 +5,13 @@ angular.module('isf.dashboard')
 
 .controller('dashboard-controller', function($scope, server, auth){
 
-  server.get('/api/profile/login/' + auth.getToken()).then(function(data){
-    console.log(data);
-  })
+  var token = auth.getToken();
+
+  if(token){
+    server.get('/api/profile/login/asdfljasdlfkj').then(function(data){
+      console.log(data);
+    })
+  }
+
+
 });
