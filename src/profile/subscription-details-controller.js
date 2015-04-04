@@ -12,6 +12,7 @@ angular.module('isf.profile')
 
         server.get('/api/profile/cabinet/' + data.id).then(function(data){
           console.log(data);
+          $scope.user = data;
         });
 
         $rootScope.loggedIn = true;

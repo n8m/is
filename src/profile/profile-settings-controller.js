@@ -10,6 +10,12 @@ angular.module('isf.profile')
     if(token){
       server.get('/api/profile/login/' + token).then(function(data){
         $rootScope.loggedIn = true;
+
+        server.get('/api/profile/cabinet/' + data.id).then(function(data){
+          console.log(data);
+          $scope.user = data;
+        });
+
       })
     } else{
       $rootScope.loggedIn = false;
