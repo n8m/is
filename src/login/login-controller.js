@@ -17,7 +17,7 @@ angular.module('isf.login')
         auth.setToken(data.data.access_token);
 
         server.get('/api/profile/login/' + data.data.access_token).then(function(data){
-          $window.location.href = 'http://' + data.dataCredentials.uniqueUrl + '.isitupdotcom.com';
+          $window.location.href = 'http://' + data.dataCredentials.uniqueUrl + '.isitupdotcom.com/#/dashboard';
         });
 
         //go to subdomain
