@@ -24,9 +24,9 @@ angular.module('isf.router', [])
       controller: 'registration-controller'
     })
     .state('base.regSuccess', {
-      url: 'profile/registration/success',
-      templateUrl: 'registration/success.html',
-      controller: 'registration-controller'
+      url: 'profile/registration/success?uniqueUrl',
+      templateUrl: 'registration/registration-success.html',
+      controller: 'registration-success-controller'
     })
     .state('base.login',{
       url: 'profile/login',
