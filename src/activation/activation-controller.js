@@ -10,7 +10,7 @@ angular.module('isf.activation')
     if(token){
       server.get('/api/profile/activate/' + token).then(function(data){
         if(data.status === 200){
-          $state.go('base.dashboard');
+          $state.go('base.login');
         }
       }, function(response){
         if(response.state === 404){

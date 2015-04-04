@@ -14,7 +14,7 @@ angular.module('isf.dashboard')
     })
   } else{
     $rootScope.loggedIn = false;
-    $state.go('base');
+    $state.go('base.main');
   }
 
 
