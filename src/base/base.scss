@@ -3,6 +3,7 @@
 body {
   padding-top: 50px;
 }
+
 .nav, .navbar {
   letter-spacing: 1px;
 }
@@ -298,4 +299,12 @@ form .error {
 .gravatar-help {
   margin-top: 5px;
   line-height: 16px;
+}
+
+footer{
+  height: 50px;
+  line-height: 50px;
+  background-color: #ccc;
+  text-align: center;
+  width: 100%;
 }
