@@ -41,6 +41,16 @@ angular.module('isf.router', [])
       url: '/profile/activate/:token',
       controller: 'activation-controller',
       templateUrl: 'activation/activation.html'
+    })
+    .state('base.profileSettings', {
+      url: '/profile/cabinet/settings',
+      controller: 'profile-settings-controller',
+      templateUrl: 'profile/profile-settings.html'
+    })
+    .state('base.subscriptionDetails', {
+      url: '/profile/cabinet/subscription/details',
+      controller: 'subscription-details-controller',
+      templateUrl: 'profile/subscription-details.html'
     });
 
   $urlRouterProvider.otherwise('/');

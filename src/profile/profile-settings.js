@@ -3,6 +3,6 @@
  */
 angular.module('isf.profile')
 
-.controller('profile-controller', function($scope){
-  $scope.test = "testText";
+.controller('profile-settings-controller', function($scope){
+
 });
