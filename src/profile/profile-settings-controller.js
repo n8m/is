@@ -3,7 +3,7 @@
  */
 angular.module('isf.profile')
 
-.controller('profile-settings-controller', function($scope, auth, server, $rootScope){
+.controller('profile-settings-controller', function($scope, auth, server, $rootScope, $state){
 
     var token = auth.getToken();
 
@@ -19,7 +19,7 @@ angular.module('isf.profile')
       })
     } else{
       $rootScope.loggedIn = false;
-      //$state.go('base.main');
+      $state.go('base.login');
     }
 
 });

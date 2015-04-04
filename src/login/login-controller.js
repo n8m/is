@@ -3,7 +3,7 @@
  */
 angular.module('isf.login')
 
-.controller('login-controller', function($scope, server, auth, $window){
+.controller('login-controller', function($scope, server, auth, $state){
 
     $scope.user = {
       grant_type: 'password',
@@ -17,7 +17,7 @@ angular.module('isf.login')
         auth.setToken(data.data.access_token);
 
         server.get('/api/profile/login/' + data.data.access_token).then(function(data){
-          $window.location.href = 'http://' + data.dataCredentials.uniqueUrl + '.isitupdotcom.com/#/dashboard';
+          $state.go('base.dashboard');
         });
 
       }, function(response){
