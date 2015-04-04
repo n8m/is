@@ -13,8 +13,7 @@ angular.module('isf.activation')
           $state.go('base.login');
         }
       }, function(response){
-        console.log(response);
-        if(response.status === 404){
+        if(response === 404){
           $scope.invalidLink = true;
         }
       })
