@@ -14,7 +14,6 @@ angular.module('isf.registration')
     server.post('/api/profile/registration', $scope.user).then(function(){
       $state.go('base.regSuccess', {uniqueUrl: $scope.user.dataCredentials.uniqueUrl})
     }, function(response){
-      console.log(response);
       if(response.status === 400){
         $scope.registrationErrors = response.errors;
       }

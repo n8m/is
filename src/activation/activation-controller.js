@@ -3,7 +3,7 @@
  */
 angular.module('isf.activation')
 
-.controller('activation-controller', function($scope, $stateParams, server){
+.controller('activation-controller', function($scope, $stateParams, server, $state){
 
     var token = $stateParams.token;
 
@@ -13,7 +13,7 @@ angular.module('isf.activation')
           $scope.validActivationLink = true;
         }
       }, function(response){
-        if(response === 404){
+        if(response.status === 404){
           $scope.invalidActivationLink = true;
         }
       })
