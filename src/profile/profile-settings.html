@@ -18,15 +18,15 @@
           <div class="col-sm-8">
             <h1>Account settings</h1>
 
-            <form role="form" name="registerForm" id="registerForm" method="post" novalidate ng-submit="updateUser($event, registerForm)">
+            <form role="form" name="registerForm" id="registerForm" method="post" ng-submit="save()">
               <div class="row">
                 <div class="col-sm-9 form-view">
                   <div class="form-horizontal">
                     <div class="form-group">
-                      <input type="hidden" name="dataCredentials[username]" value="{{uniqueUrl}}" />
+                      <input type="hidden" name="dataCredentials[unuqieUrl]" value="{{user.dataCredentials.uniqueUrl}}" />
                       <label class="control-label col-sm-3">Unique URL:</label>
                       <div class="col-sm-9">
-                        <label class="control-label"><strong>{{uniqueUrl}}</strong></label>
+                        <label class="control-label"><strong>{{user.dataCredentials.uniqueUrl}}</strong></label>
                       </div>
                     </div>
                     <div class="form-group">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                       <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-signup" ng-click="">Save</button>
+                        <button type="submit" class="btn btn-signup" ng-click="save()">Save</button>
                         <a class="">Cancel</a>
                       </div>
                     </div>
