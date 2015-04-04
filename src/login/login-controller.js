@@ -20,7 +20,6 @@ angular.module('isf.login')
           $window.location.href = 'http://' + data.dataCredentials.uniqueUrl + '.isitupdotcom.com/#/dashboard';
         });
 
-        //go to subdomain
       }, function(response){
         console.log(response);
       })
