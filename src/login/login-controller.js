@@ -15,6 +15,11 @@ angular.module('isf.login')
 
       server.post('/oauth', $scope.user).then(function(data){
         auth.setToken(data.data.access_token);
+
+        server.get('/api/profile/login/' + data.data.access_token).then(function(data){
+          $window.location.href = 'http://' + data.dataCredentials.uniqueUrl + '.isitupdotcom.com';
+        });
+
         //go to subdomain
       }, function(response){
         console.log(response);
