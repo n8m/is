@@ -10,7 +10,6 @@ angular.module('isf.dashboard')
   if(token){
     server.get('/api/profile/login/' + token).then(function(data){
       $rootScope.loggedIn = true;
-      console.log(data);
     })
   } else{
     $rootScope.loggedIn = false;
