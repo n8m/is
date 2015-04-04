@@ -27,7 +27,7 @@ angular.module('isf.server')
               deferredRequests.push({config: config, deferred: deferred});
               deferred.reject({data:data,status:status});
             } else {
-              deferred.reject(status);
+              deferred.reject({data:data,status:status});
             }
 
             $rootScope.$broadcast('httpError', status);
@@ -55,7 +55,7 @@ angular.module('isf.server')
               deferredRequests.push({config: config, deferred: deferred});
               deferred.reject({data:data,status:status});
             } else {
-              deferred.reject(status);
+              deferred.reject({data:data,status:status});
             }
           });
         return deferred.promise;
