@@ -1,7 +1,14 @@
-<div class="well" ng-show="invalidLink">
+<div class="well" ng-show="invalidActivationLink">
   <h2>Invalid activation link</h2>
   <p>The account activation link you have user is invalid or has expired. Please click the link below to sign up again.</p>
   <p>
     <a ui-sref="base.registration">Sign up</a>
+  </p>
+</div>
+
+<div class="well" ng-show="validActivationLink">
+  <p>To activate account please sign in</p>
+  <p>
+    <a ui-sref="base.login">Sign in</a>
   </p>
 </div>

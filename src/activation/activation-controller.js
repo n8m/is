@@ -3,18 +3,18 @@
  */
 angular.module('isf.activation')
 
-.controller('activation-controller', function($scope, $state, $stateParams, server){
+.controller('activation-controller', function($scope, $stateParams, server){
 
     var token = $stateParams.token;
 
     if(token){
       server.get('/api/profile/activate/' + token).then(function(data){
         if(data.status === 200){
-          $state.go('base.login');
+          $scope.validActivationLink = true;
         }
       }, function(response){
         if(response === 404){
-          $scope.invalidLink = true;
+          $scope.invalidActivationLink = true;
         }
       })
 
