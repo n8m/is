@@ -10,5 +10,6 @@ angular.module('isf', [
   'isf.server',
   'isf.login',
   'isf.auth',
-  'isf.dashboard'
+  'isf.dashboard',
+  'isf.activation'
 ]);
