@@ -3,7 +3,7 @@
  */
 angular.module('isf.profile')
 
-.controller('profile-settings-controller', function($scope, auth, server){
+.controller('profile-settings-controller', function($scope, auth, server, $rootScope){
 
     var token = auth.getToken();
 
