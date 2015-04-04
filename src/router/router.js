@@ -39,7 +39,8 @@ angular.module('isf.router', [])
     })
     .state('base.activation', {
       url: '/profile/activate/:token',
-      controller: 'activation-controller'
+      controller: 'activation-controller',
+      templateUrl: 'activation/activation.html'
     });
 
   $urlRouterProvider.otherwise('/');
