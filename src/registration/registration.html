@@ -27,7 +27,7 @@
                               </p>
                             </div>
 
-                            <form role="form" name="registerForm" id="registerForm" method="post" ng-submit="registerUser($event, registerForm)">
+                            <form role="form" name="registerForm" id="registerForm" method="post" ng-submit="proceed()">
                                 <input type="hidden" ng-model="action" value="create">
                                 <div ng-include="'registration/partials/_credentials.html'"></div>
                                 <div ng-include="'registration/partials/_contact.html'"></div>
@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-signup btn-block" ng-click="proceed()">Start Trial</button>
+                                            <button type="submit" class="btn btn-signup btn-block">Start Trial</button>
                                         </div>
                                     </div>
                                 </div>

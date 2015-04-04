@@ -3,7 +3,7 @@
  */
 angular.module('isf.login')
 
-.controller('login-controller', function($scope, server, auth, $state){
+.controller('login-controller', function($scope, server, auth, $window){
 
     $scope.user = {
       grant_type: 'password',
@@ -11,9 +11,11 @@ angular.module('isf.login')
     };
 
     $scope.login = function(){
+
+
       server.post('/oauth', $scope.user).then(function(data){
         auth.setToken(data.data.access_token);
-        $state.go('base.dashboard');
+        //go to subdomain
       }, function(response){
         console.log(response);
       })
