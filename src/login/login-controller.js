@@ -13,7 +13,8 @@ angular.module('isf.login')
     $scope.login = function(){
 
       server.post('/oauth', $scope.user).then(function(data){
-        auth.setToken(data.data.access_token);
+        console.log(data);
+        auth.setToken(data.data.access_token, data.data.refresh_token);
 
         server.get('/api/profile/login/' + data.data.access_token).then(function(data){
           $state.go('main.panel');

@@ -2,6 +2,7 @@
 
 angular.module('isf', [
   'ngSanitize',
+  'ipCookie',
   'ui.router',
   'ui.bootstrap',
   'isf.router',
