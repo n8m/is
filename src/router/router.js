@@ -5,18 +5,15 @@ angular.module('isf.router', [])
 
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('base.dashboard', {
-      url: '/dashboard',
-      templateUrl: 'dashboard/dashboard.html',
-      controller: 'dashboard-controller'
-    })
+    //base state which is not require auth
     .state('base', {
       abstract: true,
       templateUrl: 'base/base.html'
     })
-    .state('base.main', {
+    //////////////////////////////////////not required auth states
+    .state('base.home', {
       url: '/',
-      templateUrl: 'main/main.html'
+      templateUrl: 'home/home.html'
     })
     .state('base.pricing', {
       url: '/pricing',
@@ -42,12 +39,28 @@ angular.module('isf.router', [])
       controller: 'activation-controller',
       templateUrl: 'activation/activation.html'
     })
-    .state('base.profileSettings', {
+    //base state which requires auth
+    .state('main', {
+      abstract: true,
+      templateUrl: 'base/base.html',
+      resolve: {
+        auth: function(){
+          console.log('here check auth');
+        }
+      }
+    })
+    ///////////////////////////////////required auth states
+    .state('main.panel', {
+      url: '/panel',
+      templateUrl: 'panel/panel.html',
+      controller: 'panel-controller'
+    })
+    .state('main.profileSettings', {
       url: '/profile/cabinet/settings',
       controller: 'profile-settings-controller',
       templateUrl: 'profile/profile-settings.html'
     })
-    .state('base.subscriptionDetails', {
+    .state('main.subscriptionDetails', {
       url: '/profile/cabinet/subscription/details',
       controller: 'subscription-details-controller',
       templateUrl: 'profile/subscription-details.html'

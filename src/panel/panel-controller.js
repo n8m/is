@@ -1,9 +1,9 @@
 /**
  * Created by fyodorkhruschov on 03.04.15.
  */
-angular.module('isf.dashboard')
+angular.module('isf.panel')
 
-.controller('dashboard-controller', function($scope, server, auth, $rootScope, $state){
+.controller('panel-controller', function($scope, server, auth, $rootScope, $state){
 
   var token = auth.getToken();
 
