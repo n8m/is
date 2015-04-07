@@ -4,6 +4,5 @@
 angular.module('isf.panel')
 
 .controller('panel-controller', function($scope){
-
-
+  console.log('panel');
 });
