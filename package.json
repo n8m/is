@@ -1,7 +1,10 @@
 {
   "name": "isf",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "active-x-obfuscator": "0.0.2",
+    "uglify-js": "^2.4.19"
+  },
   "scripts": {
     "test": "gulp test"
   },
