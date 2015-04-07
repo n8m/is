@@ -44,8 +44,29 @@ angular.module('isf.router', [])
       abstract: true,
       templateUrl: 'base/base.html',
       resolve: {
-        auth: function(){
-          console.log('here check auth');
+        auth: function($rootScope, auth, $state, $timeout, $q){
+          var accessToken = auth.getToken();
+
+          var deffered = $q.defer();
+
+          if(accessToken){
+            auth.checkToken(accessToken).then(function(){
+              deffered.resolve();
+            }, function(){
+              $timeout(function(){
+                $rootScope.loggedIn = false;
+                $state.go('base.login');
+              });
+              deffered.reject();
+            });
+          } else{
+            $timeout(function(){
+              $rootScope.loggedIn = false;
+              $state.go('base.login');
+            });
+            deffered.reject();
+          }
+          return deffered.promise;
         }
       }
     })

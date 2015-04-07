@@ -3,10 +3,10 @@
  */
 angular.module('isf.auth')
 
-.factory('auth', function($http, $rootScope, ipCookie){
+.factory('auth', function($http, $rootScope, ipCookie, server){
 
-    var _accessToken,
-        _refreshToken;
+  var _accessToken,
+      _refreshToken;
 
   var authService = {
     setToken: function(accessToken, refreshToken){
@@ -23,9 +23,18 @@ angular.module('isf.auth')
     getToken: function(){
       if(_accessToken){
         return _accessToken;
+      }
+      var accessToken = ipCookie('ipf_accessToken');
+
+      if(accessToken){
+        return accessToken;
       } else{
         return false;
       }
+
+    },
+    checkToken: function(accessToken){
+      return server.get('/api/profile/login/' + accessToken);
     }
   };
 
