@@ -1,0 +1,106 @@
+<div class="admin-page">
+  <div class="admin-header">
+    <h1><img src="/app/img/default-avatar.png" alt="" class="img-rounded" /> Manage your account</h1>
+  </div>
+  <div class="admin-panel">
+    <div class="admin-panel-inner">
+      <div class="admin-panel-nav">
+        <nav>
+          <ul class="admin-nav nav">
+            <li class="nav-item active">
+              <a class="execute" href="javascript:void(0);">Subscription</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="admin-panel-content">
+        <div class="row">
+          <div class="col-sm-8">
+            <h1>Account settings</h1>
+
+            <form role="form" name="registerForm" id="registerForm" method="post" ng-submit="save()">
+              <div class="row">
+                <div class="col-sm-9 form-view">
+                  <div class="form-horizontal">
+                    <div class="form-group">
+                      <label class="control-label col-sm-3" for="country">Country<em>*</em>:</label>
+                      <div class="col-sm-9">
+                        <div angucomplete-alt id="country" placeholder="Search countries" selected-object="countrySelected" local-data="countries" search-fields="text" title-field="text" minlength="1" input-class="form-control form-control-small" field-required="true">
+                        </div>
+                        <input type="hidden"  ng-model="user.dataContact.country" name="country" />
+                        <div ng-show="registerForm.$submitted || registerForm.$invalid && registerForm.className.indexOf('ng-invalid-autocomplete-required')>0">
+                          <span class="error" ng-show="user.dataContact.country == ''">required</span>
+                        </div>
+                        {{registerForm.className}}
+                        {{registerForm.className.indexOf('ng-invalid-autocomplete-required')}}
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-3" for="address1">Address Line 1<em>*</em> :</label>
+                      <div class="col-sm-9">
+                        <input type="text" ng-model="user.dataContact.address1" name="address1" id="address1" class="form-control input-sm" autocomplete="off" value="" required>
+                        <div ng-show="registerForm.$submitted || registerForm.address1.$touched">
+                          <span class="error" ng-show="registerForm.address1.$error.required">required</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-3" for="address2">Address Line 2:</label>
+                      <div class="col-sm-9">
+                        <input type="text" ng-model="user.dataContact.address2" name="address2" id="address2" class="form-control input-sm" autocomplete="off" value="">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-3" for="city">City<em>*</em> :</label>
+                      <div class="col-sm-9">
+                        <input type="text" ng-model="user.dataContact.city" name="city" id="city" class="form-control input-sm" autocomplete="off" value="" required>
+                        <div ng-show="registerForm.$submitted || registerForm.city.$touched">
+                          <span class="error" ng-show="registerForm.city.$error.required">required</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-3" for="state">State/Province:</label>
+                      <div class="col-sm-9">
+                        <input ng-model="user.dataContact.state" name="state" id="state" class="form-control input-sm">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-3" for="zip">Zip/Postcode:</label>
+                      <div class="col-sm-9">
+                        <input type="text" ng-model="user.dataContact.zip" name="dataContact[zip]" id="zip" class="form-control input-sm" autocomplete="off" value="">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-signup">Save</button>
+                        <a class="">Cancel</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="avatar-view text-center">
+                    <div class="description">
+                      <a id="change-avatar" href="#change-avatar" data-submit-url="/account/xhr/avatar/alexcreighton77" data-text-title="Upload avatar" data-text-delete="Delete avatar">
+                        <div class="aui-avatar avatar-lg">
+                          <div class="aui-avatar-inner">
+                            <img src="/app/img/default-avatar.png" alt="" class="img-rounded" />
+                          </div>
+                        </div>
+                        Change avatar
+                      </a>
+                      <div class="gravatar-help">
+                        Current avatar via <a href="http://gravatar.com" target="_blank">Gravatar</a>.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

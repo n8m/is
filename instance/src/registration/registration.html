@@ -1,0 +1,50 @@
+<div class="pricing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="header-title text-center">Sign Up for an account</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-colored">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-7 text-center">
+                            <h1>Lorem ipsum</h1>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam commodo a diam sit amet pellentesque. Vivamus malesuada purus molestie lacus eleifend lobortis.</p>
+                            <h1>
+                                <i class="glyphicon glyphicon-cloud"></i>
+                            </h1>
+                        </div>
+                        <div class="col-md-5 sign-up-form">
+
+                            <div ng-show="registrationErrors">
+                              <p class="alert alert-danger"  ng-repeat="error in registrationErrors">
+                                <b>{{error.field}}</b> - {{error.message}}
+                              </p>
+                            </div>
+
+                            <form role="form" name="registerForm" id="registerForm" method="post" ng-submit="proceed()">
+                                <input type="hidden" ng-model="action" value="create">
+                                <div ng-include="'registration/partials/_credentials.html'"></div>
+                                <div ng-include="'registration/partials/_contact.html'"></div>
+                                <div ng-include="'registration/partials/_user.html'"></div>
+                                <div ng-include="'registration/partials/_agreement.html'"></div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-signup btn-block">Start Trial</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
