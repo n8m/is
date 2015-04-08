@@ -19,7 +19,7 @@ angular.module('isf.server')
         url = httpRoot + resource;
 
         $http({method:'GET',url:url,params:filter})
-          .success(function(data,status,headers,request) {
+          .success(function(data) {
             deferred.resolve(data);
           })
           .error(function(data,status,headers,config) {
@@ -42,7 +42,7 @@ angular.module('isf.server')
         url = httpRoot + resource;
 
         $http({method:'POST',url:url,data:payload,params:filter})
-          .success(function(data,status,headers,request) {
+          .success(function(data,status,headers) {
             if(data) {
               deferred.resolve({'data': data, 'headers': headers});
             } else {
@@ -67,7 +67,7 @@ angular.module('isf.server')
         url = httpRoot + resource;
 
         $http({method:'PUT',url:url,data:payload,params:filter})
-          .success(function(data,status,headers,request) {
+          .success(function(data,status,headers) {
             if(data) {
               deferred.resolve({'data': data, 'headers': headers});
             } else {
@@ -91,7 +91,7 @@ angular.module('isf.server')
         var url = httpRoot + resource;
 
         $http({method:'DELETE',url:url})
-          .success(function(data,status,headers,request) {
+          .success(function(data,status,headers) {
             if(data) {
               deferred.resolve({'data': data, 'headers': headers});
             } else {
