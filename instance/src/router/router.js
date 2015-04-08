@@ -8,7 +8,12 @@ angular.module('isfi.router', [])
     //base state which is not require auth
     .state('base', {
       abstract: true,
-      templateUrl: 'base/base.html'
+      views: {
+        '': {templateUrl: 'base/base.html'},
+        'header@base': {templateUrl: 'base/header.html'},
+        'leftSide@base': {templateUrl: 'base/left-side.html'},
+        'footer@base': {templateUrl: 'base/footer.html'}
+      }
     })
     //////////////////////////////////////not required auth states
     .state('base.home', {
