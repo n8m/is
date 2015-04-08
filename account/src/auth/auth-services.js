@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Created by fyodorkhruschov on 03.04.15.
  */
@@ -53,19 +55,18 @@ angular.module('isf.auth')
       if(refreshToken){
 
         var payload = {
-          "grant_type": "refresh_token",
-          "refresh_token": refreshToken,
-          "client_id": "testclient2",
-          "client_secret": null
+          'grant_type': 'refresh_token',
+          'refresh_token': refreshToken,
+          'client_id': 'testclient2',
+          'client_secret': null
         };
 
         server.post('/oauth', payload).then(function(data){
           authService.setToken(data.data.access_token);
           deffered.resolve();
         }, function(){
-          console.log(arguments);
           deffered.reject();
-        })
+        });
       } else{
         deffered.reject();
       }

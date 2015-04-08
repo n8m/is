@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Created by fyodorkhruschov on 03.04.15.
  */
@@ -12,8 +14,8 @@ angular.module('isf.login')
     $scope.login = function(){
 
       $scope.payload = {
-        username: "my:" + $scope.user.username,
-        client_id:  "my:" + $scope.user.username,
+        username: 'my:' + $scope.user.username,
+        client_id:  'my:' + $scope.user.username,
         password: $scope.user.password
       };
 
@@ -23,7 +25,7 @@ angular.module('isf.login')
 
       }, function(response){
         console.log(response);
-      })
-    }
+      });
+    };
 
 });
