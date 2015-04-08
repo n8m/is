@@ -12,7 +12,7 @@ angular.module('isf.registration')
 
   $scope.proceed = function(){
     server.post('/api/profile/registration', $scope.user).then(function(){
-      $state.go('base.regSuccess', {uniqueUrl: $scope.user.dataCredentials.uniqueUrl})
+      $state.go('base.regSuccess', {instanceUrl: $scope.user.dataCredentials.instanceUrl})
     }, function(response){
 
       if(response.status === 400){
