@@ -11,14 +11,15 @@ angular.module('isf.auth')
   var authService = {
     setToken: function(accessToken, refreshToken){
       _accessToken = accessToken;
-      _refreshToken = refreshToken;
+
+      if(refreshToken){
+        _refreshToken = refreshToken;
+        ipCookie('isf_refreshToken', refreshToken);
+      }
 
       $rootScope.loggedIn = true;
-
       $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
-
       ipCookie('isf_accessToken', accessToken);
-      ipCookie('isf_refreshToken', refreshToken);
     },
     getToken: function(){
       if(_accessToken){
@@ -46,14 +47,30 @@ angular.module('isf.auth')
     },
     refreshToken: function(){
 
+      var deffered = $q.defer();
+
       var refreshToken = _refreshToken || ipCookie('isf_refreshToken');
       if(refreshToken){
-        //server.post('/oauth/' + refreshToken).then(function(){
-        //  console.log(arguments);
-        //}, function(){
-        //  console.log(arguments);
-        //})
+
+        var payload = {
+          "grant_type": "refresh_token",
+          "refresh_token": refreshToken,
+          "client_id": "testclient2",
+          "client_secret": null
+        };
+
+        server.post('/oauth', payload).then(function(data){
+          authService.setToken(data.data.access_token);
+          deffered.resolve();
+        }, function(){
+          console.log(arguments);
+          deffered.reject();
+        })
+      } else{
+        deffered.reject();
       }
+
+      return deffered.promise;
     }
   };
 

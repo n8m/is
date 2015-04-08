@@ -52,13 +52,17 @@ angular.module('isf.router', [])
             deffered.resolve();
           }, function(){
 
-            //auth.refreshToken();
-
-            $timeout(function(){
-              $rootScope.loggedIn = false;
-              $state.go('base.login');
+            auth.refreshToken().then(function(){
+              deffered.resolve();
+            }, function(){
+              $timeout(function(){
+                $rootScope.loggedIn = false;
+                $state.go('base.login');
+              });
+              deffered.reject();
             });
-            deffered.reject();
+
+
           });
 
           return deffered.promise;
