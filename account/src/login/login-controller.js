@@ -6,10 +6,8 @@ angular.module('isf.login')
 .controller('login-controller', function($scope, server, auth, $state){
 
     $scope.payload = {
-      grant_type: 'password',
+      grant_type: 'password'
     };
-
-    "grant_type": "password", "username": "my:salerat@gmail.com", "password": "", "client_id": "my:salerat@gmail.com"
 
     $scope.login = function(){
 
