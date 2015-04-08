@@ -5,14 +5,21 @@ angular.module('isf.login')
 
 .controller('login-controller', function($scope, server, auth, $state){
 
-    $scope.user = {
+    $scope.payload = {
       grant_type: 'password',
-      client_id: 'testclient2'
     };
+
+    "grant_type": "password", "username": "my:salerat@gmail.com", "password": "", "client_id": "my:salerat@gmail.com"
 
     $scope.login = function(){
 
-      server.post('/oauth', $scope.user).then(function(data){
+      $scope.payload = {
+        username: "my:" + $scope.user.username,
+        client_id:  "my:" + $scope.user.username,
+        password: $scope.user.password
+      };
+
+      server.post('/oauth', $scope.payload).then(function(data){
         auth.setToken(data.data.access_token, data.data.refresh_token);
         $state.go('main.panel');
 
