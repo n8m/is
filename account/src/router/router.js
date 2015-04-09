@@ -62,7 +62,6 @@ angular.module('isf.router', [])
               deffered.reject();
             });
 
-
           });
 
           return deffered.promise;
