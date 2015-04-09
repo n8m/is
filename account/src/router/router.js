@@ -8,7 +8,8 @@ angular.module('isf.router', [])
     //base state which is not require auth
     .state('base', {
       abstract: true,
-      templateUrl: 'base/base.html'
+      templateUrl: 'base/base.html',
+      controller: 'base-controller'
     })
     //////////////////////////////////////not required auth states
     .state('base.home', {
@@ -44,7 +45,7 @@ angular.module('isf.router', [])
       abstract: true,
       templateUrl: 'base/base.html',
       resolve: {
-        auth: function($rootScope, auth, $state, $timeout, $q){
+        authentication: function($rootScope, auth, $state, $timeout, $q){
 
           var deffered = $q.defer();
 
@@ -66,7 +67,8 @@ angular.module('isf.router', [])
 
           return deffered.promise;
         }
-      }
+      },
+      controller: 'base-controller'
     })
     ///////////////////////////////////required auth states
     .state('main.panel', {
