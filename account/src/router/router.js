@@ -20,12 +20,12 @@ angular.module('isf.router', [])
       templateUrl: 'registration/pricing.html'
     })
     .state('base.registration', {
-      url: '/profile/registration',
+      url: '/account/registration',
       templateUrl: 'registration/registration.html',
       controller: 'registration-controller'
     })
     .state('base.regSuccess', {
-      url: '/profile/registration/success?instanceUrl',
+      url: '/account/registration/success?instanceUrl',
       templateUrl: 'registration/registration-success.html',
       controller: 'registration-success-controller'
     })
