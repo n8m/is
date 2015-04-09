@@ -35,7 +35,7 @@ angular.module('isfi.router', [])
       templateUrl: 'login/login.html'
     })
     .state('base.activation', {
-      url: '/profile/activate/:token',
+      url: '/instance/activate/:token',
       controller: 'activation-controller',
       templateUrl: 'activation/activation.html'
     })
