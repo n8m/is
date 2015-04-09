@@ -8,7 +8,7 @@ angular.module('isf.activation')
     var token = $stateParams.token;
 
     if(token){
-      server.post('/api/account/activate/', {activation_key: token}).then(function(data){
+      server.post('/api/account/activate', {activation_key: token}).then(function(data){
         if(data.status === 200){
           $scope.validActivationLink = true;
         }
