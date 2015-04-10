@@ -5,7 +5,7 @@
  */
 angular.module('isf.auth')
 
-.factory('auth', function($http, $rootScope, ipCookie, server, $q){
+.factory('auth', function($http, $rootScope, ipCookie, server, $q, $state){
 
   var _accessToken,
       _refreshToken;
@@ -72,6 +72,32 @@ angular.module('isf.auth')
       }
 
       return deffered.promise;
+    },
+    logout: function(){
+
+      var accessToken = authService.getToken();
+
+      if(accessToken){
+        server.post('/api/profile/logout/' + accessToken).then(function(){
+          cleanToken();
+        }, function(response){
+          console.log(response);
+          cleanToken();
+        })
+      }else{
+        cleanToken();
+      }
+
+      function cleanToken(){
+        delete _refreshToken;
+        delete _accessToken;
+        ipCookie.remove('isf_refreshToken');
+        ipCookie.remove('isf_accessToken');
+        $rootScope.loggedIn = false;
+        delete $http.defaults.headers.common.Authorization;
+        $state.go('base.home');
+      }
+
     }
   };
 

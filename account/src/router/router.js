@@ -10,7 +10,8 @@ angular.module('isf.router', [])
     //base state which is not require auth
     .state('base', {
       abstract: true,
-      templateUrl: 'base/base.html'
+      templateUrl: 'base/base.html',
+      controller: 'base-controller'
     })
     //////////////////////////////////////not required auth states
     .state('base.home', {
@@ -22,12 +23,12 @@ angular.module('isf.router', [])
       templateUrl: 'registration/pricing.html'
     })
     .state('base.registration', {
-      url: '/profile/registration',
+      url: '/account/registration',
       templateUrl: 'registration/registration.html',
       controller: 'registration-controller'
     })
     .state('base.regSuccess', {
-      url: '/profile/registration/success?instanceUrl',
+      url: '/account/registration/success?instanceUrl',
       templateUrl: 'registration/registration-success.html',
       controller: 'registration-success-controller'
     })
@@ -37,16 +38,26 @@ angular.module('isf.router', [])
       templateUrl: 'login/login.html'
     })
     .state('base.activation', {
-      url: '/profile/activate/:token',
+      url: '/account/activate/:token',
       controller: 'activation-controller',
       templateUrl: 'activation/activation.html'
+    })
+    .state('base.request-reset-password', {
+      url: '/profile/reset/password',
+      controller: 'request-reset-password-controller',
+      templateUrl: 'reset-password/request-reset-password.html'
+    })
+    .state('base.reset-password', {
+      url: '/profile/reset/password/:token',
+      controller: 'reset-password-controller',
+      templateUrl: 'reset-password/reset-password.html'
     })
     //base state which requires auth
     .state('main', {
       abstract: true,
       templateUrl: 'base/base.html',
       resolve: {
-        auth: function($rootScope, auth, $state, $timeout, $q){
+        authentication: function($rootScope, auth, $state, $timeout, $q){
 
           var deffered = $q.defer();
 
@@ -64,12 +75,12 @@ angular.module('isf.router', [])
               deffered.reject();
             });
 
-
           });
 
           return deffered.promise;
         }
-      }
+      },
+      controller: 'base-controller'
     })
     ///////////////////////////////////required auth states
     .state('main.panel', {
