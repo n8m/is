@@ -13,5 +13,6 @@ angular.module('isf', [
   'isf.auth',
   'isf.panel',
   'isf.activation',
-  'isf.base'
+  'isf.base',
+  'isf.reset-password'
 ]);
