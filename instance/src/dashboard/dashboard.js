@@ -1,4 +1,4 @@
 /**
  * Created by fyodorkhruschov on 03.04.15.
  */
-angular.module('isfi.panel', []);
+angular.module('isfi.dashboard', []);

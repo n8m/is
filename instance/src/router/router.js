@@ -70,10 +70,10 @@ angular.module('isfi.router', [])
       }
     })
     ///////////////////////////////////required auth states
-    .state('main.panel', {
-      url: '/panel',
-      templateUrl: 'panel/panel.html',
-      controller: 'panel-controller'
+    .state('main.dashboard', {
+      url: '/dashboard',
+      templateUrl: 'dashboard/dashboard.html',
+      controller: 'dashboard-controller'
     })
     .state('main.profileSettings', {
       url: '/profile/cabinet/settings',
