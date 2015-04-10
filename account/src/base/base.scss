@@ -311,3 +311,26 @@ footer{
   text-align: center;
   width: 100%;
 }
+
+ul.nav.navbar-right li a p{
+  margin: 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+.well{
+  min-height: 50px !important;
+}
+
+.content-wrapper {
+  width: calc(100% - 115px);
+  margin-left: 115px;
+  padding: 15px;
+  height: 100%;
+}
