@@ -11,7 +11,7 @@ angular.module('isf.reset-password')
 
     console.log('here');
 
-    server.post('/api/profile/reset/password', {"action" : "create", "username" : 'my' + $scope.username}).then(function(data){
+    server.post('/api/profile/reset/password', {"action" : "create", "username" : 'my:' + $scope.username}).then(function(data){
       $scope.successMessage = true;
     }, function(response){
       $scope.errorMessage = true;
