@@ -8,7 +8,7 @@ angular.module('isfi.activation')
     var token = $stateParams.token;
 
     if(token){
-      server.get('/api/profile/activate/' + token).then(function(data){
+      server.get('/api/instance/activate', {activationKey: token}).then(function(data){
         if(data.status === 200){
           $scope.validActivationLink = true;
         }
