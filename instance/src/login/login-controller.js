@@ -3,18 +3,22 @@
  */
 angular.module('isfi.login')
 
-.controller('login-controller', function($scope, server, auth, $state){
-
-    $scope.user = {
-      grant_type: 'password',
-      client_id: 'testclient2'
-    };
+.controller('login-controller', function($scope, server, auth, $state, $location){
 
     $scope.login = function(){
 
-      server.post('/oauth', $scope.user).then(function(data){
+      var instanceName = $location.host().split('.')[0];
+
+      $scope.payload = {
+        grant_type: "password",
+        username: instanceName + ":" + $scope.user.username,
+        client_id:  instanceName,
+        password: $scope.user.password
+      };
+
+      server.post('/oauth', $scope.payload).then(function(data){
         auth.setToken(data.data.access_token, data.data.refresh_token);
-        $state.go('main.panel');
+        $state.go('main.dashboard');
 
       }, function(response){
         console.log(response);
