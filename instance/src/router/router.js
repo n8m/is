@@ -11,14 +11,13 @@ angular.module('isfi.router', [])
       views: {
         '': {templateUrl: 'base/base.html'},
         'header@base': {templateUrl: 'base/header.html'},
-        'leftSide@base': {templateUrl: 'base/left-side.html'},
         'footer@base': {templateUrl: 'base/footer.html'}
       }
     })
     //////////////////////////////////////not required auth states
     .state('base.home', {
       url: '/',
-      templateUrl: 'home/home.html'
+      templateUrl: 'base/base.html'
     })
     .state('base.pricing', {
       url: '/pricing',
@@ -45,9 +44,12 @@ angular.module('isfi.router', [])
       templateUrl: 'activation/activation.html'
     })
     //base state which requires auth
-    .state('main', {
+    .state('base.main', {
       abstract: true,
-      templateUrl: 'base/base.html',
+      views: {
+        '': {templateUrl: 'base/main.html'},
+        'leftSide@base.main': {templateUrl: 'base/left-side.html'}
+      },
       resolve: {
         auth: function($rootScope, auth, $state, $timeout, $q){
 
@@ -75,43 +77,38 @@ angular.module('isfi.router', [])
       }
     })
     ///////////////////////////////////required auth states
-    .state('main.dashboard', {
+    .state('base.main.dashboard', {
       url: '/dashboard',
       templateUrl: 'dashboard/dashboard.html',
       controller: 'dashboard-controller'
     })
-    .state('main.profileSettings', {
+    .state('base.main.profileSettings', {
       url: '/profile/cabinet/settings',
       controller: 'profile-settings-controller',
       templateUrl: 'profile/profile-settings.html'
     })
-    .state('main.subscriptionDetails', {
+    .state('base.main.subscriptionDetails', {
       url: '/profile/cabinet/subscription/details',
       controller: 'subscription-details-controller',
       templateUrl: 'profile/subscription-details.html'
     })
-    //plugs
-    .state('base.dashboard', {
-      url: '/dashboard',
-      templateUrl: 'plugs/dashboard.html'
-    })
-    .state('base.asset', {
+    .state('base.main.asset', {
       url: '/asset',
       templateUrl: 'plugs/asset.html'
     })
-    .state('base.device', {
+    .state('base.main.device', {
       url: '/device',
       templateUrl: 'plugs/device.html'
     })
-    .state('base.network', {
+    .state('base.main.network', {
       url: '/network',
       templateUrl: 'plugs/network.html'
     })
-    .state('base.settings', {
+    .state('base.base.settings', {
       url: '/settings',
       templateUrl: 'plugs/settings.html'
     })
-    .state('base.website', {
+    .state('base.main.website', {
       url: '/website',
       templateUrl: 'plugs/website.html'
     });

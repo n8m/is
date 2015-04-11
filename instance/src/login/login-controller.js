@@ -7,6 +7,8 @@ angular.module('isfi.login')
 
     $scope.login = function(){
 
+      delete $scope.errorMessage;
+
       var instanceName = $location.host().split('.')[0];
 
       $scope.payload = {
@@ -21,6 +23,8 @@ angular.module('isfi.login')
         $state.go('main.dashboard');
 
       }, function(response){
+        delete $scope.user.password;
+        $scope.errorMessage = true;
         console.log(response);
       })
     }

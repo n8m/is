@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-offset-2 col-sm-8">
-            <div class="well">
-                <form role="form" name="loginForm" class="form-horizontal" method="post" ng-submit="login()">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="well">
+        <form role="form" name="loginForm" class="form-horizontal" method="post" ng-submit="login()">
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="username">Username:</label>
 
@@ -32,7 +32,10 @@
                         </div>
                     </div>
                 </form>
-            </div>
+        <div ng-if="errorMessage" class="alert alert-danger">
+          Wrong credentials
         </div>
+      </div>
     </div>
+  </div>
 </div>

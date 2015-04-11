@@ -89,8 +89,8 @@ angular.module('isf.auth')
       }
 
       function cleanToken(){
-        delete _refreshToken;
-        delete _accessToken;
+        _refreshToken = false;
+        _accessToken = false;
         ipCookie.remove('isf_refreshToken');
         ipCookie.remove('isf_accessToken');
         $rootScope.loggedIn = false;

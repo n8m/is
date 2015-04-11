@@ -9,6 +9,8 @@ angular.module('isf.login')
 
     $scope.login = function(){
 
+      delete $scope.errorMessage;
+
       $scope.payload = {
         grant_type: "password",
         username: "my:" + $scope.user.username,
@@ -21,6 +23,8 @@ angular.module('isf.login')
         $state.go('main.panel');
 
       }, function(response){
+        delete $scope.user.password;
+        $scope.errorMessage = true;
         console.log(response);
       });
     };
