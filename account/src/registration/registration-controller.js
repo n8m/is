@@ -13,6 +13,17 @@ angular.module('isf.registration')
   };
 
   $scope.proceed = function(){
+    server.get('/api/validation/instance-ur',{instanceUrl: $scope.user.dataCredentials.instanceUrl}).then(function(){
+      $scope.registerForm.$setValidity('url',true);
+      $scope.isValidURL = true;
+      registration();
+    }, function(){
+      $scope.registerForm.$setValidity('url',false);
+      $scope.isValidURL = false;
+    });
+  };
+
+  function registration(){
     server.post('/api/account/registration', $scope.user).then(function(){
       $state.go('base.regSuccess', {instanceUrl: $scope.user.dataCredentials.instanceUrl})
     }, function(response){
@@ -20,17 +31,6 @@ angular.module('isf.registration')
       if(response.status === 400){
         $scope.registrationErrors = response.data.errors;
       }
-    });
-  };
-
-  $scope.isValidURL = true;
-  $scope.checkInstanceURL = function(){
-    server.get('/api/validation/instance-ur',{instanceUrl: $scope.user.dataCredentials.instanceUrl}).then(function(){
-      $scope.registerForm.$setValidity('url',true);
-      $scope.isValidURL = true;
-    }, function(){
-      $scope.registerForm.$setValidity('url',false);
-      $scope.isValidURL = false;
     });
   }
 
