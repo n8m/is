@@ -23,6 +23,16 @@ angular.module('isf.registration')
     });
   };
 
+  $scope.isValidURL = true;
+  $scope.checkInstanceURL = function(){
+    server.get('/api/validation/instance-ur',{instanceUrl: $scope.user.dataCredentials.instanceUrl}).then(function(){
+      $scope.registerForm.$setValidity('url',true);
+      $scope.isValidURL = true;
+    }, function(){
+      $scope.registerForm.$setValidity('url',false);
+      $scope.isValidURL = false;
+    });
+  }
 
 
 
