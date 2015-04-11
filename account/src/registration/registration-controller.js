@@ -9,7 +9,8 @@ angular.module('isf.registration')
   $scope.countries = countries;
 
   $scope.user = {
-    action: 'create'
+    action: 'create',
+    dataContact: {}
   };
 
   $scope.proceed = function(){
@@ -37,7 +38,8 @@ angular.module('isf.registration')
   (function(){
     server.get('/api/geolocation').then(
       function(data){
-        $scope.location = data;
+        user.dataContact.city = data.city;
+        user.dataContact.country = location.country_name
       }
     )
   })();
