@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Created by fyodorkhruschov on 02.04.15.
  */
@@ -26,7 +28,7 @@ angular.module('isf.profile')
 
       $scope.save = function(){
         server.post('api/profile/cabinet/' + userID, $scope.user);
-      }
+      };
 
 
     } else{

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Created by fyodorkhruschov on 03.04.15.
  */
@@ -20,7 +22,7 @@ angular.module('isf.login')
 
       }, function(response){
         console.log(response);
-      })
-    }
+      });
+    };
 
 });
