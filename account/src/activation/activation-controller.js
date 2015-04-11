@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Created by fyodorkhruschov on 04.04.15.
  */
@@ -16,12 +18,9 @@ angular.module('isf.activation')
         if(response.status === 404){
           $scope.invalidActivationLink = true;
         }
-      })
+      });
 
     } else{
       $state.go('base.main');
     }
-
-
-
 });
