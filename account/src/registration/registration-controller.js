@@ -38,8 +38,8 @@ angular.module('isf.registration')
   (function(){
     server.get('/api/geolocation').then(
       function(data){
-        user.dataContact.city = data.city;
-        user.dataContact.country = location.country_name
+        $scope.user.dataContact.city = data.city;
+        $scope.user.dataContact.country = data.country_name;
       }
     )
   })();
