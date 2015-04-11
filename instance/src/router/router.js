@@ -56,6 +56,12 @@ angular.module('isfi.router', [])
       controller: 'reset-password-controller',
       templateUrl: 'reset-password/reset-password.html'
     })
+    .state('base.checkInvite', {
+      url: '/instance/user/invite/:token',
+      controller: 'invitations-controller',
+      templateUrl: 'invitations/invitations.html'
+    })
+
     //base state which requires auth
     .state('base.main', {
       abstract: true,
@@ -142,8 +148,8 @@ angular.module('isfi.router', [])
       templateUrl: 'cabinet/cabinet-settings.html'
     })
     .state('base.main.cabinet.invitations', {
-      url: '/account/cabinet/invitations',
-      controller: 'invitations-controller',
+      url: '/cabinet/invitations',
+      controller: 'cabinet-invitations-controller',
       templateUrl: 'cabinet/invitations.html'
     });
 

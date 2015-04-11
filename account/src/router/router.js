@@ -93,28 +93,20 @@ angular.module('isf.router', [])
       templateUrl: 'cabinet/cabinet.html',
       controller: 'cabinet-controller',
       resolve: {
-        user: function($q, userProfile, server, $timeout){
-
-          console.log('start cabinet');
-
-          var settingsDeferred = $q.defer(),
-            subscriptionsDeferred = $q.defer();
-
-          var user = userProfile.getUserProfile();
-
-          server.get('/api/profile/cabinet/details/' + user.id).then(function(data){
-            userProfile.setUserSettings(data);
-            settingsDeferred.resolve();
-          });
-
-          server.get('/api/account/subscription/' + user.dataCredentials.accountUuid).then(function(data){
-            userProfile.setUserSubscriptions(data);
-            subscriptionsDeferred.resolve();
-          });
-
-          //return $q.all([settingsDeferred.promise, subscriptionsDeferred.promise]);
-
-        }
+        //user: function($q, userProfile, server, $timeout){
+        //
+        //  console.log('start cabinet');
+        //
+        //  var settingsDeferred = $q.defer(),
+        //    subscriptionsDeferred = $q.defer();
+        //
+        //  var user = userProfile.getUserProfile();
+        //
+        //
+        //
+        //  //return $q.all([settingsDeferred.promise, subscriptionsDeferred.promise]);
+        //
+        //}
       }
     })
     .state('main.cabinet.settings', {

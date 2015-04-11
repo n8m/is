@@ -5,10 +5,7 @@
  */
 angular.module('isfi.cabinet')
 
-  .controller('invitations-controller', function($scope, auth, server, $rootScope, $state, countries){
-
-
-
+  .controller('cabinet-invitations-controller', function($scope, auth, server, $rootScope, $state, countries){
 
     $scope.sendInvite = function(){
 

@@ -13,6 +13,31 @@ angular.module('isf.cabinet')
       $scope.instances = data._embedded.instance;
     });
 
+    $scope.createInstance = function(){
+
+      delete $scope.successMessage;
+      delete $scope.errorMessage;
+
+      var payload = {
+        "action": "create",
+        "instanceUrl": $scope.instanceUrl,
+        "accountUuid": userProfile.dataCredentials.accountUuid
+      };
+
+      server.post('api/instance', payload).then(function(){
+        $scope.successMessage = true;
+
+        //Todo: use separate entity
+        server.get('/api/instance', {accountId: userProfile.dataCredentials.accountUuid}).then(function(data){
+          $scope.instances = data._embedded.instance;
+        });
+
+      }, function(){
+        $scope.errorMessage = true;
+      })
+    }
+
+
 
 
   });

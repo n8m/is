@@ -8,10 +8,6 @@ angular.module('isfi.main')
 
     $scope.isCabinetView = function(){
 
-      //console.log($state.current.name.split('.')[1] && $state.current.name.split('.')[1] === 'cabinet');
-
-      console.log($state.current.name);
-
       if($state.current.name.split('.')[2] && $state.current.name.split('.')[2] === 'cabinet'){
         return true;
       } else{
