@@ -8,6 +8,8 @@ angular.module('isf.registration')
 .controller('registration-controller', function($scope, countries, $state, server){
   $scope.countries = countries;
 
+  var errorCountGeo = 0;
+
   $scope.user = {
     action: 'create',
     dataContact: {},
@@ -25,7 +27,7 @@ angular.module('isf.registration')
   };
 
   $scope.checkInstance = function(){
-    server.get('/api/validation/instance-ur',{instanceUrl: $scope.user.dataCredentials.instanceUrl}).then(function(){
+    server.get('/api/validation/instance-url',{instanceUrl: $scope.user.dataCredentials.instanceUrl}).then(function(){
       $scope.registerForm.$setValidity('url',true);
       $scope.isValidURL = true;
     }, function(){
@@ -34,7 +36,7 @@ angular.module('isf.registration')
     });
   };
 
-  (function(){
+  function geo(){
     server.get('/api/geolocation').then(
       function(data){
         $scope.user.dataContact.city = data.city;
@@ -42,7 +44,14 @@ angular.module('isf.registration')
         $scope.user.dataContact.state = data.region_name;
         $scope.user.dataContact.zip = data.zipcode || data.zip_code;
       }
-    )
-  })();
+    , function(){
+        if(errorCountGeo < 3){
+          errorCountGeo = errorCountGeo + 1; //специально не инткремент
+          geo();
+        }
+      })
+  };
+
+  geo();
 
 });
