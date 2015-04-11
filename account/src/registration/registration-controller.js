@@ -22,7 +22,6 @@ angular.module('isf.registration')
       }
     });
   };
-<<<<<<< HEAD
 
   $scope.isValidURL = true;
   $scope.checkInstanceURL = function(){
