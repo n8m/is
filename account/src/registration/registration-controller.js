@@ -40,6 +40,8 @@ angular.module('isf.registration')
       function(data){
         $scope.user.dataContact.city = data.city;
         $scope.user.dataContact.country = data.country_name;
+        $scope.user.dataContact.state = data.region_name;
+        $scope.user.dataContact.zip = data.zipcode || data.zip_code;
       }
     )
   })();
