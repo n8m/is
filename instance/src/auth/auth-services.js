@@ -14,18 +14,18 @@ angular.module('isfi.auth')
 
       if(refreshToken){
         _refreshToken = refreshToken;
-        ipCookie('isf_refreshToken', refreshToken);
+        ipCookie('isfi_refreshToken', refreshToken);
       }
 
       $rootScope.loggedIn = true;
       $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
-      ipCookie('isf_accessToken', accessToken);
+      ipCookie('isfi_accessToken', accessToken);
     },
     getToken: function(){
       if(_accessToken){
         return _accessToken;
       }
-      var accessToken = ipCookie('isf_accessToken');
+      var accessToken = ipCookie('isfi_accessToken');
 
       if(accessToken){
         return accessToken;
@@ -49,7 +49,7 @@ angular.module('isfi.auth')
 
       var deffered = $q.defer();
 
-      var refreshToken = _refreshToken || ipCookie('isf_refreshToken');
+      var refreshToken = _refreshToken || ipCookie('isfi_refreshToken');
       if(refreshToken){
 
         var payload = {
