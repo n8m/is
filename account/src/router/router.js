@@ -62,10 +62,12 @@ angular.module('isf.router', [])
           var deffered = $q.defer();
 
           auth.checkToken().then(function(){
+            $rootScope.loggedIn = true;
             deffered.resolve();
           }, function(){
 
             auth.refreshToken().then(function(){
+              $rootScope.loggedIn = true;
               deffered.resolve();
             }, function(){
               $timeout(function(){

@@ -51,15 +51,17 @@ angular.module('isfi.router', [])
         'leftSide@base.main': {templateUrl: 'base/left-side.html'}
       },
       resolve: {
-        auth: function($rootScope, auth, $state, $timeout, $q){
+        authentication: function($rootScope, auth, $state, $timeout, $q){
 
           var deffered = $q.defer();
 
           auth.checkToken().then(function(){
+            $rootScope.loggedIn = true;
             deffered.resolve();
           }, function(){
 
             auth.refreshToken().then(function(){
+              $rootScope.loggedIn = true;
               deffered.resolve();
             }, function(){
               $timeout(function(){
