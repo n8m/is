@@ -20,7 +20,7 @@ angular.module('isfi.login')
 
       server.post('/oauth', $scope.payload).then(function(data){
         auth.setToken(data.data.access_token, data.data.refresh_token);
-        $state.go('main.dashboard');
+        $state.go('base.main.dashboard');
 
       }, function(response){
         delete $scope.user.password;
