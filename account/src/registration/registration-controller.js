@@ -10,30 +10,29 @@ angular.module('isf.registration')
 
   $scope.user = {
     action: 'create',
-    dataContact: {}
+    dataContact: {},
+    dataCredentials: {}
   };
 
   $scope.proceed = function(){
+    server.post('/api/account/registration', $scope.user).then(function(){
+      $state.go('base.regSuccess', {instanceUrl: $scope.user.dataCredentials.instanceUrl})
+    }, function(response){
+      if(response.status === 400){
+        $scope.registrationErrors = response.data.errors;
+      }
+    });
+  };
+
+  $scope.checkInstance = function(){
     server.get('/api/validation/instance-ur',{instanceUrl: $scope.user.dataCredentials.instanceUrl}).then(function(){
       $scope.registerForm.$setValidity('url',true);
       $scope.isValidURL = true;
-      registration();
     }, function(){
       $scope.registerForm.$setValidity('url',false);
       $scope.isValidURL = false;
     });
   };
-
-  function registration(){
-    server.post('/api/account/registration', $scope.user).then(function(){
-      $state.go('base.regSuccess', {instanceUrl: $scope.user.dataCredentials.instanceUrl})
-    }, function(response){
-
-      if(response.status === 400){
-        $scope.registrationErrors = response.data.errors;
-      }
-    });
-  }
 
   (function(){
     server.get('/api/geolocation').then(
