@@ -10,6 +10,10 @@ angular.module('isf.registration')
 
   var errorCountGeo = 0;
 
+  $scope.f = function(){
+    $scope.foc = true;
+  }
+
   $scope.user = {
     action: 'create',
     dataContact: {},
@@ -30,9 +34,11 @@ angular.module('isf.registration')
     server.get('/api/validation/instance-url',{instanceUrl: $scope.user.dataCredentials.instanceUrl}).then(function(){
       $scope.registerForm.$setValidity('url',true);
       $scope.isValidURL = true;
+      $scope.foc = false;
     }, function(){
       $scope.registerForm.$setValidity('url',false);
       $scope.isValidURL = false;
+      $scope.foc = false;
     });
   };
 
