@@ -20,7 +20,8 @@ angular.module('isfi.router', [])
     //////////////////////////////////////not required auth states
     .state('base.home', {
       url: '/',
-      templateUrl: 'home/home.html'
+      templateUrl: 'home/home.html',
+      controller: 'home-controller'
     })
     .state('base.pricing', {
       url: '/pricing',
