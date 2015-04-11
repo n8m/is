@@ -8,7 +8,12 @@ angular.module('isfi.router', [])
     //base state which is not require auth
     .state('base', {
       abstract: true,
-      templateUrl: 'base/base.html'
+      views: {
+        '': {templateUrl: 'base/base.html'},
+        'header@base': {templateUrl: 'base/header.html'},
+        'leftSide@base': {templateUrl: 'base/left-side.html'},
+        'footer@base': {templateUrl: 'base/footer.html'}
+      }
     })
     //////////////////////////////////////not required auth states
     .state('base.home', {
@@ -84,6 +89,31 @@ angular.module('isfi.router', [])
       url: '/profile/cabinet/subscription/details',
       controller: 'subscription-details-controller',
       templateUrl: 'profile/subscription-details.html'
+    })
+    //plugs
+    .state('base.dashboard', {
+      url: '/dashboard',
+      templateUrl: 'plugs/dashboard.html'
+    })
+    .state('base.asset', {
+      url: '/asset',
+      templateUrl: 'plugs/asset.html'
+    })
+    .state('base.device', {
+      url: '/device',
+      templateUrl: 'plugs/device.html'
+    })
+    .state('base.network', {
+      url: '/network',
+      templateUrl: 'plugs/network.html'
+    })
+    .state('base.settings', {
+      url: '/settings',
+      templateUrl: 'plugs/settings.html'
+    })
+    .state('base.website', {
+      url: '/website',
+      templateUrl: 'plugs/website.html'
     });
 
   $urlRouterProvider.otherwise('/');
