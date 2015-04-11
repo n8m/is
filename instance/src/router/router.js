@@ -9,12 +9,12 @@ angular.module('isfi.router', [])
     .state('base', {
       abstract: true,
       views: {
-        '': {templateUrl: 'base/base.html'},
-        'header@base': {
-          templateUrl: 'base/header.html',
-          controller: 'header-controller'
+        '': {
+          templateUrl: 'base/base.html',
+          controller: 'base-controller'
         },
-        'footer@base': {templateUrl: 'base/footer.html'}
+        'header@base': {templateUrl: 'base/partials/header.html'},
+        'footer@base': {templateUrl: 'base/partials/footer.html'}
       }
     })
     //////////////////////////////////////not required auth states
@@ -60,8 +60,12 @@ angular.module('isfi.router', [])
     .state('base.main', {
       abstract: true,
       views: {
-        '': {templateUrl: 'base/main.html'},
-        'leftSide@base.main': {templateUrl: 'base/left-side.html'}
+        '': {
+          templateUrl: 'base/main.html',
+          controller: 'main-controller'
+        },
+        'leftSide@base.main': {templateUrl: 'base/partials/left-side.html'},
+        'rightSide@base.main': {templateUrl: 'base/partials/right-side.html'}
       },
       resolve: {
         authentication: function($rootScope, auth, $state, $timeout, $q){

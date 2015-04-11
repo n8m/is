@@ -20,8 +20,8 @@
           <li ng-show="!userProfile"><a href="#/pricing">Sign Up</a></li>
           <li ng-show="userProfile">
             <a ui-sref="main.cabinet.settings" class="text-center">
-              <p class="small">Account Settings</p>
-              <p class="lead">{{userProfile.dataUser.firstName}} {{userProfile.dataUser.lastName}}</p>
+              <p class="small-text">Account Settings</p>
+              <p>{{userProfile.dataUser.firstName}} {{userProfile.dataUser.lastName}}</p>
             </a>
           </li>
           <li ng-show="userProfile"><a href ng-click="logout()">Logout</a></li>

@@ -16,7 +16,6 @@ angular.module('isf.cabinet')
 
     $scope.save = function(){
       $scope.user.action = "update";
-      console.log($scope.user);
       server.post('/api/account/subscription/' + userProfile.dataCredentials.accountUuid, $scope.user);
     };
 
