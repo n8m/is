@@ -9,7 +9,7 @@ angular.module('isfi.activation')
 
     if(token){
       server.get('/api/instance/activate', {activationKey: token}).then(function(data){
-        if(data.status === 202){
+        if(data.status === 200){
           $scope.validActivationLink = true;
         }
       }, function(response){
