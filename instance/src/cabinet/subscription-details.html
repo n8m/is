@@ -9,41 +9,33 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group ">
-                    <label class="control-label col-sm-2" for="name">Country:</label>
+                    <label class="control-label col-sm-2" for="fname">First name</label>
                     <div class="col-sm-10">
-                      <select class="form-control" ng-options="country for country in countries" ng-model="user.dataContact.country" required>
-
-                      </select>
+                      <input type="text" class="form-control" name="fname" id="fname" required ng-model="user.dataContact.address1">
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label class="control-label col-sm-2" for="name">Address Line1:</label>
+                    <label class="control-label col-sm-2" for="lname">Last name</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="last_name" id="name" ng-model="user.dataContact.address1">
+                      <input type="text" class="form-control" name="lname" id="lname" required ng-model="user.dataContact.address1">
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label class="control-label col-sm-2" for="name">Address Line2:</label>
+                    <label class="control-label col-sm-2" for="name">Employee ID/No</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="last_name" id="name" ng-model="user.dataContact.address2">
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label class="control-label col-sm-2" for="name">City:</label>
+                    <label class="control-label col-sm-2" for="address">Address:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="last_name" id="name" ng-model="user.dataContact.city">
+                      <input type="text" class="form-control" name="address" id="address" ng-model="user.dataContact.address1">
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label class="control-label col-sm-2" for="name">State/Province:</label>
+                    <label class="control-label col-sm-2" for="name">Phone number:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="last_name" id="name" ng-model="user.dataContact.state">
-                    </div>
-                  </div>
-                  <div class="form-group ">
-                    <label class="control-label col-sm-2" for="name">Zip/Postcode:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="last_name" id="name" ng-model="user.dataContact.zip">
+                      <input type="number" class="form-control" name="last_name" id="name" ng-model="user.dataContact.state">
                     </div>
                   </div>
                   <div class="form-group">
