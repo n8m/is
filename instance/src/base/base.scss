@@ -21,10 +21,6 @@ body {
   padding: 0 0 60px;
 }
 
-.folder{
-  height: 100%;
-}
-
 .nav, .navbar {
   letter-spacing: 1px;
 }
@@ -336,4 +332,9 @@ form .error {
 
 .well{
   min-height: 50px !important;
+}
+
+.left-side{
+  position: absolute;
+  left: 0;
 }
