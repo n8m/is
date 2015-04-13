@@ -91,12 +91,12 @@ angular.module('isf.router', [])
       controller: 'panel-controller'
     })
     .state('main.profileSettings', {
-      url: '/profile/cabinet/settings',
+      url: '/account/cabinet/settings',
       controller: 'profile-settings-controller',
       templateUrl: 'profile/profile-settings.html'
     })
     .state('main.subscriptionDetails', {
-      url: '/profile/cabinet/subscription/details',
+      url: '/account/cabinet/subscription/details',
       controller: 'subscription-details-controller',
       templateUrl: 'profile/subscription-details.html'
     });
