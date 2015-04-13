@@ -23,6 +23,7 @@ angular.module('isf.cabinet')
     $scope.save = function(){
 
       $scope.user.action = "update";
+
       var payload = {
         action: "update",
         dataUser:{

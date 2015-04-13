@@ -5,40 +5,26 @@
  */
 angular.module('isf.cabinet')
 
-  .controller('subscription-details-controller', function($scope, auth, server, $rootScope, $state){
+  .controller('subscription-details-controller', function($scope, auth, server, $rootScope, $state, countries){
 
-    var token = auth.getToken();
+    $scope.countries = countries;
 
-    //@todo move token check into ui-router 'resolve' function
-    if(token){
+    var userID;
+    var accessToken = auth.getToken();
 
-      var userID;
+    server.get('/api/profile/login/' + accessToken).then(function(data){
 
-      server.get('/api/profile/login/' + token).then(function(data){
+      userID = data.id;
 
-        userID = data.id;
-
-        server.get('/api/profile/cabinet/' + userID).then(function(data){
-          console.log(data);
-          $scope.user = data;
-        });
-
-        $rootScope.loggedIn = true;
+      server.get('/api/account/subscription/' + userID).then(function(data){
+        console.log(data);
+        $scope.user = data;
       });
 
-      $scope.save = function(){
-        server.post('api/profile/cabinet/' + userID, $scope.user);
-      };
+    });
 
-
-    } else{
-      $rootScope.loggedIn = false;
-      $state.go('base.login');
-    }
-
-
-
-
-
+    $scope.save = function(){
+      server.post('/api/account/subscription/' + userID, $scope.user);
+    };
 
   });
