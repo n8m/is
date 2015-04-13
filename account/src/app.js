@@ -14,5 +14,12 @@ angular.module('isf', [
   'isf.panel',
   'isf.activation',
   'isf.base',
-  'isf.reset-password'
-]);
+  'isf.reset-password',
+  'isf.user'
+])
+
+.run(function(auth, $timeout){
+    $timeout(function(){
+      auth.checkToken();
+    });
+});

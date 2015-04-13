@@ -10,7 +10,10 @@ angular.module('isfi.router', [])
       abstract: true,
       views: {
         '': {templateUrl: 'base/base.html'},
-        'header@base': {templateUrl: 'base/header.html'},
+        'header@base': {
+          templateUrl: 'base/header.html',
+          controller: 'header-controller'
+        },
         'footer@base': {templateUrl: 'base/footer.html'}
       }
     })

@@ -3,7 +3,7 @@
  */
 angular.module('isfi.auth')
 
-.factory('auth', function($http, $rootScope, ipCookie, server, $q){
+.factory('auth', function($http, $rootScope, ipCookie, server, $q, $state){
 
   var _accessToken,
       _refreshToken;
@@ -73,6 +73,33 @@ angular.module('isfi.auth')
       }
 
       return deffered.promise;
+    },
+    logout: function(){
+
+      var accessToken = authService.getToken();
+
+      if(accessToken){
+        server.post('/api/profile/logout/' + accessToken).then(function(){
+          cleanToken();
+        }, function(response){
+          console.log(response);
+          cleanToken();
+        })
+      }else{
+        cleanToken();
+      }
+
+      function cleanToken(){
+        _refreshToken = false;
+        _accessToken = false;
+        ipCookie.remove('isf_refreshToken');
+        ipCookie.remove('isf_accessToken');
+        $rootScope.loggedIn = false;
+        //userProfile.cleanUserProfile();
+        delete $http.defaults.headers.common.Authorization;
+        $state.go('base.home');
+      }
+
     }
   };
 
