@@ -43,6 +43,8 @@ angular.module('isfi.auth')
         return deffered.promise;
       }
 
+      authService.setToken(accessToken);
+
       return server.get('/api/profile/login/' + accessToken);
     },
     refreshToken: function(){
