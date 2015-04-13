@@ -18,7 +18,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li ng-show="!loggedIn"><a href="#/profile/login">Login</a></li>
           <li ng-show="!loggedIn"><a href="#/pricing">Sign Up</a></li>
-          <li ng-show="loggedIn"><a href="#/profile/cabinet/1">Account Settings</a></li>
+          <li ng-show="loggedIn"><a ui-sref="main.cabinet.settings">Account Settings</a></li>
           <li ng-show="loggedIn"><a href ng-click="logout()">Logout</a></li>
         </ul>
       </div><!--/.nav-collapse -->
