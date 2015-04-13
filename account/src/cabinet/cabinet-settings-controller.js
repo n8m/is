@@ -5,42 +5,17 @@
  */
 angular.module('isf.cabinet')
 
-.controller('cabinet-settings-controller', function($scope, auth, server, $rootScope, $state){
+.controller('cabinet-settings-controller', function($scope, auth, server, $rootScope, $state, userProfile){
 
-  var userID;
-  var accessToken = auth.getToken();
+  var userProfile = userProfile.getUserProfile();
 
-  server.get('/api/profile/login/' + accessToken).then(function(data){
-    $rootScope.loggedIn = true;
-
-    userID = data.id;
-
-    server.get('/api/profile/cabinet/details/' + userID).then(function(data){
-      console.log(data);
-      $scope.user = data;
-    });
-
-    $scope.save = function(){
-
-      $scope.user.action = "update";
-
-      var payload = {
-        action: "update",
-        dataUser:{
-          firstName: $scope.user.dataUser.firstName,
-          lastName: $scope.user.dataUser.lastName
-        }
-
-      };
-
-      server.post('api/account/details/' + userID, payload);
-    };
-
+  server.get('/api/profile/cabinet/details/' + userProfile.id).then(function(data){
+    $scope.user = data;
   });
 
-
-    $scope.save = function(){
-
-    };
+  $scope.save = function(){
+    $scope.user.action = "update";
+    server.post('api/account/details/' + userProfile.dataCredentials.accountUuid, $scope.user);
+  };
 
 });

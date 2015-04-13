@@ -5,26 +5,19 @@
  */
 angular.module('isf.cabinet')
 
-  .controller('subscription-details-controller', function($scope, auth, server, $rootScope, $state, countries){
+  .controller('subscription-details-controller', function($scope, auth, server, $rootScope, $state, countries, userProfile){
 
     $scope.countries = countries;
+    var userProfile = userProfile.getUserProfile();
 
-    var userID;
-    var accessToken = auth.getToken();
-
-    server.get('/api/profile/login/' + accessToken).then(function(data){
-
-      userID = data.id;
-
-      server.get('/api/account/subscription/' + userID).then(function(data){
-        console.log(data);
-        $scope.user = data;
-      });
-
+    server.get('/api/account/subscription/' + userProfile.dataCredentials.accountUuid).then(function(data){
+      $scope.user = data;
     });
 
     $scope.save = function(){
-      server.post('/api/account/subscription/' + userID, $scope.user);
+      $scope.user.action = "update";
+      console.log($scope.user);
+      server.post('/api/account/subscription/' + userProfile.dataCredentials.accountUuid, $scope.user);
     };
 
   });
