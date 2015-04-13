@@ -46,6 +46,16 @@ angular.module('isfi.router', [])
       controller: 'activation-controller',
       templateUrl: 'activation/activation.html'
     })
+    .state('base.request-reset-password', {
+      url: '/instance/reset/password',
+      controller: 'request-reset-password-controller',
+      templateUrl: 'reset-password/request-reset-password.html'
+    })
+    .state('base.reset-password', {
+      url: '/instance/reset/password/:token',
+      controller: 'reset-password-controller',
+      templateUrl: 'reset-password/reset-password.html'
+    })
     //base state which requires auth
     .state('base.main', {
       abstract: true,
