@@ -97,12 +97,17 @@ angular.module('isf.router', [])
     .state('main.cabinet.settings', {
       url: '/account/cabinet/settings',
       controller: 'cabinet-settings-controller',
-      templateUrl: 'cabinet/cabinet-settings.html'
+      templateUrl: 'cabinet/partials/cabinet-settings.html'
     })
     .state('main.cabinet.subscriptions', {
       url: '/account/cabinet/subscription/details',
       controller: 'subscription-details-controller',
-      templateUrl: 'cabinet/subscription-details.html'
+      templateUrl: 'cabinet/partials/subscription-details.html'
+    })
+    .state('main.cabinet.instances', {
+      url: '/account/cabinet/instances',
+      controller: 'instances-controller',
+      templateUrl: 'cabinet/partials/instances.html'
     });
 
   $urlRouterProvider.otherwise('/');
