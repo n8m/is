@@ -14,5 +14,6 @@ angular.module('isfi', [
   'isfi.dashboard',
   'isfi.activation',
   'isfi.base',
+  'isfi.main',
   'isfi.reset-password'
 ]);

@@ -3,6 +3,16 @@
  */
 angular.module('isfi.base')
 
-.controller('base-controller', function($scope){
+.controller('base-controller', function($scope, auth, $rootScope){
+
+    //this variable with dot-notation will be inherit in 'main-controller' which contains profilePanel
+    $scope.profilePanel = {
+      show: false
+    };
+
+    auth.checkToken().then(function(){
+      $rootScope.loggedIn = true;
+      //$scope.userProfile = userProfile.getUserProfile();
+    });
 
 });

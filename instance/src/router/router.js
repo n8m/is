@@ -15,7 +15,6 @@ angular.module('isfi.router', [])
         },
         'header@base': {templateUrl: 'base/partials/header.html'},
         'footer@base': {templateUrl: 'base/partials/footer.html'}
-
       }
     })
     //////////////////////////////////////not required auth states
@@ -61,7 +60,10 @@ angular.module('isfi.router', [])
     .state('base.main', {
       abstract: true,
       views: {
-        '': {templateUrl: 'base/main.html'},
+        '': {
+          templateUrl: 'base/main.html',
+          controller: 'main-controller'
+        },
         'leftSide@base.main': {templateUrl: 'base/partials/left-side.html'},
         'rightSide@base.main': {templateUrl: 'base/partials/right-side.html'}
       },
