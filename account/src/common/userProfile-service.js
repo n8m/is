@@ -10,6 +10,7 @@ angular.module('isf.user')
   var userProfile = {
     setUserProfile: function(userProfile){
       _userProfile = userProfile;
+      return _userProfile;
     },
     getUserProfile: function(){
       return _userProfile;

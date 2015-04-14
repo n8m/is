@@ -47,9 +47,7 @@ angular.module('isf.auth')
 
       authService.setToken(accessToken);
 
-      return server.get('/api/profile/login/' + accessToken).then(function(data){
-        userProfile.setUserProfile(data);
-      });
+      return server.get('/api/profile/login/' + accessToken);
     },
     refreshToken: function(){
 

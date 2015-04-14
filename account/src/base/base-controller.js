@@ -8,6 +8,7 @@ angular.module('isf.base')
   $scope.logout = auth.logout;
 
   auth.checkToken().then(function(data){
+    console.log(data);
     $scope.userProfile = userProfile.setUserProfile(data);
   });
 
