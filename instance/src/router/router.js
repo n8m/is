@@ -9,9 +9,12 @@ angular.module('isfi.router', [])
     .state('base', {
       abstract: true,
       views: {
-        '': {templateUrl: 'base/base.html'},
-        'header@base': {templateUrl: 'base/header.html'},
-        'footer@base': {templateUrl: 'base/footer.html'}
+        '': {
+          templateUrl: 'base/base.html',
+          controller: 'base-controller'
+        },
+        'header@base': {templateUrl: 'base/partials/header.html'},
+        'footer@base': {templateUrl: 'base/partials/footer.html'}
       }
     })
     //////////////////////////////////////not required auth states
@@ -48,34 +51,32 @@ angular.module('isfi.router', [])
       abstract: true,
       views: {
         '': {templateUrl: 'base/main.html'},
-        'leftSide@base.main': {templateUrl: 'base/left-side.html'},
-        'rightSide@base.main': {
-          templateUrl: 'base/right-side.html'
-        }
+        'leftSide@base.main': {templateUrl: 'base/partials/left-side.html'},
+        'rightSide@base.main': {templateUrl: 'base/partials/right-side.html'}
       },
       resolve: {
         authentication: function($rootScope, auth, $state, $timeout, $q){
 
           var deffered = $q.defer();
 
-          //auth.checkToken().then(function(){
+          auth.checkToken().then(function(){
             $rootScope.loggedIn = true;
             deffered.resolve();
-          //}, function(){
-          //
-          //  auth.refreshToken().then(function(){
-          //    $rootScope.loggedIn = true;
-          //    deffered.resolve();
-          //  }, function(){
-          //    $timeout(function(){
-          //      $rootScope.loggedIn = false;
-          //      $state.go('base.login');
-          //    });
-          //    deffered.reject();
-          //  });
-          //
-          //
-          //});
+          }, function(){
+
+            auth.refreshToken().then(function(){
+              $rootScope.loggedIn = true;
+              deffered.resolve();
+            }, function(){
+              $timeout(function(){
+                $rootScope.loggedIn = false;
+                $state.go('base.login');
+              });
+              deffered.reject();
+            });
+
+
+          });
 
           return deffered.promise;
         }

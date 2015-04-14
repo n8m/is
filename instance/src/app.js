@@ -12,5 +12,6 @@ angular.module('isfi', [
   'isfi.login',
   'isfi.auth',
   'isfi.dashboard',
-  'isfi.activation'
+  'isfi.activation',
+  'isfi.base'
 ]);
