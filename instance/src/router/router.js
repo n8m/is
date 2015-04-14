@@ -130,7 +130,23 @@ angular.module('isfi.router', [])
     .state('base.main.website', {
       url: '/website',
       templateUrl: 'plugs/website.html'
+    })
+    ///////////////////////////////////required auth states
+    .state('base.main.cabinet', {
+      abstract: true,
+      templateUrl: 'cabinet/cabinet.html'
+    })
+    .state('base.main.cabinet.settings', {
+      url: '/account/cabinet/settings',
+      controller: 'cabinet-settings-controller',
+      templateUrl: 'cabinet/cabinet-settings.html'
+    })
+    .state('base.main.cabinet.subscriptions', {
+      url: '/account/cabinet/subscription/details',
+      controller: 'subscription-details-controller',
+      templateUrl: 'cabinet/subscription-details.html'
     });
 
-  $urlRouterProvider.otherwise('/');
+
+    $urlRouterProvider.otherwise('/');
 });
