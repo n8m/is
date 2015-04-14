@@ -10,6 +10,8 @@ angular.module('isfi.base')
       show: false
     };
 
+    $scope.logout = auth.logout;
+
     auth.checkToken().then(function(){
       $rootScope.loggedIn = true;
       //$scope.userProfile = userProfile.getUserProfile();

@@ -4,5 +4,5 @@
 angular.module('isfi.main')
 
 .controller('main-controller', function($scope, auth){
-    $scope.logout = auth.logout;
+
 });
