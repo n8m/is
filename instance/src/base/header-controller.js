@@ -3,6 +3,12 @@
  */
 angular.module('isfi.base')
 
-.controller('header-controller', function($scope, auth){
+.controller('header-controller', function($scope, auth, $rootScope){
     $scope.logout = auth.logout;
+
+    auth.checkToken().then(function(){
+      $rootScope.loggedIn = true;
+      //$scope.userProfile = userProfile.getUserProfile();
+    });
+
 });
