@@ -6,7 +6,7 @@ angular.module('isf', [
   'ui.router',
   'ui.bootstrap',
   'isf.router',
-  'isf.profile',
+  'isf.cabinet',
   'isf.registration',
   'isf.server',
   'isf.login',
@@ -14,5 +14,6 @@ angular.module('isf', [
   'isf.panel',
   'isf.activation',
   'isf.base',
-  'isf.reset-password'
-]);
+  'isf.reset-password',
+  'isf.user'
+])

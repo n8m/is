@@ -15,12 +15,13 @@ angular.module('isfi.router', [])
         },
         'header@base': {templateUrl: 'base/partials/header.html'},
         'footer@base': {templateUrl: 'base/partials/footer.html'}
+
       }
     })
     //////////////////////////////////////not required auth states
     .state('base.home', {
       url: '/',
-      templateUrl: 'base/base.html'
+      templateUrl: 'home/home.html'
     })
     .state('base.pricing', {
       url: '/pricing',
@@ -45,6 +46,16 @@ angular.module('isfi.router', [])
       url: '/instance/activate/:token',
       controller: 'activation-controller',
       templateUrl: 'activation/activation.html'
+    })
+    .state('base.request-reset-password', {
+      url: '/instance/reset/password',
+      controller: 'request-reset-password-controller',
+      templateUrl: 'reset-password/request-reset-password.html'
+    })
+    .state('base.reset-password', {
+      url: '/instance/reset/password/:token',
+      controller: 'reset-password-controller',
+      templateUrl: 'reset-password/reset-password.html'
     })
     //base state which requires auth
     .state('base.main', {

@@ -90,15 +90,19 @@ angular.module('isf.router', [])
       templateUrl: 'panel/panel.html',
       controller: 'panel-controller'
     })
-    .state('main.profileSettings', {
-      url: '/profile/cabinet/settings',
-      controller: 'profile-settings-controller',
-      templateUrl: 'profile/profile-settings.html'
+    .state('main.cabinet', {
+      abstract: true,
+      templateUrl: 'cabinet/cabinet.html'
     })
-    .state('main.subscriptionDetails', {
-      url: '/profile/cabinet/subscription/details',
+    .state('main.cabinet.settings', {
+      url: '/account/cabinet/settings',
+      controller: 'cabinet-settings-controller',
+      templateUrl: 'cabinet/cabinet-settings.html'
+    })
+    .state('main.cabinet.subscriptions', {
+      url: '/account/cabinet/subscription/details',
       controller: 'subscription-details-controller',
-      templateUrl: 'profile/subscription-details.html'
+      templateUrl: 'cabinet/subscription-details.html'
     });
 
   $urlRouterProvider.otherwise('/');

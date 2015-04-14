@@ -4,6 +4,8 @@
  * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
  */
 
+date_default_timezone_set("Europe/London");
+
 /**
  * This makes our life easier when dealing with paths. Everything is relative
  * to the application root now.
