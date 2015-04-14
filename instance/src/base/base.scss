@@ -21,10 +21,6 @@ body {
   padding: 0 0 60px;
 }
 
-.folder{
-  height: 100%;
-}
-
 .nav, .navbar {
   letter-spacing: 1px;
 }
@@ -324,4 +320,24 @@ form .error {
 
 .well.well-left{
   padding-left: 150px;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+.well{
+  min-height: 50px !important;
+}
+
+.left-side{
+  position: absolute;
+  left: 0;
+}
+.instanse{
+  padding-left: 30px;
 }
