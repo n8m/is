@@ -9,10 +9,8 @@ angular.module('isf.cabinet')
 
     var userProfile = userProfile.getUserProfile();
 
-    console.log(userProfile);
-
-    server.get('/api/instance/' + userProfile.dataCredentials.accountUuid).then(function(data){
-      console.log(data);
+    server.get('/api/instance', {accountId: userProfile.dataCredentials.accountUuid}).then(function(data){
+      $scope.instances = data._embedded.instance;
     });
 
 

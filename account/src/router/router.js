@@ -57,21 +57,18 @@ angular.module('isf.router', [])
       abstract: true,
       templateUrl: 'base/base.html',
       resolve: {
-        authentication: function($rootScope, auth, $state, $timeout, $q){
+        authentication: function(auth, $state, $timeout, $q, userProfile){
 
           var deffered = $q.defer();
 
-          auth.checkToken().then(function(){
-            $rootScope.loggedIn = true;
+          auth.checkToken().then(function(data){
+            userProfile.setUserProfile(data);
             deffered.resolve();
           }, function(){
-
             auth.refreshToken().then(function(){
-              $rootScope.loggedIn = true;
               deffered.resolve();
             }, function(){
               $timeout(function(){
-                $rootScope.loggedIn = false;
                 $state.go('base.login');
               });
               deffered.reject();
