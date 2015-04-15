@@ -3,7 +3,7 @@
  */
 angular.module('isfi.login')
 
-.controller('login-controller', function($scope, server, auth, $state, $location){
+.controller('login-controller', function($scope, server, auth, $state, $location, $rootScope){
 
     $scope.login = function(){
 
@@ -20,7 +20,7 @@ angular.module('isfi.login')
 
       server.post('/oauth', $scope.payload).then(function(data){
         auth.setToken(data.data.access_token, data.data.refresh_token);
-        $scope.loggedIn = true;
+        $rootScope.loggedIn = true;
         $state.go('base.main.dashboard');
 
       }, function(response){
