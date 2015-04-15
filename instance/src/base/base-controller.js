@@ -16,7 +16,9 @@ angular.module('isfi.base')
       console.log(data);
       $scope.profile = data;
       $rootScope.loggedIn = true;
-      $state.go('base.main.dashboard');
+      if($state.current.name === 'base.home'){
+        $state.go('base.main.dashboard');
+      }
       //$scope.userProfile = userProfile.getUserProfile();
     }, function(){
       $scope.loggedIn = false;
