@@ -16,5 +16,6 @@ angular.module('isfi', [
   'isfi.base',
   'isfi.main',
   'isfi.reset-password',
-  'isfi.cabinet'
+  'isfi.cabinet',
+  'isfi.invitations'
 ]);
