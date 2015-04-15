@@ -20,6 +20,7 @@ angular.module('isf.login')
 
       server.post('/oauth', $scope.payload).then(function(data){
         auth.setToken(data.data.access_token, data.data.refresh_token);
+        $scope.loggedIn = true;
         $state.go('main.panel');
 
       }, function(response){

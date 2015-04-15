@@ -3,51 +3,55 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-10">
+
           <h5 style="text-transform: uppercase;">Logged in as:</h5>
-          <a href="/user/profile/13">
-            andrew@isitup.com</a>
-          <p>
-            <i class="glyphicon glyphicon-cog"></i>
-            <small><a href="/user/profile/13">Edit profile</a></small>
-          </p>
+          <a ui-sref="base.main.cabinet.details">
+            {{profile.dataCredentials.username}}
+          </a>
+          <!--<p>-->
+            <!--<i class="glyphicon glyphicon-cog"></i>-->
+            <!--<small><a href="/user/profile/13">Edit profile</a></small>-->
+          <!--</p>-->
         </div>
         <div class="col-xs-2">
           <div class="text-right">
             <h2>
-              <a href="/logout"><span class="glyphicon glyphicon-off"></span></a>
+              <a href ng-click="logout()">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
             </h2>
           </div>
         </div>
       </div>
     </div>
-    <hr>
-    <div class="container-fluid">
-      <h4>Your Accounts</h4>
-      <div class="well  ui-Widget ui-Link" data-bind="app/util/AccountSelect" data-href="/user/account/7">
-        <div class="row">
-          <div class="col-xs-10">
-            <strong>
-              Andrew Diamond                                    </strong><br>
-            andrew@isitup.com                                </div>
-          <div style="float: left">
-            <div class="btn-group drop">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                <li><a href="/user/account/7/settings">Settings</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-6">
-            Access level                                </div>
-          <div class="col-xs-6">
-            <span class="label label-default">Owner</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--<hr>-->
+    <!--<div class="container-fluid">-->
+      <!--<h4>Your Accounts</h4>-->
+      <!--<div class="well  ui-Widget ui-Link" data-bind="app/util/AccountSelect" data-href="/user/account/7">-->
+        <!--<div class="row">-->
+          <!--<div class="col-xs-10">-->
+            <!--<strong>-->
+              <!--Andrew Diamond                                    </strong><br>-->
+            <!--andrew@isitup.com                                </div>-->
+          <!--<div style="float: left">-->
+            <!--<div class="btn-group drop">-->
+              <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">-->
+                <!--<span class="caret"></span>-->
+              <!--</button>-->
+              <!--<ul class="dropdown-menu dropdown-menu-right" role="menu">-->
+                <!--<li><a href="/user/account/7/settings">Settings</a></li>-->
+              <!--</ul>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+          <!--<div class="col-xs-6">-->
+            <!--Access level                                </div>-->
+          <!--<div class="col-xs-6">-->
+            <!--<span class="label label-default">Owner</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
   </form>
 </div>

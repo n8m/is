@@ -12,10 +12,15 @@ angular.module('isfi.base')
 
     $scope.logout = auth.logout;
 
-    auth.checkToken().then(function(){
+    auth.checkToken().then(function(data){
+      console.log(data);
+      $scope.profile = data;
       $rootScope.loggedIn = true;
       $state.go('base.main.dashboard');
       //$scope.userProfile = userProfile.getUserProfile();
+    }, function(){
+      $scope.loggedIn = false;
+      $state.go('base.login');
     });
 
 });
