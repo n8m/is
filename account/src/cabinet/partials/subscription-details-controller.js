@@ -10,7 +10,10 @@ angular.module('isf.cabinet')
     $scope.countries = countries;
     var user = userProfile.getUserProfile();
 
-    $scope.user = userProfile.getUserSubscriptions();
+    server.get('/api/account/subscription/' + user.dataCredentials.accountUuid).then(function(data){
+      userProfile.setUserSubscriptions(data);
+      $scope.user = userProfile.getUserSubscriptions();
+    });
 
     $scope.save = function(){
       $scope.user.action = "update";

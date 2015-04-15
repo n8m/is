@@ -9,7 +9,10 @@ angular.module('isf.cabinet')
 
   var user = userProfile.getUserProfile();
 
-  $scope.user = userProfile.getUserSettings();
+  server.get('/api/profile/cabinet/details/' + user.id).then(function(data){
+    userProfile.setUserSettings(data);
+    $scope.user = userProfile.getUserSettings();
+  });
 
   $scope.save = function(){
     $scope.user.action = "update";
