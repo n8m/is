@@ -140,12 +140,12 @@ angular.module('isfi.router', [])
       url: '/cabinet/details',
       controller: 'cabinet-settings-controller',
       templateUrl: 'cabinet/cabinet-settings.html'
+    })
+    .state('base.main.cabinet.invitations', {
+      url: '/account/cabinet/invitations',
+      controller: 'invitations-controller',
+      templateUrl: 'cabinet/invitations.html'
     });
-    //.state('base.main.cabinet.subscriptions', {
-    //  url: '/account/cabinet/subscription/details',
-    //  controller: 'subscription-details-controller',
-    //  templateUrl: 'cabinet/subscription-details.html'
-    //});
 
 
     $urlRouterProvider.otherwise('/');
