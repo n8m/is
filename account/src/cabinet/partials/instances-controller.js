@@ -13,6 +13,25 @@ angular.module('isf.cabinet')
       $scope.instances = data._embedded.instance;
     });
 
+    $scope.createInstance = function(){
+
+      delete $scope.successMessage;
+      delete $scope.errorMessage;
+
+      var payload = {
+        "action": "create",
+        "instanceUrl": $scope.instanceUrl,
+        "accountUuid": userProfile.dataCredentials.accountUuid
+      };
+
+      server.post('api/instance', payload).then(function(){
+        $scope.successMessage = true;
+      }, function(){
+        $scope.errorMessage = true;
+      })
+    }
+
+
 
 
   });
