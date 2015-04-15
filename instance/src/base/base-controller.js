@@ -21,7 +21,7 @@ angular.module('isfi.base')
       }
       //$scope.userProfile = userProfile.getUserProfile();
     }, function(){
-      $scope.loggedIn = false;
+      $rootScope.loggedIn = false;
       $state.go('base.login');
     });
 
