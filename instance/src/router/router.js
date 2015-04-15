@@ -136,16 +136,16 @@ angular.module('isfi.router', [])
       abstract: true,
       templateUrl: 'cabinet/cabinet.html'
     })
-    .state('base.main.cabinet.settings', {
-      url: '/account/cabinet/settings',
+    .state('base.main.cabinet.details', {
+      url: '/cabinet/details',
       controller: 'cabinet-settings-controller',
       templateUrl: 'cabinet/cabinet-settings.html'
-    })
-    .state('base.main.cabinet.subscriptions', {
-      url: '/account/cabinet/subscription/details',
-      controller: 'subscription-details-controller',
-      templateUrl: 'cabinet/subscription-details.html'
     });
+    //.state('base.main.cabinet.subscriptions', {
+    //  url: '/account/cabinet/subscription/details',
+    //  controller: 'subscription-details-controller',
+    //  templateUrl: 'cabinet/subscription-details.html'
+    //});
 
 
     $urlRouterProvider.otherwise('/');

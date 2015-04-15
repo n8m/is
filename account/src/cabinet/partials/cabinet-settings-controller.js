@@ -7,15 +7,13 @@ angular.module('isf.cabinet')
 
 .controller('cabinet-settings-controller', function($scope, auth, server, $rootScope, $state, userProfile){
 
-  var userProfile = userProfile.getUserProfile();
+  var user = userProfile.getUserProfile();
 
-  server.get('/api/profile/cabinet/details/' + userProfile.id).then(function(data){
-    $scope.user = data;
-  });
+  $scope.user = userProfile.getUserSettings();
 
   $scope.save = function(){
     $scope.user.action = "update";
-    server.post('api/account/details/' + userProfile.dataCredentials.accountUuid, $scope.user);
+    server.post('api/account/details/' + user.dataCredentials.accountUuid, $scope.user);
   };
 
 });

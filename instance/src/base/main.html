@@ -1,8 +1,9 @@
-<div class="left-side" ui-view="leftSide">
+<div ng-if="!isCabinetView()" class="left-side" ui-view="leftSide">
 </div>
+
 
 <div ng-if="profilePanel.show" ui-view="rightSide">
 </div>
 
-<div class="wrap instanse" ui-view>
+<div class="wrap instance" ui-view>
 </div>
