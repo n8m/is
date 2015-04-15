@@ -149,7 +149,7 @@ angular.module('isfi.router', [])
     })
     .state('base.main.cabinet.invitations', {
       url: '/cabinet/invitations',
-      controller: 'invitations-controller',
+      controller: 'cabinet-invitations-controller',
       templateUrl: 'cabinet/invitations.html'
     });
 
