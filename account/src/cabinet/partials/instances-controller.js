@@ -26,6 +26,12 @@ angular.module('isf.cabinet')
 
       server.post('api/instance', payload).then(function(){
         $scope.successMessage = true;
+
+        //Todo: use separate entity
+        server.get('/api/instance', {accountId: userProfile.dataCredentials.accountUuid}).then(function(data){
+          $scope.instances = data._embedded.instance;
+        });
+
       }, function(){
         $scope.errorMessage = true;
       })

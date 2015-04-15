@@ -15,5 +15,4 @@ angular.module('isf.cabinet')
       userProfile.setUserSubscriptions(data);
     });
 
-
 });
