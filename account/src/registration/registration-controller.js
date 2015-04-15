@@ -22,8 +22,14 @@ angular.module('isf.registration')
       }
     });
   };
-
-
+  
+  (function(){
+    server.get('/api/geolocation').then(
+      function(data){
+        $scope.location = data;
+      }
+    )
+  })();
 
 
 });
