@@ -5,6 +5,8 @@ angular.module('isfi', [
   'ipCookie',
   'ui.router',
   'ui.bootstrap',
+  'mgcrea.ngStrap',
+  'ngTagsInput',
   'isfi.router',
   'isfi.profile',
   'isfi.registration',
