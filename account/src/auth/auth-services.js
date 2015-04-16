@@ -83,7 +83,6 @@ angular.module('isf.auth')
         server.post('/api/profile/logout/' + accessToken).then(function(){
           cleanToken();
         }, function(response){
-          console.log(response);
           cleanToken();
         })
       }else{

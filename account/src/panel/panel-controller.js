@@ -6,5 +6,5 @@
 angular.module('isf.panel')
 
 .controller('panel-controller', function($scope, server, userProfile){
-
+  console.log('panel');
 });

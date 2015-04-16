@@ -5,39 +5,39 @@
  */
 angular.module('isf.cabinet')
 
-  .controller('instances-controller', function($scope, auth, server, $rootScope, $state, userProfile){
+  .controller('instances-controller', function($scope, userProfile, $timeout){
 
-    var userProfile = userProfile.getUserProfile();
-
-    server.get('/api/instance', {accountId: userProfile.dataCredentials.accountUuid}).then(function(data){
+    userProfile.getInstancesList().then(function(data){
       $scope.instances = data._embedded.instance;
+    }, function(response){
+      //if error - request for userDetails again:
+      userProfile.queryInstancesList().then(function(data){
+        $scope.instances = data._embedded.instance;
+      })
     });
 
     $scope.createInstance = function(){
 
-      delete $scope.successMessage;
-      delete $scope.errorMessage;
-
-      var payload = {
-        "action": "create",
-        "instanceUrl": $scope.instanceUrl,
-        "accountUuid": userProfile.dataCredentials.accountUuid
-      };
-
-      server.post('api/instance', payload).then(function(){
+      userProfile.createInstance($scope.instanceUrl).then(function(){
         $scope.successMessage = true;
 
-        //Todo: use separate entity
-        server.get('/api/instance', {accountId: userProfile.dataCredentials.accountUuid}).then(function(data){
+        $timeout(function(){
+          $scope.successMessage = false
+        }, 3000);
+
+        //update instancesList
+        userProfile.getInstancesList().then(function(data){
           $scope.instances = data._embedded.instance;
         });
 
       }, function(){
         $scope.errorMessage = true;
-      })
+
+        $timeout(function(){
+          $scope.errorMessage = false
+        }, 3000);
+      });
+
     }
-
-
-
 
   });

@@ -64,7 +64,7 @@ angular.module('isf.router', [])
 
           auth.checkToken().then(function(data){
             userProfile.setUserProfile(data);
-            console.log('resolve');
+            console.log('here');
             deffered.resolve();
           }, function(){
             auth.refreshToken().then(function(){
@@ -93,31 +93,30 @@ angular.module('isf.router', [])
       templateUrl: 'cabinet/cabinet.html',
       controller: 'cabinet-controller',
       resolve: {
-        //user: function($q, userProfile, server, $timeout){
-        //
-        //  console.log('start cabinet');
-        //
-        //  var settingsDeferred = $q.defer(),
-        //    subscriptionsDeferred = $q.defer();
-        //
-        //  var user = userProfile.getUserProfile();
-        //
-        //
-        //
-        //  //return $q.all([settingsDeferred.promise, subscriptionsDeferred.promise]);
-        //
-        //}
+        user: function($q, userProfile, server, $timeout){
+
+          //console.log('start resolving');
+          //
+          //if(userProfile.getUserProfile()){
+          //  var promise = userProfile.queryUserDetails();
+          //} else{
+          //
+          //}
+          //
+          //return $q.all([promise]);
+
+        }
       }
     })
-    .state('main.cabinet.settings', {
-      url: '/account/cabinet/settings',
-      controller: 'cabinet-settings-controller',
-      templateUrl: 'cabinet/partials/cabinet-settings.html'
+    .state('main.cabinet.details', {
+      url: '/account/cabinet/details',
+      controller: 'details-controller',
+      templateUrl: 'cabinet/partials/details.html'
     })
     .state('main.cabinet.subscriptions', {
-      url: '/account/cabinet/subscription/details',
-      controller: 'subscription-details-controller',
-      templateUrl: 'cabinet/partials/subscription-details.html'
+      url: '/account/cabinet/subscriptions',
+      controller: 'subscriptions-controller',
+      templateUrl: 'cabinet/partials/subscriptions.html'
     })
     .state('main.cabinet.instances', {
       url: '/account/cabinet/instances',

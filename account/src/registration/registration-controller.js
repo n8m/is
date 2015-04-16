@@ -32,7 +32,7 @@ angular.module('isf.registration')
       $scope.registerForm.$setValidity('url',false);
       $scope.isValidURL = false;
     });
-  }
+  };
 
   (function(){
     server.get('/api/geolocation').then(

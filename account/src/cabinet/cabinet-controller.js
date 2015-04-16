@@ -3,8 +3,10 @@
  */
 angular.module('isf.cabinet')
 
-.controller('cabinet-controller', function(userProfile, server, $scope){
+.controller('cabinet-controller', function(userProfile){
 
-    var user = userProfile.getUserProfile();
+    userProfile.queryUserDetails();
+    userProfile.queryUserSubscriptions();
+    userProfile.queryInstancesList();
 
 });
