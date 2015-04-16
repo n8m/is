@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="form-group">
             <label class="control-label" for="country">Country<em>*</em>:</label>
-            <select class="form-control input-sm" ng-options="country for country in countries" ng-model="user.dataContact.country" required value="{{location.country_name}}">
+            <select class="form-control input-sm" ng-options="country for country in countries" ng-model="user.dataContact.country" required>
 
             </select>
         </div>
@@ -31,7 +31,7 @@
     <div class="col-md-12">
         <div class="form-group has-feedback  ui-Widget">
             <label class="control-label" for="city">City<em>*</em> :</label>
-            <input type="text" ng-model="user.dataContact.city" name="dataContact[city]" id="city" class="form-control input-sm" autocomplete="off" value="{{location.city}}" required>
+            <input type="text" ng-model="user.dataContact.city" name="dataContact[city]" id="city" class="form-control input-sm" autocomplete="off" required>
         </div>
     </div>
 </div>
