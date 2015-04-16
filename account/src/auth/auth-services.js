@@ -5,7 +5,7 @@
  */
 angular.module('isf.auth')
 
-.factory('auth', function($http, $rootScope, ipCookie, server, $q, $state, userProfile){
+.factory('auth', function($http, ipCookie, server, $q, $state, userProfile){
 
   var _accessToken,
       _refreshToken;
@@ -19,7 +19,6 @@ angular.module('isf.auth')
         ipCookie('isf_refreshToken', refreshToken);
       }
 
-      $rootScope.loggedIn = true;
       $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
       ipCookie('isf_accessToken', accessToken);
     },
@@ -34,7 +33,6 @@ angular.module('isf.auth')
       } else{
         return false;
       }
-
     },
     checkToken: function(){
       var accessToken = authService.getToken();

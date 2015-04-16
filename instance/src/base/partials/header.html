@@ -15,9 +15,8 @@
         <li><a href="#/">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li ng-show="!loggedIn"><a href="#/profile/login">Login</a></li>
-        <!--<li ng-show="!loggedIn"><a href="#/pricing">Sign Up</a></li>-->
-        <li ng-show="loggedIn"><a href ng-click="profilePanel.show = !profilePanel.show">Account Settings</a></li>
+        <li ng-show="!userProfile()"><a ui-sref="base.login">Login</a></li>
+        <li ng-show="userProfile()"><a href ng-click="profilePanel.show = !profilePanel.show">Account Settings</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

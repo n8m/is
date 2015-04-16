@@ -3,7 +3,7 @@
  */
 angular.module('isfi.auth')
 
-.factory('auth', function($http, $rootScope, ipCookie, server, $q, $state){
+.factory('auth', function($http, ipCookie, server, $q, $state, userProfile){
 
   var _accessToken,
       _refreshToken;
@@ -17,7 +17,6 @@ angular.module('isfi.auth')
         ipCookie('isfi_refreshToken', refreshToken);
       }
 
-      $rootScope.loggedIn = true;
       $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
       ipCookie('isfi_accessToken', accessToken);
     },
@@ -32,7 +31,6 @@ angular.module('isfi.auth')
       } else{
         return false;
       }
-
     },
     checkToken: function(){
       var accessToken = authService.getToken();
@@ -65,7 +63,6 @@ angular.module('isfi.auth')
           authService.setToken(data.data.access_token);
           deffered.resolve();
         }, function(){
-          console.log(arguments);
           deffered.reject();
         })
       } else{
@@ -73,6 +70,7 @@ angular.module('isfi.auth')
       }
 
       return deffered.promise;
+
     },
     logout: function(){
 
@@ -82,7 +80,6 @@ angular.module('isfi.auth')
         server.post('/api/profile/logout/' + accessToken).then(function(){
           cleanToken();
         }, function(response){
-          console.log(response);
           cleanToken();
         })
       }else{
@@ -94,8 +91,7 @@ angular.module('isfi.auth')
         _accessToken = false;
         ipCookie.remove('isf_refreshToken');
         ipCookie.remove('isf_accessToken');
-        $rootScope.loggedIn = false;
-        //userProfile.cleanUserProfile();
+        userProfile.cleanUserProfile();
         delete $http.defaults.headers.common.Authorization;
         $state.go('base.home');
       }

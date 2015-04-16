@@ -1,7 +1,7 @@
 /**
  * Created by fyodorkhruschov on 13.04.15.
  */
-angular.module('isf.user')
+angular.module('isfi.user')
 
   //stores userInfo and cabinet stuff + getters/setters
 .factory('userProfile', function($q, server, $timeout){
@@ -20,7 +20,6 @@ angular.module('isf.user')
     cleanUserProfile: function(){
       _userProfile = undefined;
     },
-
 
     //details
     setUserDetails: function(userDetails){
@@ -59,6 +58,7 @@ angular.module('isf.user')
     },
     queryUserDetails: function(){
       var deferred = $q.defer();
+
       server.get('/api/profile/cabinet/details/' + _userProfile.id).then(function(data){
         userProfile.setUserDetails(data);
         deferred.resolve(data);
@@ -71,7 +71,7 @@ angular.module('isf.user')
       var deferred = $q.defer();
 
       user.action = "update";
-      server.post('api/account/details/' + _userProfile.dataCredentials.accountUuid, user).then(function(data){
+      server.post('api/account/details/' + _userProfile.id, user).then(function(data){
         deferred.resolve(data);
       }, function(response){
         deferred.reject(response);

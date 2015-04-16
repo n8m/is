@@ -75,26 +75,22 @@ angular.module('isfi.router', [])
         'rightSide@base.main': {templateUrl: 'base/partials/right-side.html'}
       },
       resolve: {
-        authentication: function($rootScope, auth, $state, $timeout, $q){
+        authentication: function(auth, $state, $timeout, $q, userProfile){
 
           var deffered = $q.defer();
 
-          auth.checkToken().then(function(){
-            $rootScope.loggedIn = true;
+          auth.checkToken().then(function(data){
+            userProfile.setUserProfile(data);
             deffered.resolve();
           }, function(){
-
             auth.refreshToken().then(function(){
-              $rootScope.loggedIn = true;
               deffered.resolve();
             }, function(){
               $timeout(function(){
-                $rootScope.loggedIn = false;
                 $state.go('base.login');
               });
               deffered.reject();
             });
-
 
           });
 
@@ -130,7 +126,7 @@ angular.module('isfi.router', [])
       url: '/network',
       templateUrl: 'plugs/network.html'
     })
-    .state('base.base.settings', {
+    .state('base.main.settings', {
       url: '/settings',
       templateUrl: 'plugs/settings.html'
     })
@@ -141,17 +137,18 @@ angular.module('isfi.router', [])
     ///////////////////////////////////required auth states
     .state('base.main.cabinet', {
       abstract: true,
-      templateUrl: 'cabinet/cabinet.html'
+      templateUrl: 'cabinet/cabinet.html',
+      controller: 'cabinet-controller'
     })
     .state('base.main.cabinet.details', {
       url: '/cabinet/details',
-      controller: 'cabinet-settings-controller',
-      templateUrl: 'cabinet/cabinet-settings.html'
+      controller: 'details-controller',
+      templateUrl: 'cabinet/partials/details.html'
     })
     .state('base.main.cabinet.invitations', {
       url: '/cabinet/invitations',
       controller: 'cabinet-invitations-controller',
-      templateUrl: 'cabinet/invitations.html'
+      templateUrl: 'cabinet/partials/invitations.html'
     });
 
 

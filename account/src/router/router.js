@@ -64,7 +64,6 @@ angular.module('isf.router', [])
 
           auth.checkToken().then(function(data){
             userProfile.setUserProfile(data);
-            console.log('here');
             deffered.resolve();
           }, function(){
             auth.refreshToken().then(function(){
@@ -91,22 +90,7 @@ angular.module('isf.router', [])
     .state('main.cabinet', {
       abstract: true,
       templateUrl: 'cabinet/cabinet.html',
-      controller: 'cabinet-controller',
-      resolve: {
-        user: function($q, userProfile, server, $timeout){
-
-          //console.log('start resolving');
-          //
-          //if(userProfile.getUserProfile()){
-          //  var promise = userProfile.queryUserDetails();
-          //} else{
-          //
-          //}
-          //
-          //return $q.all([promise]);
-
-        }
-      }
+      controller: 'cabinet-controller'
     })
     .state('main.cabinet.details', {
       url: '/account/cabinet/details',
