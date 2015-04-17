@@ -8,7 +8,7 @@
  */
 angular.module('isfi.cabinet')
 
-  .controller('massinvite-controller', function($scope, auth, server){
+  .controller('massinvite-controller', function($scope, $timeout, server){
 
     $scope.sendInvite = function(){
 
@@ -31,8 +31,19 @@ angular.module('isfi.cabinet')
 
       server.post('/api/instance/user/invite', payload).then(function(){
         $scope.successMessage = true;
+
+        $timeout(function(){
+          $scope.successMessage = false;
+        },3000);
+
+        $scope.user = {};
       }, function(){
         $scope.errorMessage = true;
+
+        $timeout(function(){
+          $scope.errorMessage = false;
+        }, 3000);
+
       });
     };
 
