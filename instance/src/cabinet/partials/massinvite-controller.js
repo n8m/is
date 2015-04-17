@@ -15,11 +15,21 @@ angular.module('isfi.cabinet')
       delete $scope.successMessage;
       delete $scope.errorMessage;
 
-      $scope.user.action = "create";
-      $scope.user.roles = ["instance_admin"];
-      $scope.user.group = "";
+      var payload = {
+        action: 'create',
+        roles: ['instance_admin'],
+        group: '',
+        notificationDate: $scope.user.notificationDate,
+        expireDays: $scope.user.expireDays,
+        emails: []
+      };
 
-      server.post('/api/instance/user/invite', $scope.user).then(function(){
+
+      for(var i = 0;i<$scope.user.emails.length;i++){
+        payload.emails.push($scope.user.emails[i].text);
+      }
+
+      server.post('/api/instance/user/invite', payload).then(function(){
         $scope.successMessage = true;
       }, function(){
         $scope.errorMessage = true;
