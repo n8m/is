@@ -114,9 +114,9 @@ angular.module('isfi.router', [])
       controller: 'subscription-details-controller',
       templateUrl: 'profile/subscription-details.html'
     })
-    .state('base.main.asset', {
-      url: '/asset',
-      templateUrl: 'plugs/asset.html'
+    .state('base.main.assets', {
+      url: '/assets',
+      templateUrl: 'assets/assetslist.html'
     })
     .state('base.main.device', {
       url: '/device',
