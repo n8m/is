@@ -41,3 +41,14 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
   transition: all 0.2s ease-in-out 0s;
   margin-bottom: 20px; }
+
+
+.menu-categories{
+  height: 200px;
+  overflow-y: auto;
+
+  li{
+    padding: 0 10px;
+    white-space: nowrap;
+  }
+}

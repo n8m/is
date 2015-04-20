@@ -116,7 +116,18 @@ angular.module('isfi.router', [])
     })
     .state('base.main.assets', {
       url: '/assets',
-      templateUrl: 'assets/assetslist.html'
+      templateUrl: 'assets/assets-main.html',
+      controller: 'assets-main-controller'
+    })
+    .state('base.main.assetsList', {
+      url: '/assets-list/:category',
+      templateUrl: 'assets/assets-list.html',
+      controller: 'assets-list-controller'
+    })
+    .state('base.main.newAsset', {
+      url: '/new-asset',
+      templateUrl: 'assets/new-asset.html',
+      controller: 'new-asset-controller'
     })
     .state('base.main.device', {
       url: '/device',

@@ -7,6 +7,7 @@ angular.module('isfi', [
   'ui.bootstrap',
   'mgcrea.ngStrap',
   'ngTagsInput',
+  'ui.select',
   'isfi.router',
   'isfi.profile',
   'isfi.registration',
@@ -21,5 +22,6 @@ angular.module('isfi', [
   'isfi.cabinet',
   'isfi.invitations',
   'isfi.home',
-  'isfi.user'
+  'isfi.user',
+  'isfi.assets'
 ]);

@@ -12,11 +12,21 @@
       <!--<span class="glyphicon glyphicon-signal"></span><br>-->
       <!--Network Scans       -->
     <!--</a>-->
-    <a ui-sref="base.main.asset" class="menu-item ">
+    <a ui-sref="base.main.assets" class="menu-item ">
       <span class="glyphicon glyphicon-barcode"></span><br>
       Asset Management
     </a>
-    <!--<a ui-sref="base.main.device" class="menu-item ">-->
+
+    <div class="menu-categories">
+      <ul class="list-unstyled">
+        <li ng-repeat="category in categories">
+          <a ui-sref="base.main.assetsList({category: category.value})">{{category.displayName}}</a>
+        </li>
+      </ul>
+    </div>
+
+
+  <!--<a ui-sref="base.main.device" class="menu-item ">-->
       <!--<span class="glyphicon glyphicon-hdd"></span><br>-->
       <!--IsItUp Raspberry Pi       -->
     <!--</a>-->
