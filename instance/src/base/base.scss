@@ -1,4 +1,17 @@
-
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+/* Wrapper for page content to push down footer */
+.wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -30px;
+  /* Pad bottom by footer height */
+  padding: 0 0 30px;
+}
 /* app css stylesheet */
 body {
   padding-top: 50px;
@@ -319,7 +332,7 @@ form .error {
 }
 
 .well.well-left{
-  padding-left: 150px;
+  padding: 5px 0 0 150px;
 }
 
 .thumbnail {
@@ -333,7 +346,13 @@ form .error {
 .well{
   min-height: 50px !important;
 }
-
+.well > h1,
+.well > h2,
+.well > h3,
+.well > h4{
+  margin: 0;
+  padding: 0;
+}
 .left-side{
   position: absolute;
   left: 0;
