@@ -124,9 +124,14 @@ angular.module('isfi.router', [])
       templateUrl: 'assets/assets-list.html',
       controller: 'assets-list-controller'
     })
-    .state('base.main.newAsset', {
-      url: '/new-asset',
-      templateUrl: 'assets/new-asset.html',
+    .state('base.main.newAssetStep1', {
+      url: '/new-asset-step-1',
+      templateUrl: 'assets/new-asset-step1.html',
+      controller: 'new-asset-controller'
+    })
+    .state('base.main.newAssetStep2', {
+      url: '/new-asset-step-2/:assetId',
+      templateUrl: 'assets/new-asset-step2.html',
       controller: 'new-asset-controller'
     })
     .state('base.main.device', {

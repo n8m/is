@@ -9,8 +9,6 @@ angular.module('isfi.main')
     $scope.logout = auth.logout;
     $scope.categories = assets.getCategories();
 
-    console.log($scope.categories);
-
 
     //refactor!
     $scope.isCabinetView = function(){
