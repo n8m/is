@@ -28,31 +28,3 @@
         </div>
     </div>
 </div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group has-feedback  ui-Widget">
-            <label class="control-label" for="city">City<em>*</em> :</label>
-            <input type="text" ng-model="user.dataContact.city" name="city" id="city" class="form-control input-sm" autocomplete="off" required>
-            <span class="invalid" ng-show="registerForm.city.$error.required && (submited || registerForm.city.$touched)">Please enter a valid city name</span>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-12">
-        <div class="form-group">
-            <label class="control-label" for="state">State/Province:</label>
-            <input ng-model="user.dataContact.state" name="user.dataContact[state]" id="state" class="form-control input-sm ">
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label class="control-label" for="zip">Zip/Postcode:</label>
-            <input type="text" ng-model="user.dataContact.zip" name="dataContact[zip]" id="zip" class="form-control input-sm" autocomplete="off" value="">
-        </div>
-    </div>
-</div>
