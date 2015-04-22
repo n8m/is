@@ -11,9 +11,16 @@ angular.module('isfi.assets')
   $scope.assetsStatuses = assets.getAssetsStatuses();
   $scope.asset = {};
 
+  //@todo refactor
   server.get('/api/asset/location').then(function(data){
     $scope.locations = data._embedded.asset_location;
   });
+
+  //@todo refactor
+  server.get('/api/supplier').then(function(data){
+    $scope.suppliers = data._embedded.supplier;
+  });
+
 
 
   if($stateParams.assetId){
@@ -30,12 +37,20 @@ angular.module('isfi.assets')
   $scope.showUploadModal = showUploadModal;
   $scope.showModalAddLocation = showModalAddLocation;
   $scope.showModalPurchaseInfo = showModalPurchaseInfo;
+  $scope.showSupplierModal = showSupplierModal;
+
   $scope.next = next;
   $scope.save = save;
   $scope.removeProp = removeProp;
+  $scope.categoryChangedCallback = categoryChangedCallback;
+
 
   function removeProp(prop){
     delete $scope.asset[prop];
+  }
+
+  function categoryChangedCallback(){
+    delete $scope.asset.deviceType;
   }
 
   function showUploadModal(type){
@@ -63,6 +78,21 @@ angular.module('isfi.assets')
       });
     })
   }
+
+  function showSupplierModal(){
+    var supplierModal = $modal.open({
+      templateUrl: 'assets/partials/supplier-add-modal.html',
+      controller: 'supplier-add-modal-controller'
+    });
+
+    //@todo refactor (put into service)
+    supplierModal.result.then(function(){
+      server.get('/api/supplier').then(function(data){
+        $scope.suppliers = data._embedded.supplier;
+      });
+    })
+  }
+
 
   function showModalPurchaseInfo(){
     $modal.open({
@@ -102,7 +132,8 @@ angular.module('isfi.assets')
     $scope.asset.action = "update";
 
     assets.postAsset($scope.asset, $stateParams.assetId).then(function(data){
-      $state.go('base.main.assetsList', {category: data.category})
+
+      $state.go('base.main.assetsList', {category: data.data.category})
     }, function(response){
       console.log(response);
     });

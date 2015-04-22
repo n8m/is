@@ -1,59 +1,57 @@
-<div class="container">
-  <div class="row tool-bar">
-    <div class="col-xs-6">
-      <span>
-        <span class="glyphicon glyphicon-plus-sign btn"></span> Add New Computer
-      </span>
+<div class="row tool-bar">
+  <div class="col-xs-6">
+    <span>
+      <span class="glyphicon glyphicon-plus-sign btn"></span> Add New Computer
+    </span>
 
-      <span>
-        <span class="glyphicon glyphicon-pencil btn"></span> Edit Selected
-      </span>
+    <span>
+      <span class="glyphicon glyphicon-pencil btn"></span> Edit Selected
+    </span>
 
-      <span>
-        <span class="glyphicon glyphicon-trash btn"></span> Delete Selected
-      </span>
-    </div>
-    <div class="col-xs-6">
-      <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-        <input type="text" class="form-control" placeholder="Search for...">
-      </div>
+    <span>
+      <span class="glyphicon glyphicon-trash btn"></span> Delete Selected
+    </span>
+  </div>
+  <div class="col-xs-6">
+    <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">Go!</button>
+    </span>
+      <input type="text" class="form-control" placeholder="Search for...">
     </div>
   </div>
+</div>
 
-  <div class="row">
+<div class="row">
 
-    <table class="table table-bordered">
-      <thead>
-      <tr>
-        <th>
-          <input type="checkbox">
-        </th>
-        <th>IsItUp Asset ID</th>
-        <th>Asset Name</th>
-        <th>Asset Category</th>
-        <th>Manufacturer</th>
-        <th>Model</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="asset in assets">
-        <td>
-          <input type="checkbox">
-        </td>
-        <td>
-          <a ui-sref="base.main.newAssetStep1({assetId: asset.id})">{{asset.id}}</a>
-        </td>
-        <td>{{asset.name}}</td>
-        <td>{{asset.category}}</td>
-        <td>{{asset.manufacturer}}</td>
-        <td>{{asset.model}}</td>
-      </tr>
-      </tbody>
-    </table>
-
-  </div>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>
+        <input type="checkbox">
+      </th>
+      <th>IsItUp Asset ID</th>
+      <th>Asset Name</th>
+      <th>Asset Category</th>
+      <th>Manufacturer</th>
+      <th>Model</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="asset in assets">
+      <td>
+        <input type="checkbox">
+      </td>
+      <td>
+        <a ui-sref="base.main.newAssetStep1({assetId: asset.id})">{{asset.id}}</a>
+      </td>
+      <td>{{asset.name}}</td>
+      <td>{{asset.category}}</td>
+      <td>{{asset.manufacturer}}</td>
+      <td>{{asset.model}}</td>
+    </tr>
+    </tbody>
+  </table>
 
 </div>
+

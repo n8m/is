@@ -1,29 +1,28 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h2>Add New Asset</h2>
-      <hr>
-    </div>
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Add New Asset</h2>
+    <hr>
   </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <span><b>Step1</b></span>
+    <span>Step2</span>
+    <hr>
+  </div>
+</div>
+
+<form ng-submit="next()">
 
   <div class="row">
-    <div class="col-xs-12">
-      <span><b>Step1</b></span>
-      <span>Step2</span>
-      <hr>
-    </div>
-  </div>
-
-  <form ng-submit="next()">
-
-    <div class="row">
     <div class="col-xs-4">
 
       <div class="input-field">
         <label>Asset Category <em>*</em></label>
 
         <p>
-          <ui-select ng-model="asset.category">
+          <ui-select ng-model="asset.category" on-select="categoryChangedCallback()">
             <ui-select-match>{{ $select.selected.displayName }}
             </ui-select-match>
             <ui-select-choices repeat="category.value as category in categories | filter: $select.search">
@@ -57,9 +56,11 @@
         <label>Device Type</label>
 
         <p>
-          <ui-select ng-model="asset.deviceType" custom-option='{"buttonText": "Add New Device Type", "click" : "showUploadModal"}'>
+          <ui-select ng-model="asset.deviceType"
+                     custom-option='{"buttonText": "Add New Device Type", "click" : "showUploadModal"}'>
             <ui-select-match>{{ $select.selected.displayName }}</ui-select-match>
-            <ui-select-choices repeat="deviceType.value as deviceType in deviceTypes[asset.category] | filter: $select.search">
+            <ui-select-choices
+              repeat="deviceType.value as deviceType in deviceTypes[asset.category] | filter: $select.search">
               <span ng-bind-html="deviceType.displayName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -67,12 +68,14 @@
       </div>
 
       <div class="input-field">
-        <button type="button" class="btn btn-large btn-primary form-control" ng-show="asset.qrCodeNumber===undefined" ng-click="asset.qrCodeNumber=''">
+        <button type="button" class="btn btn-large btn-primary form-control"
+                ng-show="asset.qrCodeNumber === undefined || asset.qrCodeNumber === null"
+                ng-click="asset.qrCodeNumber=''">
           <span class="glyphicon glyphicon-plus-sign size-2x"></span>
           <span class="button-text">Add Asset QR Code Number</span>
         </button>
 
-        <div ng-show="asset.qrCodeNumber!==undefined">
+        <div ng-show="asset.qrCodeNumber !== undefined && asset.qrCodeNumber !== null">
           <label for="asset-name">QR Code Number</label>
           <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('qrCodeNumber')"></span>
           <input type="text" class="form-control" name="asset-name" ng-model="asset.qrCodeNumber">
@@ -81,12 +84,14 @@
       </div>
 
       <div class="input-field">
-        <button type="button" class="btn btn-large btn-primary form-control" ng-show="asset.customerAssetId===undefined" ng-click="asset.customerAssetId=''">
+        <button type="button" class="btn btn-large btn-primary form-control"
+                ng-show="asset.customerAssetId === undefined || asset.customerAssetId === null"
+                ng-click="asset.customerAssetId=''">
           <span class="glyphicon glyphicon-plus-sign size-2x"></span>
           <span class="button-text">Add Customer Asset ID</span>
         </button>
 
-        <div ng-show="asset.customerAssetId!==undefined">
+        <div ng-show="asset.customerAssetId !== undefined && asset.customerAssetId !== null ">
           <label for="customer-asset-id">Customer Asset ID</label>
           <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('customerAssetId')"></span>
           <input type="text" class="form-control" name="customer-asset-id" ng-model="asset.customerAssetId">
@@ -150,7 +155,7 @@
 
   </div>
 
-    <div class="row">
+  <div class="row">
     <div class="col-xs-12">
 
       <hr>
@@ -162,7 +167,5 @@
     </div>
   </div>
 
-  </form>
+</form>
 
-
-</div>
