@@ -84,8 +84,8 @@ angular.module('isfi.assets')
 
     $scope.asset.action = "update";
 
-    assets.postAsset($scope.asset, $stateParams.assetId).then(function(){
-      $state.go('base.main.newAssetStep2')
+    assets.postAsset($scope.asset, $stateParams.assetId).then(function(data){
+      $state.go('base.main.assetsList', {category: data.category})
     }, function(response){
       console.log(response);
     });
