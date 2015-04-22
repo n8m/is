@@ -3,10 +3,11 @@
  */
 angular.module('isfi.assets')
 
-.controller('upload-modal-controller', function($scope, type, $upload){
-  $scope.uploadType = type;
+.controller('upload-modal-controller', function($scope, type, $upload, $modalInstance){
 
+  $scope.uploadType = type;
   $scope.upload = upload;
+  $scope.exit = exit;
 
   function upload(files){
     if (files && files.length) {
@@ -30,5 +31,9 @@ angular.module('isfi.assets')
       }
     }
   }
+
+  function exit(){
+    $modalInstance.close();
+  };
 
 });

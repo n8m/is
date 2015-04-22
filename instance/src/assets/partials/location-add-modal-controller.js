@@ -30,5 +30,4 @@ angular.module('isfi.assets')
       $modalInstance.close();
     }
 
-
   });
