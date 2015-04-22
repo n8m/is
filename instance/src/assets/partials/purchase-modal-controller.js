@@ -9,8 +9,9 @@ angular.module('isfi.assets')
     $scope.exit = exit;
 
 
+
     function isPanelExpanded(id){
-      return ($scope.expandedPanels.indexOf(id) !== -1);
+      return ($scope.expandedPanels && $scope.expandedPanels.indexOf(id) !== -1);
     }
 
     function exit(){

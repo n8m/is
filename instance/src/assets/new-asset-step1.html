@@ -57,10 +57,10 @@
 
         <p>
           <ui-select ng-model="asset.deviceType"
-                     custom-option='{"buttonText": "Add New Device Type", "click" : "showUploadModal"}'>
+                     custom-option='{"buttonText": "Add New Device Type", "click" : "showDeviceModal"}'>
             <ui-select-match>{{ $select.selected.displayName }}</ui-select-match>
             <ui-select-choices
-              repeat="deviceType.value as deviceType in deviceTypes[asset.category] | filter: $select.search">
+              repeat="deviceType.value as deviceType in deviceTypes | filter: $select.search">
               <span ng-bind-html="deviceType.displayName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>

@@ -5,7 +5,7 @@ angular.module('isfi.assets')
 
 .controller('new-asset-controller', function($scope, assets, $state, $location, $stateParams, $modal, server){
 
-  $scope.deviceTypes = assets.getDeviceTypes();
+  //$scope.deviceTypes = assets.getDeviceTypes();
 
   $scope.categories = assets.getCategories();
   $scope.assetsStatuses = assets.getAssetsStatuses();
@@ -38,6 +38,7 @@ angular.module('isfi.assets')
   $scope.showModalAddLocation = showModalAddLocation;
   $scope.showModalPurchaseInfo = showModalPurchaseInfo;
   $scope.showSupplierModal = showSupplierModal;
+  $scope.showDeviceModal = showDeviceModal;
 
   $scope.next = next;
   $scope.save = save;
@@ -51,6 +52,14 @@ angular.module('isfi.assets')
 
   function categoryChangedCallback(){
     delete $scope.asset.deviceType;
+
+    server.get('/api/asset/devicetype', {
+      instanceUrl: $location.host().split('.')[0],
+      assetCategory: $scope.asset.category
+    }).then(function(data){
+      console.log(data);
+    })
+
   }
 
   function showUploadModal(type){
@@ -90,6 +99,25 @@ angular.module('isfi.assets')
       server.get('/api/supplier').then(function(data){
         $scope.suppliers = data._embedded.supplier;
       });
+    })
+  }
+
+  function showDeviceModal(){
+    var deviceModal = $modal.open({
+      templateUrl: 'assets/partials/device-add-modal.html',
+      controller: 'device-add-modal-controller',
+      resolve: {
+        category: function(){
+          return $scope.asset.category;
+        }
+      }
+    });
+
+    //@todo refactor (put into service)
+    deviceModal.result.then(function(){
+      //server.get('/api/supplier').then(function(data){
+      //  $scope.suppliers = data._embedded.supplier;
+      //});
     })
   }
 
