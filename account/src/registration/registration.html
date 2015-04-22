@@ -21,13 +21,13 @@
                         </div>
                         <div class="col-md-5 sign-up-form">
 
-                            <div ng-show="registrationErrors">
-                              <p class="alert alert-danger"  ng-repeat="error in registrationErrors">
-                                <b>{{error.field}}</b> - {{error.message}}
-                              </p>
-                            </div>
+                            <!--<div ng-show="registrationErrors">-->
+                              <!--<p class="alert alert-danger"  ng-repeat="error in registrationErrors">-->
+                                <!--<b>{{error.field}}</b> - {{error.message}}-->
+                              <!--</p>-->
+                            <!--</div>-->
 
-                            <form role="form" name="registerForm" id="registerForm" method="post" ng-submit="proceed()">
+                            <form role="form" name="registerForm" id="registerForm" method="post" ng-submit="proceed()" novalidate>
                                 <input type="hidden" ng-model="action" value="create">
                                 <div ng-include="'registration/partials/_credentials.html'"></div>
                                 <div ng-include="'registration/partials/_contact.html'"></div>
