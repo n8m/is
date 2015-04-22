@@ -24,17 +24,17 @@ angular.module('isfi.assets')
 
 
   if($stateParams.assetId){
+
+    server.get('/api/asset/devicetype', {
+      instanceUrl: $location.host().split('.')[0],
+      assetCategory: $scope.asset.category
+    }).then(function(data){
+      $scope.deviceTypes = data._embedded.asset_device_type;
+      console.log(data);
+    });
+
     server.get('/api/asset/' + $stateParams.assetId).then(function(data){
       $scope.asset = data;
-
-      server.get('/api/asset/devicetype', {
-        instanceUrl: $location.host().split('.')[0],
-        assetCategory: $scope.asset.category
-      }).then(function(data){
-        $scope.deviceTypes = data._embedded.asset_device_type;
-        console.log(data);
-      });
-
 
     }, function(response){
 
