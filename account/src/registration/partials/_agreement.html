@@ -4,8 +4,9 @@
         <div class="form-group">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" required ng-model="user.dataAgreement.agreement" name="dataAgreement[agreement]" id="agreement"> Agreement to Terms and Conditions<em>*</em>
+                    <input type="checkbox" required ng-model="user.dataAgreement.agreement" name="agreement" id="agreement" required> Agreement to Terms and Conditions<em>*</em>
                 </label>
+                <span class="invalid" ng-show="registerForm.agreement.$error.required">Please confirm that you agree to the Custom Agreement</span>
             </div>
         </div>
     </div>
