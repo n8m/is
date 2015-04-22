@@ -1,0 +1,32 @@
+<div class="modal-header">
+  Upload {{uploadType}}
+  <button ng-click="exit()" class="pull-right">
+      <span class="glyphicon glyphhicon-exit"></span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <button ng-file-select ng-file-change="upload($files)">
+    <span class="glyphicon glyphicon-upload"></span>
+    Upload {{uploadType}} from your computer
+  </button>
+  <hr>
+</div>
+
+<div class="modal-footer">
+  <span class="glyphicon glyphicon-info"></span>
+  You can also drag and drop your files
+
+  <div class="pull-right btn-group">
+    <button>
+      Continue
+    </button>
+
+    <button>
+      Discard
+    </button>
+
+  </div>
+
+
+</div>

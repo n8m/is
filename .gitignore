@@ -6,6 +6,5 @@ bower_components/
 .idea
 npm-debug.log
 app
-assets
 app/index.html
 

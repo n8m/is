@@ -8,9 +8,14 @@
   height: 100%;
 }
 
+.size-2x{
+  font-size: 2em;
+}
+
 @import 'base/base';
 @import 'base/partials/left-side';
 @import 'base/partials/right-side';
 @import 'base/partials/footer';
 @import 'registration/registration';
-//@import 'assets/assets';
+@import 'assets/assets';
+@import 'common/custom-option-ui-select/custom-option';

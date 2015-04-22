@@ -1,0 +1,28 @@
+.tool-bar{
+  min-height: 25px;
+  padding: 10px 0;
+}
+
+.input-field{
+  margin: 20px 5px;
+
+  button{
+    span.glyphicon{
+      top: -2px;
+    }
+    span.button-text{
+      position: relative;
+      bottom: 11px;
+    }
+  }
+
+}
+
+.input-well{
+  .message{
+    clear: both;
+    margin-top: 60px;
+    text-align: center;
+    font-style: italic;
+  }
+}
