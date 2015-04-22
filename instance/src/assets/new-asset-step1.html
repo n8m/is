@@ -1,0 +1,168 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Add New Asset</h2>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <span><b>Step1</b></span>
+      <span>Step2</span>
+      <hr>
+    </div>
+  </div>
+
+  <form ng-submit="next()">
+
+    <div class="row">
+    <div class="col-xs-4">
+
+      <div class="input-field">
+        <label>Asset Category <em>*</em></label>
+
+        <p>
+          <ui-select ng-model="asset.category">
+            <ui-select-match>{{ $select.selected.displayName }}
+            </ui-select-match>
+            <ui-select-choices repeat="category.value as category in categories | filter: $select.search">
+              <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+            </ui-select-choices>
+          </ui-select>
+        </p>
+      </div>
+
+      <div class="input-field">
+        <label for="asset-name">Asset Name <em>*</em></label>
+
+        <p>
+          <input type="text" class="form-control" name="asset-name" ng-model="asset.name" required>
+        </p>
+      </div>
+
+      <div class="input-field">
+        <label>Description</label>
+
+        <p>
+          <textarea type="text" class="form-control" name="asset-description" ng-model="asset.description"></textarea>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="col-xs-4">
+
+      <div class="input-field">
+        <label>Device Type</label>
+
+        <p>
+          <ui-select ng-model="asset.category">
+            <ui-select-match>{{ $item.displayName }}</ui-select-match>
+            <ui-select-choices repeat="category.value as category in categories | filter: $select.search">
+              <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+            </ui-select-choices>
+          </ui-select>
+        </p>
+      </div>
+
+      <div class="input-field">
+        <button type="button" class="btn btn-large btn-primary form-control" ng-show="asset.qrCodeNumber===undefined" ng-click="asset.qrCodeNumber=''">
+          <span class="glyphicon glyphicon-plus-sign size-2x"></span>
+          <span class="button-text">Add Asset QR Code Number</span>
+        </button>
+
+        <div ng-show="asset.qrCodeNumber!==undefined">
+          <label for="asset-name">QR Code Number</label>
+          <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('qrCodeNumber')"></span>
+          <input type="text" class="form-control" name="asset-name" ng-model="asset.qrCodeNumber">
+        </div>
+
+      </div>
+
+      <div class="input-field">
+        <button type="button" class="btn btn-large btn-primary form-control" ng-show="asset.customerAssetId===undefined" ng-click="asset.customerAssetId=''">
+          <span class="glyphicon glyphicon-plus-sign size-2x"></span>
+          <span class="button-text">Add Customer Asset ID</span>
+        </button>
+
+        <div ng-show="asset.customerAssetId!==undefined">
+          <label for="customer-asset-id">Customer Asset ID</label>
+          <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('customerAssetId')"></span>
+          <input type="text" class="form-control" name="customer-asset-id" ng-model="asset.customerAssetId">
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-xs-4">
+
+      <div class="well input-well">
+        <span class="pull-left">Photos <span class="glyphicon glyphicon-question-sign"></span></span>
+        <span class="pull-right">
+          <button class="btn btn-sm btn-primary" ng-click="showUploadModal('Photos')">
+            <span class="glyphicon glyphicon-plus-sign">Upload Photos</span>
+          </button>
+        </span>
+
+        <p class="message">
+          No photos uploaded. Click button to upload
+        </p>
+      </div>
+
+      <div class="well input-well">
+        <span class="pull-left">Invoices <span class="glyphicon glyphicon-question-sign"></span></span>
+       <span class="pull-right">
+        <button class="btn btn-sm btn-primary" ng-click="showUploadModal('Invoices')">
+          <span class="glyphicon glyphicon-plus-sign">Upload Invoices</span>
+        </button>
+        </span>
+
+        <p class="message">
+          No invoices uploaded. Click button to upload
+        </p>
+      </div>
+
+      <div class="well input-well">
+        <span class="pull-left">Other files <span class="glyphicon glyphicon-question-sign"></span></span>
+      <span class="pull-right">
+        <button class="btn btn-sm btn-primary" ng-click="showUploadModal('Files')">
+          <span class="glyphicon glyphicon-plus-sign">Upload Files</span>
+        </button>
+      </span>
+
+        <p class="message">
+          No files uploaded. Click button to upload
+        </p>
+      </div>
+
+      <div class="input-field">
+        <a class="btn btn-large btn-success">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+          Submit for Data Entry
+        </a>
+
+        <p>Remaining credits: 1</p>
+      </div>
+
+    </div>
+
+  </div>
+
+    <div class="row">
+    <div class="col-xs-12">
+
+      <hr>
+
+      <button type="submit" class="btn btn-primary pull-right">
+        <span class="glyphicon glyphicon-menu-right"></span>
+        Next
+      </button>
+    </div>
+  </div>
+
+  </form>
+
+
+</div>

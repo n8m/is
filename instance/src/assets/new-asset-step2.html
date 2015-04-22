@@ -1,0 +1,240 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Add New Asset</h2>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <span>Step1</span>
+      <span><b>Step2</b></span>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4">
+
+      <div class="input-field">
+        <label>Assigned Location</label>
+        <p>
+          <ui-select ng-model="asset.assignedLocation" custom-option='{"buttonText": "Add New Location", "click" : "showModalAddLocation"}'>
+            <ui-select-match>{{ $select.selected.displayName }}</ui-select-match>
+            <ui-select-choices repeat="category in categories | filter: $select.search">
+              <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+            </ui-select-choices>
+          </ui-select>
+        </p>
+      </div>
+
+      <div class="input-field">
+        <label for="manufacturer">Manufacturer</label>
+        <p>
+          <input type="text" class="form-control" name="manufacturer" ng-model="asset.manufacturer">
+        </p>
+      </div>
+
+      <div class="input-field">
+        <label for="serial-number">Serial Number <span class="glyphicon glyphicon-question-sign"></span></label>
+        <p>
+          <input type="text" class="form-control" name="serial-number" ng-model="asset.serialNumber">
+        </p>
+      </div>
+
+      <div class="input-field">
+        <label for="imei">IMEI (for mobile assets only)</label>
+        <p>
+          <input type="text" class="form-control" name="imei" ng-model="asset.imei">
+        </p>
+      </div>
+
+      <div class="input-field">
+        <button class="btn btn-primary" ng-click="showModalPurchaseInfo()">
+          <span class="glyphicon glyphicon-plus-sign size-2x"></span>
+          <span class="button-text">Add Purchase Information</span>
+        </button>
+      </div>
+
+      <div class="input-field">
+        <label for="cost-center">Cost Center</label>
+        <p>
+          <input type="text" class="form-control" name="cost-center" ng-model="asset.costCenter">
+        </p>
+      </div>
+
+    </div>
+
+    <div class="col-xs-4">
+
+      <div class="input-field">
+        <label>Asset Status</label>
+        <p>
+          <ui-select ng-model="asset.status">
+            <ui-select-match>{{ $select.selected }}</ui-select-match>
+            <ui-select-choices repeat="status in assetsStatuses | filter: $select.search">
+              <span ng-bind-html="status | highlight: $select.search"></span>
+            </ui-select-choices>
+          </ui-select>
+        </p>
+      </div>
+
+      <div class="input-field">
+        <label for="model">Model</label>
+        <p>
+          <input type="text" class="form-control" name="model" ng-model="asset.model">
+        </p>
+      </div>
+
+      <div class="input-field">
+        <label>Supplier</label>
+        <p>
+          <ui-select ng-model="asset.supplier" custom-option='{"buttonText": "Add New Supplier", "click" : "showUploadModal"}'>
+            <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
+            <ui-select-choices repeat="category in categories | filter: $select.search">
+              <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+            </ui-select-choices>
+          </ui-select>
+        </p>
+      </div>
+
+      <div class="input-field">
+        <button class="btn btn-large btn-primary">
+          <span class="glyphicon glyphicon-plus-sign size-2x"></span>
+          <span class="button-text">Add Customer Asset ID</span>
+        </button>
+      </div>
+
+      <div class="input-field">
+        <label for="warranty-expiry">Warranty Expiry</label>
+        <p>
+          <input type="text" bs-datepicker name="asset-name" class="warranty-expiry" ng-model="asset.warrantyExpirity">
+        </p>
+      </div>
+
+    </div>
+
+    <div class="col-xs-4">
+
+      <div class="well">
+
+        <div class="input-field">
+          <label>Ownership Type</label>
+          <p>
+            <ui-select ng-model="asset.ownership.ownershipType">
+              <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
+              <ui-select-choices repeat="category in categories | filter: $select.search">
+                <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+              </ui-select-choices>
+            </ui-select>
+          </p>
+        </div>
+
+        <div class="input-field">
+          <label>Owner</label>
+          <p>
+            <ui-select ng-model="asset.ownership.owner">
+              <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
+              <ui-select-choices repeat="category in categories | filter: $select.search">
+                <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+              </ui-select-choices>
+            </ui-select>
+          </p>
+        </div>
+
+        <div class="input-field">
+          <label>Asset Sharing</label>
+          <p>
+            <ui-select ng-model="asset.ownership.sharing">
+              <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
+              <ui-select-choices repeat="category in categories | filter: $select.search">
+                <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+              </ui-select-choices>
+            </ui-select>
+          </p>
+        </div>
+
+        <div class="input-field">
+          <label for="model">Assigned User</label>
+          <p>
+            <input type="text" class="form-control" name="model" ng-model="asset.ownership.assignedUser">
+          </p>
+        </div>
+
+        <div class="input-field">
+          <label>Company</label>
+          <p>
+            <ui-select ng-model="asset.ownership.company">
+              <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
+              <ui-select-choices repeat="category in categories | filter: $select.search">
+                <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+              </ui-select-choices>
+            </ui-select>
+          </p>
+        </div>
+
+        <div class="input-field">
+          <label>Department</label>
+          <p>
+            <ui-select ng-model="asset.ownershipp.department">
+              <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
+              <ui-select-choices repeat="category in categories | filter: $select.search">
+                <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+              </ui-select-choices>
+            </ui-select>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="well">
+        <div class="input-field">
+          <label for="model">MAC Address</label>
+          <p>
+            <input type="text" class="form-control" name="model" ng-model="asset.name">
+          </p>
+        </div>
+
+        <button class="btn btn-primary">
+          <span class="glyphicon glyphicon-plus-sign size-2x"></span>
+          <span class="button-text">Add MAC Address</span>
+        </button>
+      </div>
+
+      <div class="well">
+        <p>Linked Assets</p>
+        <button class="btn btn-primary">
+          <span class="glyphicon glyphicon-plus-sign size-2x"></span>
+          <span class="button-text">Add linked Assets</span>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12">
+
+      <hr>
+
+      <a class="btn btn-primary pull-left" ui-sref="base.main.newAssetStep1({assetId: asset.id})">
+        <span class="glyphicon glyphicon-menu-left"></span>
+        Back
+      </a>
+
+      <a class="btn btn-primary pull-right" ng-click="save()">
+        <span class="glyphicon glyphicon-play"></span>
+        Save
+      </a>
+
+      <a class="btn btn-default pull-right">
+        <span class="glyphicon glyphicon-home"></span>
+        Continue Later
+      </a>
+    </div>
+  </div>
+
+</div>
