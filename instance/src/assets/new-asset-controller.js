@@ -12,7 +12,7 @@ angular.module('isfi.assets')
   $scope.asset = {};
 
   //@todo refactor
-  server.get('/api/asset/location').then(function(data){
+  server.get('/api/asset/location', {instanceUrl: $location.host().split('.')[0]}).then(function(data){
     $scope.locations = data._embedded.asset_location;
   });
 
@@ -92,7 +92,7 @@ angular.module('isfi.assets')
 
     //@todo refactor (put into service)
     locationModal.result.then(function(){
-      server.get('/api/asset/location').then(function(data){
+      server.get('/api/asset/location', {instanceUrl: $location.host().split('.')[0]}).then(function(data){
         $scope.locations = data._embedded.asset_location;
       });
     })
