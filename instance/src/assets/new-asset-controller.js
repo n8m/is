@@ -5,18 +5,25 @@ angular.module('isfi.assets')
 
 .controller('new-asset-controller', function($scope, assets, $state, $location, $stateParams, $modal, server){
 
+  $scope.deviceTypes = assets.getDeviceTypes();
+
   $scope.categories = assets.getCategories();
   $scope.assetsStatuses = assets.getAssetsStatuses();
   $scope.asset = {};
 
-    if($stateParams.assetId){
-      server.get('/api/asset/' + $stateParams.assetId).then(function(data){
-        $scope.asset = data;
+  server.get('/api/asset/location').then(function(data){
+    $scope.locations = data._embedded.asset_location;
+  });
 
-      }, function(response){
 
-      })
-    }
+  if($stateParams.assetId){
+    server.get('/api/asset/' + $stateParams.assetId).then(function(data){
+      $scope.asset = data;
+
+    }, function(response){
+
+    })
+  }
 
 
 
@@ -44,7 +51,17 @@ angular.module('isfi.assets')
   }
 
   function showModalAddLocation(){
+    var locationModal = $modal.open({
+      templateUrl: 'assets/partials/location-add-modal.html',
+      controller: 'location-add-modal-controller'
+    });
 
+    //@todo refactor (put into service)
+    locationModal.result.then(function(){
+      server.get('/api/asset/location').then(function(data){
+        $scope.locations = data._embedded.asset_location;
+      });
+    })
   }
 
   function showModalPurchaseInfo(){
@@ -62,9 +79,9 @@ angular.module('isfi.assets')
         "name": $scope.asset.name,
         "category": $scope.asset.category,
         "description": $scope.asset.description,
-        "deviceType": "",
-        "qrCodeNumber": "",
-        "customerAssetId": ""
+        "deviceType": $scope.asset.deviceType,
+        "qrCodeNumber": $scope.asset.qrCodeNumber,
+        "customerAssetId": $scope.asset.customerAssetId
       };
 
       //@TODO: refactor

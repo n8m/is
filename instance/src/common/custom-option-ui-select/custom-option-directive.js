@@ -4,7 +4,7 @@
 angular.module('isfi.customOption')
 
 
-.directive('customOption', function(){
+.directive('customOption', function($timeout){
   return {
     restrict: 'A',
     link: function(scope, el, attrs){
@@ -16,6 +16,9 @@ angular.module('isfi.customOption')
       var template = "<div class='custom-option-container'><button class='btn btn-primary'><span class='glyphicon glyphicon-plus-sign'></span>" + buttonText + "</button></div>";
 
       el.find('li.ui-select-choices-group').append(template);
+      el.find('ul.ui-select-choices').removeAttr('ng-show');
+      el.find('ul.ui-select-choices').removeClass('ng-hide');
+
 
       el.find('div.custom-option-container button').bind('click', function(){
         scope[func].apply();

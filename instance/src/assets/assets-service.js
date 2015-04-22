@@ -8,6 +8,7 @@ angular.module('isfi.assets')
 
   };
 
+
   var _categories = [
     {
       displayName: "Asset Accessories / Peripherals",
@@ -59,6 +60,78 @@ angular.module('isfi.assets')
     }
   ];
   var _assetsStatuses = ["Operational", "In Repair", "Broken", "Lost/Stolen", "Disposed"];
+  var _deviceTypes = {
+    'computer': [
+      {
+        displayName: 'Laptop',
+        value: 'laptop'
+      },
+      {
+        displayName: 'Desktop',
+        value: 'desktop'
+      },
+      {
+        displayName: 'Other',
+        value: 'other'
+      }
+    ],
+    'printer/scanner': [
+      {
+        displayName: 'Dot Matrix',
+        value: 'dot_matrix'
+      },
+      {
+        displayName: 'Ink-jet',
+        value: 'ink_jet'
+      },
+      {
+        displayName: 'Laser',
+        value: 'laser'
+      },
+      {
+        displayName: 'Thermal Printer',
+        value: 'thermal_printer'
+      },
+      {
+        displayName: 'Dye-Sublimation Printer',
+        value: 'dye_sublimation_printer'
+      },
+      {
+        displayName: 'Photo Printer',
+        value: 'photo_printer'
+      },
+      {
+        displayName: 'All-in-One Printer',
+        value: 'all_in_one_printer'
+      },
+      {
+        displayName: 'Plotter',
+        value: 'plotter'
+      },
+      {
+        displayName: '3D Printer',
+        value: '3d_printer'
+      },
+      {
+        displayName: 'Wireless Printer',
+        value: 'wireless_printer'
+      }
+    ],
+    'mobile': [
+      {
+        displayName: 'Phone',
+        value: 'phone'
+      },
+      {
+        displayName: 'Tablet',
+        value: 'tablet'
+      },
+      {
+        displayName: 'Other',
+        value: 'other'
+      }
+    ]
+  };
 
   var exports = {
     getCategories: function(){
@@ -80,6 +153,9 @@ angular.module('isfi.assets')
 
       return deferred.promise;
 
+    },
+    getDeviceTypes: function(){
+      return _deviceTypes;
     }
   };
 

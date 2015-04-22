@@ -21,9 +21,9 @@
         <label>Assigned Location</label>
         <p>
           <ui-select ng-model="asset.assignedLocation" custom-option='{"buttonText": "Add New Location", "click" : "showModalAddLocation"}'>
-            <ui-select-match>{{ $select.selected.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in categories | filter: $select.search">
-              <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+            <ui-select-match>{{ $select.selected.locationName }}</ui-select-match>
+            <ui-select-choices repeat="location.locationName as location in locations | filter: $select.search">
+              <span ng-bind-html="location.locationName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
         </p>
@@ -32,21 +32,21 @@
       <div class="input-field">
         <label for="manufacturer">Manufacturer</label>
         <p>
-          <input type="text" class="form-control" name="manufacturer" ng-model="asset.manufacturer">
+          <input type="text" class="form-control" id="manufacturer" ng-model="asset.manufacturer">
         </p>
       </div>
 
       <div class="input-field">
         <label for="serial-number">Serial Number <span class="glyphicon glyphicon-question-sign"></span></label>
         <p>
-          <input type="text" class="form-control" name="serial-number" ng-model="asset.serialNumber">
+          <input type="text" class="form-control" id="serial-number" ng-model="asset.serialNumber">
         </p>
       </div>
 
       <div class="input-field">
         <label for="imei">IMEI (for mobile assets only)</label>
         <p>
-          <input type="text" class="form-control" name="imei" ng-model="asset.imei">
+          <input type="text" class="form-control" id="imei" ng-model="asset.imei">
         </p>
       </div>
 
@@ -60,7 +60,7 @@
       <div class="input-field">
         <label for="cost-center">Cost Center</label>
         <p>
-          <input type="text" class="form-control" name="cost-center" ng-model="asset.costCenter">
+          <input type="text" class="form-control" id="cost-center" ng-model="asset.costCenter">
         </p>
       </div>
 
@@ -109,7 +109,7 @@
       <div class="input-field">
         <label for="warranty-expiry">Warranty Expiry</label>
         <p>
-          <input type="text" bs-datepicker name="asset-name" class="warranty-expiry" ng-model="asset.warrantyExpirity">
+          <input type="text" bs-datepicker name="asset-name" class="warranty-expiry form-control" ng-model="asset.warrantyExpirity">
         </p>
       </div>
 
