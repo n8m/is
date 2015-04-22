@@ -9,6 +9,7 @@ angular.module('isfi', [
   'ui.bootstrap.tpls',
   'ngTagsInput',
   'ui.select',
+  'angularFileUpload',
   'isfi.router',
   'isfi.profile',
   'isfi.registration',
@@ -24,5 +25,6 @@ angular.module('isfi', [
   'isfi.invitations',
   'isfi.home',
   'isfi.user',
-  'isfi.assets'
+  'isfi.assets',
+  'isfi.customOption'
 ]);
