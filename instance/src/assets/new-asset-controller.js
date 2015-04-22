@@ -31,6 +31,8 @@ angular.module('isfi.assets')
     }).then(function(data){
       $scope.deviceTypes = data._embedded.asset_device_type;
       console.log(data);
+    }, function(){
+      $scope.deviceTypes = [];
     });
 
     server.get('/api/asset/' + $stateParams.assetId).then(function(data){
