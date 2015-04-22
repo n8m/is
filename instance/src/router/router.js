@@ -125,7 +125,7 @@ angular.module('isfi.router', [])
       controller: 'assets-list-controller'
     })
     .state('base.main.newAssetStep1', {
-      url: '/new-asset-step-1',
+      url: '/new-asset-step-1/:assetId',
       templateUrl: 'assets/new-asset-step1.html',
       controller: 'new-asset-controller'
     })
