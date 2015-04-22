@@ -1,4 +1,17 @@
-
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+/* Wrapper for page content to push down footer */
+.wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -30px;
+  /* Pad bottom by footer height */
+  padding: 0 0 30px;
+}
 /* app css stylesheet */
 body {
   padding-top: 50px;
@@ -305,8 +318,8 @@ form .error {
 }
 
 footer{
-  height: 50px;
-  line-height: 50px;
+  height: 30px;
+  line-height: 30px;
   background-color: #ccc;
   text-align: center;
   width: 100%;
@@ -326,6 +339,14 @@ ul.nav.navbar-right li a p{
 
 .well{
   min-height: 50px !important;
+  padding: 5px 5px 5px 19px!important;
+}
+.well > h1,
+.well > h2,
+.well > h3,
+.well > h4{
+  margin: 0;
+  padding: 0;
 }
 
 .content-wrapper {
@@ -334,3 +355,4 @@ ul.nav.navbar-right li a p{
   padding: 15px;
   height: 100%;
 }
+
