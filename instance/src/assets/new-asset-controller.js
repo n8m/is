@@ -57,6 +57,7 @@ angular.module('isfi.assets')
       instanceUrl: $location.host().split('.')[0],
       assetCategory: $scope.asset.category
     }).then(function(data){
+      $scope.deviceTypes = data._embedded.asset_device_type;
       console.log(data);
     })
 
