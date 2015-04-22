@@ -17,8 +17,11 @@ angular.module('isfi.customOption')
 
       el.find('li.ui-select-choices-group').append(template);
       el.find('ul.ui-select-choices').removeAttr('ng-show');
-      el.find('ul.ui-select-choices').removeClass('ng-hide');
 
+      //remove ng-hide class to display this custom item even if there are no more items
+      $timeout(function() {
+        el.find('ul.ui-select-choices').removeClass('ng-hide');
+      });
 
       el.find('div.custom-option-container button').bind('click', function(){
         scope[func].apply();
