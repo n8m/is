@@ -135,8 +135,8 @@
 
         <p>
           <ui-select ng-model="asset.ownership.ownershipType">
-            <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in categories | filter: $select.search">
+            <ui-select-match>{{ $item.displayName }}</ui-select-match>
+            <ui-select-choices repeat="category in [] | filter: $select.search">
               <span ng-bind-html="category.displayName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -148,8 +148,8 @@
 
         <p>
           <ui-select ng-model="asset.ownership.owner">
-            <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in categories | filter: $select.search">
+            <ui-select-match>{{ $item.displayName }}</ui-select-match>
+            <ui-select-choices repeat="category in [] | filter: $select.search">
               <span ng-bind-html="category.displayName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -161,8 +161,8 @@
 
         <p>
           <ui-select ng-model="asset.ownership.sharing">
-            <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in categories | filter: $select.search">
+            <ui-select-match>{{ $item.displayName }}</ui-select-match>
+            <ui-select-choices repeat="category in [] | filter: $select.search">
               <span ng-bind-html="category.displayName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -182,8 +182,8 @@
 
         <p>
           <ui-select ng-model="asset.ownership.company">
-            <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in categories | filter: $select.search">
+            <ui-select-match>{{ $item.displayName }}</ui-select-match>
+            <ui-select-choices repeat="category in [] | filter: $select.search">
               <span ng-bind-html="category.displayName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -195,8 +195,8 @@
 
         <p>
           <ui-select ng-model="asset.ownershipp.department">
-            <ui-select-match placeholder="Tag with related Companies...">{{ $item.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in categories | filter: $select.search">
+            <ui-select-match>{{ $item.displayName }}</ui-select-match>
+            <ui-select-choices repeat="category in [] | filter: $select.search">
               <span ng-bind-html="category.displayName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
