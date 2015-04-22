@@ -114,11 +114,17 @@ angular.module('isfi.assets')
       }
     });
 
+
+
     //@todo refactor (put into service)
     deviceModal.result.then(function(){
-      //server.get('/api/supplier').then(function(data){
-      //  $scope.suppliers = data._embedded.supplier;
-      //});
+      server.get('/api/asset/devicetype', {
+        instanceUrl: $location.host().split('.')[0],
+        assetCategory: $scope.asset.category
+      }).then(function(data){
+        $scope.deviceTypes = data._embedded.asset_device_type;
+        console.log(data);
+      })
     })
   }
 
