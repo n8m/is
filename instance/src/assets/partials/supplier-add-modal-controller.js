@@ -14,10 +14,9 @@ angular.module('isfi.assets')
 
       var payload = {
         "action": "create",
-        "supplierName": $scope.supplier.name,
         "instanceUrl": $location.host().split('.')[0],
         "companyName": "",
-        "title": "",
+        "title": $scope.supplier.title,
         "suffix": "",
         "city": "",
         "state": "",

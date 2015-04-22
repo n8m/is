@@ -100,9 +100,9 @@
       <p>
         <ui-select ng-model="asset.supplier"
                    custom-option='{"buttonText": "Add New Supplier", "click" : "showSupplierModal"}'>
-          <ui-select-match>{{ $select.selected.id }}</ui-select-match>
+          <ui-select-match>{{ $select.selected.title }}</ui-select-match>
           <ui-select-choices repeat="supplier.id as supplier in suppliers | filter: $select.search">
-            <span ng-bind-html="supplier.id | highlight: $select.search"></span>
+            <span ng-bind-html="supplier.title | highlight: $select.search"></span>
           </ui-select-choices>
         </ui-select>
       </p>
