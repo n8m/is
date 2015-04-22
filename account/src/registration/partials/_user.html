@@ -2,13 +2,15 @@
     <div class="col-sm-6">
         <div class="form-group" data-bind="app/user/registration/NotEmpty">
             <label class="control-label" for="name">First name<em>*</em> :</label>
-            <input type="text" maxlength="15" ng-model="user.dataUser.firstName" name="dataUser[firstName]" id="name" class="form-control input-sm" autocomplete="off" value="" required>
+            <input type="text" maxlength="15" ng-model="user.dataUser.firstName" name="firstName" id="name" class="form-control input-sm" autocomplete="off" value="" required>
+            <span class="invalid" ng-show="registerForm.firstName.$error.required && (submited || registerForm.firstName.$touched)">Please enter a first name</span>
         </div>
     </div>
-    <div class="col-sm-6">
+  <div class="col-sm-6">
         <div class="form-group" data-bind="app/user/registration/NotEmpty">
             <label class="control-label" for="last_name">Last name<em>*</em> :</label>
-            <input type="text" maxlength="15" ng-model="user.dataUser.lastName" name="dataUser[lastName]" id="last_name" class="form-control input-sm" autocomplete="off" value="" required>
+            <input type="text" maxlength="15" ng-model="user.dataUser.lastName" name="lastName" id="last_name" class="form-control input-sm" autocomplete="off" value="" required>
+            <span class="invalid" ng-show="registerForm.lastName.$error.required && (submited || registerForm.lastName.$touched)">Please enter a last name</span>
         </div>
     </div>
 </div>

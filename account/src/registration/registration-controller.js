@@ -21,6 +21,7 @@ angular.module('isf.registration')
   };
 
   $scope.proceed = function(){
+    $scope.submited = true;
     server.post('/api/account/registration', $scope.user).then(function(){
       $state.go('base.regSuccess', {instanceUrl: $scope.user.dataCredentials.instanceUrl})
     }, function(response){
