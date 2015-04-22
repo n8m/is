@@ -61,7 +61,7 @@
             <ui-select-match>{{ $select.selected.deviceTypeName }}</ui-select-match>
             <ui-select-choices
               repeat="deviceType.id as deviceType in deviceTypes | filter: $select.search">
-              <span ng-bind-html="deviceType.displayName | highlight: $select.search"></span>
+              <span ng-bind-html="deviceType.deviceTypeName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
         </p>
