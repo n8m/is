@@ -5,7 +5,7 @@
             <select class="form-control input-sm" ng-options="country for country in countries" ng-model="user.dataContact.country" name ="country" required>
 
             </select>
-            <span class="invalid" ng-show="registerForm.country.$error.required && (submited || registerForm.country.$touched)">Please enter a valid country name</span>
+            <span class="invalid" ng-show="registerForm.country.$error.required && (submitted || registerForm.country.$touched)">Please enter a valid country name</span>
         </div>
     </div>
 </div>
@@ -15,7 +15,7 @@
         <div class="form-group has-feedback  ui-Widget">
             <label class="control-label" for="address1">Address Line 1<em>*</em> :</label>
             <input type="text" ng-model="user.dataContact.address1" name="address1" id="address1" class="form-control input-sm" autocomplete="off" value="" required>
-            <span class="invalid" ng-show="registerForm.address1.$error.required && (submited || registerForm.address1.$touched)">Please enter a valid address</span>
+            <span class="invalid" ng-show="registerForm.address1.$error.required && (submitted || registerForm.address1.$touched)">Please enter a valid address</span>
         </div>
     </div>
 </div>
@@ -25,34 +25,6 @@
         <div class="form-group has-feedback  ui-Widget">
             <label class="control-label" for="address2">Address Line 2:</label>
             <input type="text" ng-model="user.dataContact.address2" name="dataContact[address2]" id="address2" class="form-control input-sm" autocomplete="off" value="">
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group has-feedback  ui-Widget">
-            <label class="control-label" for="city">City<em>*</em> :</label>
-            <input type="text" ng-model="user.dataContact.city" name="city" id="city" class="form-control input-sm" autocomplete="off" required>
-            <span class="invalid" ng-show="registerForm.city.$error.required && (submited || registerForm.city.$touched)">Please enter a valid city name</span>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-12">
-        <div class="form-group">
-            <label class="control-label" for="state">State/Province:</label>
-            <input ng-model="user.dataContact.state" name="user.dataContact[state]" id="state" class="form-control input-sm ">
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label class="control-label" for="zip">Zip/Postcode:</label>
-            <input type="text" ng-model="user.dataContact.zip" name="dataContact[zip]" id="zip" class="form-control input-sm" autocomplete="off" value="">
         </div>
     </div>
 </div>
