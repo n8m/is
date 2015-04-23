@@ -5,7 +5,7 @@
             <select class="form-control input-sm" ng-options="country for country in countries" ng-model="user.dataContact.country" name ="country" required>
 
             </select>
-            <span class="invalid" ng-show="registerForm.country.$error.required && (submited || registerForm.country.$touched)">Please enter a valid country name</span>
+            <span class="invalid" ng-show="registerForm.country.$error.required && (submitted || registerForm.country.$touched)">Please enter a valid country name</span>
         </div>
     </div>
 </div>
@@ -15,7 +15,7 @@
         <div class="form-group has-feedback  ui-Widget">
             <label class="control-label" for="address1">Address Line 1<em>*</em> :</label>
             <input type="text" ng-model="user.dataContact.address1" name="address1" id="address1" class="form-control input-sm" autocomplete="off" value="" required>
-            <span class="invalid" ng-show="registerForm.address1.$error.required && (submited || registerForm.address1.$touched)">Please enter a valid address</span>
+            <span class="invalid" ng-show="registerForm.address1.$error.required && (submitted || registerForm.address1.$touched)">Please enter a valid address</span>
         </div>
     </div>
 </div>
