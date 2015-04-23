@@ -3,9 +3,13 @@
  */
 angular.module('isfi.assets')
 
-.controller('assets-list-controller', function($scope, $stateParams, server, $location){
+.controller('assets-list-controller', function($scope, $stateParams, server, userProfile){
 
-  server.get('/api/asset', {instanceUrl: $location.host().split('.')[0], category: $stateParams.category}).then(function(data){
+  server.get('/api/asset',
+    {
+      instanceUrl: userProfile.getInstanceUrl(),
+      category: $stateParams.category
+    }).then(function(data){
     $scope.assets = data._embedded.asset;
   }, function(response){
     console.log(response);

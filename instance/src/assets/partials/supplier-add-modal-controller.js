@@ -38,6 +38,7 @@ angular.module('isfi.assets')
 
         $timeout(function(){
           $scope.successMessage = false;
+          exit();
         }, 3000);
 
       })

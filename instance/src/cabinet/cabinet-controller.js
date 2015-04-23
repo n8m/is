@@ -3,6 +3,6 @@
  */
 angular.module('isfi.cabinet')
 
-.controller('cabinet-controller', function(userProfile){
-    userProfile.queryUserDetails();
+.controller('cabinet-controller', function(userCabinet){
+    userCabinet.queryUserDetails();
 });

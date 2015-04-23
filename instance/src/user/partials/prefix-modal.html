@@ -1,5 +1,5 @@
 <div class="modal-header">
-  Add Device Type
+  Add Prefix
   <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="exit()">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -7,15 +7,15 @@
 
 <div class="modal-body">
 
-  <form ng-submit="createDeviceType()">
-    <label for="location"></label>
-    <input type="text" id="location" class="form-control" ng-model="deviceType.name">
+  <form ng-submit="setPrefix()">
+    <label for="prefix"></label>
+    <input type="text" id="prefix" class="form-control" ng-model="prefix">
 
     <button type="submit">Create</button>
   </form>
 
   <div class="alert alert-success" ng-if="successMessage">
-    Device Type has been added
+    Prefix has been set up
   </div>
 
 </div>
@@ -23,11 +23,11 @@
 <div class="modal-footer">
 
   <div class="pull-right btn-group">
-    <button ng-click="exit()">
+    <button ng-click="exit()" class="btn btn-primary">
       Continue
     </button>
 
-    <button ng-click="exit()">
+    <button ng-click="exit()" class="btn btn-default">
       Cancel
     </button>
 

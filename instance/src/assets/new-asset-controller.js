@@ -5,7 +5,6 @@ angular.module('isfi.assets')
 
 .controller('new-asset-controller', function($scope, assets, $state, $location, $stateParams, $modal, server){
 
-  //$scope.deviceTypes = assets.getDeviceTypes();
 
   $scope.categories = assets.getCategories();
   $scope.assetsStatuses = assets.getAssetsStatuses();

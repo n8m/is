@@ -80,6 +80,15 @@ angular.module('isfi.router', [])
           var deffered = $q.defer();
 
           auth.checkToken().then(function(data){
+
+            data.options = {
+              firstLogin: true
+            };
+
+            if(userProfile.checkIfFirstLogin(data)){
+              userProfile.displayPrefixModal();
+            }
+
             userProfile.setUserProfile(data);
             deffered.resolve();
           }, function(){

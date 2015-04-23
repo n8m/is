@@ -5,19 +5,19 @@
  */
 angular.module('isfi.cabinet')
 
-  .controller('details-controller', function($scope, server, userProfile, $timeout){
+  .controller('details-controller', function($scope, server, $timeout, userCabinet){
 
-    userProfile.getUserDetails().then(function(data){
+    userCabinet.getUserDetails().then(function(data){
       $scope.user = data;
     }, function(response){
       //if error - request for userDetails again:
-      userProfile.queryUserDetails().then(function(data){
+      userCabinet.queryUserDetails().then(function(data){
         $scope.user = data;
       })
     });
 
     $scope.save = function(){
-      userProfile.saveUserDetails($scope.user).then(function(){
+      userCabinet.saveUserDetails($scope.user).then(function(){
         $scope.successMessage = true;
 
         $timeout(function(){
