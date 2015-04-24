@@ -188,7 +188,7 @@ angular.module('isfi.assets')
       }
                                 //@TODO: refactor
       assets.postAsset(payload, $stateParams.assetId).then(function(data){
-        $state.go('base.main.newAssetStep2', {assetId: data.data.id});
+        $state.go('base.main.assetEditStep2', {assetId: data.data.id});
       }, function(response){
         console.log(response);
       });

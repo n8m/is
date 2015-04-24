@@ -124,12 +124,12 @@ angular.module('isfi.router', [])
       templateUrl: 'assets/new-asset-step1.html',
       controller: 'new-asset-controller'
     })
-    .state('base.main.assetView', {
+    .state('base.main.assetEditStep1', {
       url: '/asset/:assetId/step1',
       templateUrl: 'assets/new-asset-step1.html',
       controller: 'new-asset-controller'
     })
-    .state('base.main.assetView', {
+    .state('base.main.assetEditStep2', {
       url: '/asset/:assetId/step2',
       templateUrl: 'assets/new-asset-step2.html',
       controller: 'new-asset-controller'
@@ -139,7 +139,7 @@ angular.module('isfi.router', [])
       //templateUrl: 'assets/new-asset-step2.html',
       //controller: 'new-asset-controller'
     })
-    .state('base.main.assetView', {
+    .state('base.main.assetEdit', {
       url: '/asset/:assetId/edit',
       //templateUrl: 'assets/new-asset-step2.html',
       //controller: 'new-asset-controller'
