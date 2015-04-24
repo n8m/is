@@ -77,10 +77,10 @@
       <label>Asset Status</label>
 
       <p>
-        <ui-select ng-model="asset.status">
-          <ui-select-match>{{ $select.selected }}</ui-select-match>
-          <ui-select-choices repeat="status in assetsStatuses | filter: $select.search">
-            <span ng-bind-html="status | highlight: $select.search"></span>
+        <ui-select ng-model="asset.status" custom-option='{"buttonText": "Add New Status", "click" : "showModalAddStatus"}'>
+          <ui-select-match>{{ $select.selected.statusName }}</ui-select-match>
+          <ui-select-choices repeat="status.id as status in statuses | filter: $select.search">
+            <span ng-bind-html="status.statusName | highlight: $select.search"></span>
           </ui-select-choices>
         </ui-select>
       </p>

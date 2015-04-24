@@ -3,7 +3,7 @@
  */
 angular.module('isfi.assets')
 
-.controller('new-asset-controller', function($scope, assets, $state, $location, $stateParams, $modal, server){
+.controller('new-asset-controller', function($scope, assets, $state, $stateParams, $modal, server, userProfile){
 
 
   $scope.categories = assets.getCategories();
@@ -11,7 +11,7 @@ angular.module('isfi.assets')
   $scope.asset = {};
 
   //@todo refactor
-  server.get('/api/asset/location', {instanceUrl: $location.host().split('.')[0]}).then(function(data){
+  server.get('/api/asset/location', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
     $scope.locations = data._embedded.asset_location;
   });
 
@@ -20,12 +20,18 @@ angular.module('isfi.assets')
     $scope.suppliers = data._embedded.supplier;
   });
 
+  //@todo refactor
+  server.get('/api/asset/status', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+    $scope.statuses = data._embedded.asset_status;
+  });
+
+
 
 
   if($stateParams.assetId){
 
     server.get('/api/asset/devicetype', {
-      instanceUrl: $location.host().split('.')[0],
+      instanceUrl: userProfile.getInstanceUrl(),
       assetCategory: $scope.asset.category
     }).then(function(data){
       $scope.deviceTypes = data._embedded.asset_device_type;
@@ -49,6 +55,7 @@ angular.module('isfi.assets')
   $scope.showModalPurchaseInfo = showModalPurchaseInfo;
   $scope.showSupplierModal = showSupplierModal;
   $scope.showDeviceModal = showDeviceModal;
+  $scope.showModalAddStatus = showModalAddStatus;
 
   $scope.next = next;
   $scope.save = save;
@@ -64,7 +71,7 @@ angular.module('isfi.assets')
     delete $scope.asset.deviceType;
 
     server.get('/api/asset/devicetype', {
-      instanceUrl: $location.host().split('.')[0],
+      instanceUrl: userProfile.getInstanceUrl(),
       assetCategory: $scope.asset.category
     }).then(function(data){
       $scope.deviceTypes = data._embedded.asset_device_type;
@@ -95,7 +102,7 @@ angular.module('isfi.assets')
 
     //@todo refactor (put into service)
     locationModal.result.then(function(){
-      server.get('/api/asset/location', {instanceUrl: $location.host().split('.')[0]}).then(function(data){
+      server.get('/api/asset/location', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
         $scope.locations = data._embedded.asset_location;
       });
     })
@@ -131,7 +138,7 @@ angular.module('isfi.assets')
     //@todo refactor (put into service)
     deviceModal.result.then(function(){
       server.get('/api/asset/devicetype', {
-        instanceUrl: $location.host().split('.')[0],
+        instanceUrl: userProfile.getInstanceUrl(),
         assetCategory: $scope.asset.category
       }).then(function(data){
         $scope.deviceTypes = data._embedded.asset_device_type;
@@ -148,11 +155,25 @@ angular.module('isfi.assets')
     });
   }
 
+  function showModalAddStatus(){
+    var statusModal = $modal.open({
+      templateUrl: 'assets/partials/status-add-modal.html',
+      controller: 'status-add-modal-controller'
+    });
+
+    //@todo refactor (put into service)
+    statusModal.result.then(function(){
+      server.get('/api/asset/status', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+        $scope.statuses = data._embedded.asset_status;
+      });
+    })
+  }
+
   function next(){
 
       var payload = {
         "action": "create",
-        "instanceUrl": $location.host().split('.')[0],
+        "instanceUrl": userProfile.getInstanceUrl(),
         "name": $scope.asset.name,
         "category": $scope.asset.category,
         "description": $scope.asset.description,
