@@ -14,6 +14,9 @@ angular.module('isfi.user')
 
     function setPrefix(){
 
+      delete $scope.successMessage;
+      delete $scope.errorMessage;
+
       var payload = {
         "action": "update",
         "assetIdPrefix": $scope.prefix
