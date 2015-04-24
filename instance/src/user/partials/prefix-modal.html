@@ -7,24 +7,24 @@
 
 <div class="modal-body">
 
-  <form ng-submit="setPrefix()">
     <label for="prefix"></label>
     <input type="text" id="prefix" class="form-control" ng-model="prefix">
 
-    <button type="submit">Create</button>
-  </form>
+    <div class="alert alert-success" ng-if="successMessage">
+      Prefix has been set up
+    </div>
 
-  <div class="alert alert-success" ng-if="successMessage">
-    Prefix has been set up
-  </div>
+    <div class="alert alert-danger" ng-if="errorMessage">
+      Something wrong
+    </div>
 
 </div>
 
 <div class="modal-footer">
 
   <div class="pull-right btn-group">
-    <button ng-click="exit()" class="btn btn-primary">
-      Continue
+    <button ng-click="setPrefix()" class="btn btn-primary">
+      Submit
     </button>
 
     <button ng-click="exit()" class="btn btn-default">

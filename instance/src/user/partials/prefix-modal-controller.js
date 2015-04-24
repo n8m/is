@@ -3,7 +3,7 @@
  */
 angular.module('isfi.user')
 
-.controller('prefix-modal-controller', function($scope, $modalInstance, server, userProfile){
+.controller('prefix-modal-controller', function($scope, $modalInstance, server, userProfile, $timeout){
 
     $scope.exit = exit;
     $scope.setPrefix = setPrefix;
@@ -19,10 +19,16 @@ angular.module('isfi.user')
         "assetIdPrefix": $scope.prefix
       };
 
-      server.post('/api/instance/' + userProfile.getInstanceUrl(), payload).then(function(data){
-        console.log(data);
-      }, function(response){
-        console.log(response);
+      server.post('/api/instance/' + userProfile.getInstanceUrl(), payload).then(function(){
+        $scope.successMessage = true;
+
+        $timeout(function(){
+          $scope.successMessage = false;
+          exit();
+        }, 3000)
+
+      }, function(){
+        $scope.errorMessage = true;
       })
     }
 

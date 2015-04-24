@@ -81,10 +81,6 @@ angular.module('isfi.router', [])
 
           auth.checkToken().then(function(data){
 
-            data.options = {
-              firstLogin: true
-            };
-
             if(userProfile.checkIfFirstLogin(data)){
               userProfile.displayPrefixModal();
             }
@@ -112,16 +108,6 @@ angular.module('isfi.router', [])
       url: '/dashboard',
       templateUrl: 'dashboard/dashboard.html',
       controller: 'dashboard-controller'
-    })
-    .state('base.main.profileSettings', {
-      url: '/profile/cabinet/settings',
-      controller: 'profile-settings-controller',
-      templateUrl: 'profile/profile-settings.html'
-    })
-    .state('base.main.subscriptionDetails', {
-      url: '/profile/cabinet/subscription/details',
-      controller: 'subscription-details-controller',
-      templateUrl: 'profile/subscription-details.html'
     })
     .state('base.main.assets', {
       url: '/assets',

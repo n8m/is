@@ -11,7 +11,6 @@ angular.module('isfi', [
   'ui.select',
   'angularFileUpload',
   'isfi.router',
-  'isfi.profile',
   'isfi.registration',
   'isfi.server',
   'isfi.login',
