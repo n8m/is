@@ -5,10 +5,13 @@
   </button>
 </div>
 
-<div class="modal-body">
+<form name="prefixform" ng-submit="setPrefix()">
+
+  <div class="modal-body">
 
     <label for="prefix"></label>
-    <input type="text" id="prefix" class="form-control" ng-model="prefix">
+    <input type="text" id="prefix" name="prefix" class="form-control" ng-model="prefix" ng-maxlength="3" ng-minlength="3" ng-pattern="/^[a-zA-Z]+$/">
+    <span class="help-block" ng-show="prefixform.prefix.$invalid">Prefix must contain 3 latin letters</span>
 
     <div class="alert alert-success" ng-if="successMessage">
       Prefix has been set up
@@ -20,14 +23,14 @@
 
 </div>
 
-<div class="modal-footer">
+  <div class="modal-footer">
 
   <div class="pull-right btn-group">
-    <button ng-click="setPrefix()" class="btn btn-primary">
+    <button type="submit" class="btn btn-primary" ng-disabled="prefixform.$invalid">
       Submit
     </button>
 
-    <button ng-click="exit()" class="btn btn-default">
+    <button type="button" ng-click="exit()" class="btn btn-default">
       Cancel
     </button>
 
@@ -35,3 +38,5 @@
 
 
 </div>
+
+</form>

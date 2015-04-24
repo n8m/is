@@ -48,7 +48,7 @@ angular.module('isfi.cabinet')
         var deferred = $q.defer();
 
         server.get('/api/profile/cabinet/details/' + userProfile.getUserProfile().id).then(function(data){
-          userProfile.setUserDetails(data);
+          userCabinet.setUserDetails(data);
           deferred.resolve(data);
         }, function(response){
           deferred.reject(response);
@@ -108,7 +108,7 @@ angular.module('isfi.cabinet')
         var deferred = $q.defer();
 
         server.get('/api/account/subscription/' + userProfile.getUserProfile().dataCredentials.accountUuid).then(function(data){
-          userProfile.setUserSubscriptions(data);
+          userCabinet.setUserSubscriptions(data);
           deferred.resolve(data);
         }, function(response){
           deferred.reject(response);
@@ -168,7 +168,7 @@ angular.module('isfi.cabinet')
         var deferred = $q.defer();
 
         server.get('/api/instance',  {accountId: userProfile.getUserProfile().dataCredentials.accountUuid}).then(function(data){
-          userProfile.setInstancesList(data);
+          userCabinet.setInstancesList(data);
           deferred.resolve(data);
         }, function(response){
           deferred.reject(response);

@@ -3,6 +3,9 @@
  */
 angular.module('isfi.cabinet')
 
-.controller('cabinet-controller', function(userCabinet){
+.controller('cabinet-controller', function($scope, userCabinet, userProfile){
+
+    $scope.displayPrefixModal = userProfile.displayPrefixModal;
     userCabinet.queryUserDetails();
+
 });
