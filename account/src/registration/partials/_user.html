@@ -3,14 +3,14 @@
         <div class="form-group" data-bind="app/user/registration/NotEmpty">
             <label class="control-label" for="name">First name<em>*</em> :</label>
             <input type="text" maxlength="15" ng-model="user.dataUser.firstName" name="firstName" id="name" class="form-control input-sm" autocomplete="off" value="" required>
-            <span class="invalid" ng-show="registerForm.firstName.$error.required && (submited || registerForm.firstName.$touched)">Please enter a first name</span>
+            <span class="invalid" ng-show="registerForm.firstName.$error.required && (submitted || registerForm.firstName.$touched)">Please enter a first name</span>
         </div>
     </div>
   <div class="col-sm-6">
         <div class="form-group" data-bind="app/user/registration/NotEmpty">
             <label class="control-label" for="last_name">Last name<em>*</em> :</label>
             <input type="text" maxlength="15" ng-model="user.dataUser.lastName" name="lastName" id="last_name" class="form-control input-sm" autocomplete="off" value="" required>
-            <span class="invalid" ng-show="registerForm.lastName.$error.required && (submited || registerForm.lastName.$touched)">Please enter a last name</span>
+            <span class="invalid" ng-show="registerForm.lastName.$error.required && (submitted || registerForm.lastName.$touched)">Please enter a last name</span>
         </div>
     </div>
 </div>
@@ -23,3 +23,35 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group has-feedback  ui-Widget">
+      <label class="control-label" for="city">City<em>*</em> :</label>
+      <input type="text" ng-model="user.dataContact.city" name="city" id="city" class="form-control input-sm" autocomplete="off" required>
+      <span class="invalid" ng-show="registerForm.city.$error.required && (submitted || registerForm.city.$touched)">Please enter a valid city name</span>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="state">State/Province:</label>
+          <input ng-model="user.dataContact.state" name="user.dataContact[state]" id="state"
+                 class="form-control input-sm ">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="zip">Zip/Postcode:</label>
+          <input type="text" ng-model="user.dataContact.zip" name="dataContact[zip]" id="zip"
+                 class="form-control input-sm" autocomplete="off" value="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

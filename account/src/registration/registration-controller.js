@@ -21,25 +21,15 @@ angular.module('isf.registration')
   };
 
   $scope.proceed = function(){
-    $scope.submited = true;
+    $scope.submitted = true;
     server.post('/api/account/registration', $scope.user).then(function(){
       $state.go('base.regSuccess', {instanceUrl: $scope.user.dataCredentials.instanceUrl})
     }, function(response){
       if(response.status === 400){
-        $scope.registrationErrors = response.data.errors;
+        response.data.errors.forEach(function(el) {
+          $scope.registerForm[el.field].$setValidity('username', false);
+        });
       }
-    });
-  };
-
-  $scope.checkInstance = function(){
-    server.get('/api/validation/instance-url',{instanceUrl: $scope.user.dataCredentials.instanceUrl}).then(function(){
-      $scope.registerForm.$setValidity('url',true);
-      $scope.isValidURL = true;
-      $scope.foc = false;
-    }, function(){
-      $scope.registerForm.$setValidity('url',false);
-      $scope.isValidURL = false;
-      $scope.foc = false;
     });
   };
 
