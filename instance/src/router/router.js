@@ -119,15 +119,30 @@ angular.module('isfi.router', [])
       templateUrl: 'assets/assets-list.html',
       controller: 'assets-list-controller'
     })
-    .state('base.main.newAssetStep1', {
-      url: '/new-asset-step-1/:assetId',
+    .state('base.main.assetCreate', {
+      url: '/asset/create',
       templateUrl: 'assets/new-asset-step1.html',
       controller: 'new-asset-controller'
     })
-    .state('base.main.newAssetStep2', {
-      url: '/new-asset-step-2/:assetId',
+    .state('base.main.assetView', {
+      url: '/asset/:assetId/step1',
+      templateUrl: 'assets/new-asset-step1.html',
+      controller: 'new-asset-controller'
+    })
+    .state('base.main.assetView', {
+      url: '/asset/:assetId/step2',
       templateUrl: 'assets/new-asset-step2.html',
       controller: 'new-asset-controller'
+    })
+    .state('base.main.assetView', {
+      url: '/asset/:assetId/view',
+      //templateUrl: 'assets/new-asset-step2.html',
+      //controller: 'new-asset-controller'
+    })
+    .state('base.main.assetView', {
+      url: '/asset/:assetId/edit',
+      //templateUrl: 'assets/new-asset-step2.html',
+      //controller: 'new-asset-controller'
     })
     .state('base.main.device', {
       url: '/device',
