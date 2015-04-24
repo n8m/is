@@ -209,15 +209,10 @@
       <div class="input-field">
         <label for="mac">MAC Address</label>
 
-        <p>
-          <input type="text" class="form-control" id="mac">
-        </p>
+        <tags-input placeholder="Add MAC address" ng-model="asset.macAddresses" type="text" max-tags="5" allowed-tags-pattern="^(([A-Fa-f0-9]{2}[:]){5}[A-Fa-f0-9]{2}[,]?)+$">
+        </tags-input>
       </div>
 
-      <button class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus-sign size-2x"></span>
-        <span class="button-text">Add MAC Address</span>
-      </button>
     </div>
 
     <div class="well">

@@ -25,5 +25,6 @@ angular.module('isfi', [
   'isfi.home',
   'isfi.user',
   'isfi.assets',
-  'isfi.customOption'
+  'isfi.customOption',
+  'isfi.tags-input-utility'
 ]);

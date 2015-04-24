@@ -8,7 +8,7 @@
  */
 angular.module('isfi.cabinet')
 
-  .controller('massinvite-controller', function($scope, $timeout, server){
+  .controller('massinvite-controller', function($scope, $timeout, server, tagsInputConvert){
 
     $scope.sendInvite = function(){
 
@@ -21,13 +21,8 @@ angular.module('isfi.cabinet')
         group: '',
         notificationDate: $scope.user.notificationDate,
         expireDays: $scope.user.expireDays,
-        emails: []
+        emails: tagsInputConvert($scope.user.emails)
       };
-
-
-      for(var i = 0;i<$scope.user.emails.length;i++){
-        payload.emails.push($scope.user.emails[i].text);
-      }
 
       server.post('/api/instance/user/invite', payload).then(function(){
         $scope.successMessage = true;

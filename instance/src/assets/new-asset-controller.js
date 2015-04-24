@@ -3,7 +3,7 @@
  */
 angular.module('isfi.assets')
 
-.controller('new-asset-controller', function($scope, assets, $state, $stateParams, $modal, server, userProfile){
+.controller('new-asset-controller', function($scope, assets, $state, $stateParams, $modal, server, userProfile, tagsInputConvert){
 
 
   $scope.categories = assets.getCategories();
@@ -197,9 +197,13 @@ angular.module('isfi.assets')
 
   function save(){
 
-    $scope.asset.action = "update";
+    var payload = angular.copy($scope.asset);
 
-    assets.postAsset($scope.asset, $stateParams.assetId).then(function(data){
+    payload.action = "update";
+    payload.macAddresses = tagsInputConvert(payload.macAddresses);
+
+
+    assets.postAsset(payload, $stateParams.assetId).then(function(data){
 
       $state.go('base.main.assetsList', {category: data.data.category})
     }, function(response){
