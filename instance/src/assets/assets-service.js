@@ -167,7 +167,7 @@ angular.module('isfi.assets')
       };
 
       server.get('/api/asset/search', payload).then(function(data){
-        deferred.resolve(data);
+        deferred.resolve(data._embedded.asset_search);
       }, function(response){
         deferred.reject(response);
       });

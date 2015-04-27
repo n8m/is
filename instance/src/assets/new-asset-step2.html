@@ -218,16 +218,12 @@
     <div class="well">
       <label for="linked-assets">Linked Assets</label>
 
-      <tags-input placeholder="Add linked asset" ng-model="asset.linkedAssets" type="text" max-tags="10">
+      <tags-input display-property="name" add-from-autocomplete-only="true" placeholder="Add linked asset" ng-model="asset.linkedAssets" type="text" max-tags="10">
         <auto-complete source="getLinkedAssets($query)">
 
         </auto-complete>
       </tags-input>
 
-      <!--<button class="btn btn-primary">-->
-        <!--<span class="glyphicon glyphicon-plus-sign size-2x"></span>-->
-        <!--<span class="button-text">Add linked Assets</span>-->
-      <!--</button>-->
     </div>
 
   </div>
