@@ -62,7 +62,8 @@ angular.module('isfi.assets')
       $scope.asset.deviceType = $scope.asset.deviceType.id;
       $scope.asset.assignedLocation = $scope.asset.assignedLocation.id;
       $scope.asset.ownership = $scope.asset.ownership.id;
-      $scope.asset.status = $scope.asset.ownership.id;
+      $scope.asset.status = $scope.asset.status.id;
+      $scope.asset.supplier = $scope.asset.supplier.id;
 
     }, function(response){
 

@@ -147,7 +147,7 @@
         <label>Owner</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.owner">
+          <ui-select ng-model="asset.ownership.owner" ng-disabled="asset.ownership.ownershipType === 'bdaccbcec11d49918ee77d48c8b727bc' || asset.ownership.ownershipType === '1b537b68ea8940c6b2326b74d5293543'">
             <ui-select-match>{{ $item.displayName }}</ui-select-match>
             <ui-select-choices repeat="category in [] | filter: $select.search">
               <span ng-bind-html="category.displayName | highlight: $select.search"></span>
