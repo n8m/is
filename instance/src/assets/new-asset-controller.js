@@ -33,8 +33,7 @@ angular.module('isfi.assets')
 
   //@todo refactor
   server.get('/api/asset/category', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-    console.log(data);
-    //$scope.categories = data._embedded.asset_ownership_type;
+    $scope.categories = data._embedded.asset_category;
   });
 
 
