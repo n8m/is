@@ -165,7 +165,7 @@ angular.module('isfi.assets')
         "assetName": query
       };
 
-      server.get('/api/asset/search/', payload).then(function(data){
+      server.get('/api/asset/search', payload).then(function(data){
         deferred.resolve(data);
       }, function(response){
         deferred.reject(response);
