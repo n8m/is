@@ -21,6 +21,8 @@
       <div class="input-field">
         <label>Asset Category <em>*</em></label>
 
+        {{asset.category}}
+
         <p>
           <ui-select ng-model="asset.category" on-select="categoryChangedCallback()">
             <ui-select-match>{{ $select.selected.categoryName }}
