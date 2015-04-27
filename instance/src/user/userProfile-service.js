@@ -11,7 +11,8 @@ angular.module('isfi.user')
   var userProfile = {
     //profile
     getInstanceUrl: function(){
-      if(_userProfile){
+
+      if(_userProfile && _userProfile.dataCredentials.instanceUrl){
         return _userProfile.dataCredentials.instanceUrl;
       } else{
         return $location.host().split('.')[0];
