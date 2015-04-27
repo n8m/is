@@ -3,11 +3,10 @@
  */
 angular.module('isfi.assets')
 
-.factory('assets', function(server, $q){
+.factory('assets', function(server, $q, userProfile){
   var _assets = {
 
   };
-
 
   var _categories = [
     {
@@ -156,6 +155,24 @@ angular.module('isfi.assets')
     },
     getDeviceTypes: function(){
       return _deviceTypes;
+    },
+    getLinkedAssets: function(query){
+
+      var deferred = $q.defer();
+
+      var payload = {
+        "instanceUrl": userProfile.getInstanceUrl(),
+        "assetName": query
+      };
+
+      server.get('/api/asset/search/', payload).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+
+      return deferred.promise;
+
     }
   };
 

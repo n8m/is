@@ -5,10 +5,10 @@ angular.module('isfi.assets')
 
 .controller('new-asset-controller', function($scope, assets, $state, $stateParams, $modal, server, userProfile, tagsInputConvert){
 
-
   $scope.categories = assets.getCategories();
   $scope.assetsStatuses = assets.getAssetsStatuses();
   $scope.asset = {};
+  $scope.getLinkedAssets = assets.getLinkedAssets;
 
   //@todo refactor
   server.get('/api/asset/location', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
