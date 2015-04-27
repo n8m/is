@@ -56,8 +56,13 @@ angular.module('isfi.assets')
 
     server.get('/api/asset/' + $stateParams.assetId).then(function(data){
       $scope.asset = data;
+
+      //@TODO: refactor this with API changes
       $scope.asset.category = $scope.asset.category.id;
       $scope.asset.deviceType = $scope.asset.deviceType.id;
+      $scope.asset.assignedLocation = $scope.asset.assignedLocation.id;
+      $scope.asset.ownership = $scope.asset.ownership.id;
+      $scope.asset.status = $scope.asset.ownership.id;
 
     }, function(response){
 
