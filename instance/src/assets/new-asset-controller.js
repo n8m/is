@@ -31,6 +31,14 @@ angular.module('isfi.assets')
     $scope.ownershipTypes = data._embedded.asset_ownership_type;
   });
 
+  //@todo refactor
+  server.get('/api/asset/category', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+    console.log(data);
+    //$scope.categories = data._embedded.asset_ownership_type;
+  });
+
+
+
 
 
 
