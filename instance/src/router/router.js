@@ -21,7 +21,17 @@ angular.module('isfi.router', [])
     .state('base.login',{
       url: '/',
       controller: 'login-controller',
-      templateUrl: 'login/login.html'
+      templateUrl: 'login/login.html',
+      resolve: {
+        checkAuth: function(userProfile, $timeout, $state){
+          //if userProfile is fetched - redirect to dashboard
+          if(userProfile.getUserProfile){
+            $timeout(function(){
+              $state.go('base.main.dashboard');
+            });
+          }
+        }
+      }
     })
     .state('base.activation', {
       url: '/instance/activate/:token',
