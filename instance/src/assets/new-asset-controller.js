@@ -51,12 +51,12 @@ angular.module('isfi.assets')
       $scope.asset = data;
 
       //@TODO: refactor this with API changes
-      $scope.asset.category = $scope.asset.category.id;
-      $scope.asset.deviceType = $scope.asset.deviceType.id;
-      $scope.asset.assignedLocation = $scope.asset.assignedLocation.id;
-      $scope.asset.ownership = $scope.asset.ownership.id;
-      $scope.asset.status = $scope.asset.status.id;
-      $scope.asset.supplier = $scope.asset.supplier.id;
+      $scope.asset.category = $scope.asset.category ? $scope.asset.category.id : null;
+      $scope.asset.deviceType = $scope.asset.deviceType ? $scope.asset.deviceType.id : null;
+      $scope.asset.assignedLocation = $scope.asset.assignedLocation ? $scope.asset.assignedLocation.id : null;
+      $scope.asset.ownership = $scope.asset.ownership ? $scope.asset.ownership.id : null;
+      $scope.asset.status = $scope.asset.status ? $scope.asset.status.id : null;
+      $scope.asset.supplier = $scope.asset.supplier ? $scope.asset.supplier.id : null;
 
     }, function(response){
 
