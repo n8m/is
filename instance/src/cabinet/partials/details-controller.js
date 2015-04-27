@@ -9,7 +9,7 @@ angular.module('isfi.cabinet')
 
     userCabinet.getUserDetails().then(function(data){
       $scope.user = data;
-    }, function(response){
+    }, function(){
       //if error - request for userDetails again:
       userCabinet.queryUserDetails().then(function(data){
         $scope.user = data;

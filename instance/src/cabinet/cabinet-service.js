@@ -58,8 +58,12 @@ angular.module('isfi.cabinet')
       saveUserDetails: function(user){
         var deferred = $q.defer();
 
-        user.action = "update";
-        server.post('api/account/details/' + userProfile.getUserProfile().id, user).then(function(data){
+        var payload = {
+          action: "update",
+          dataUser: user.dataUser
+        };
+
+        server.post('api/account/details/' + userProfile.getUserProfile().id, payload).then(function(data){
           deferred.resolve(data);
         }, function(response){
           deferred.reject(response);
