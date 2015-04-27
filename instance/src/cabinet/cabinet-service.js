@@ -63,7 +63,7 @@ angular.module('isfi.cabinet')
           dataUser: user.dataUser
         };
 
-        server.post('api/account/details/' + userProfile.getUserProfile().id, payload).then(function(data){
+        server.post('api/profile/cabinet/details' + userProfile.getUserProfile().id, payload).then(function(data){
           deferred.resolve(data);
         }, function(response){
           deferred.reject(response);
