@@ -26,6 +26,12 @@ angular.module('isfi.assets')
     $scope.statuses = data._embedded.asset_status;
   });
 
+  //@todo refactor
+  server.get('/api/asset/ownership-type', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+    $scope.ownershipTypes = data._embedded.asset_ownership_type;
+  });
+
+
 
 
 
@@ -57,6 +63,7 @@ angular.module('isfi.assets')
   $scope.showSupplierModal = showSupplierModal;
   $scope.showDeviceModal = showDeviceModal;
   $scope.showModalAddStatus = showModalAddStatus;
+  $scope.showAddModal = showAddModal;
 
   $scope.next = next;
   $scope.save = save;
@@ -81,6 +88,38 @@ angular.module('isfi.assets')
       $scope.deviceTypes = [];
     })
 
+  }
+
+  function showAddModal(type){
+
+    var addModal = $modal.open({
+      templateUrl: 'assets/partials/add-modal.html',
+      controller: 'add-modal-controller',
+      resolve: {
+        category: function(){
+          return $scope.asset.category;
+        },
+        createUrl: function(){
+          return assets.getItemParameter(type, 'createUrl');
+        },
+        name: function(){
+          return assets.getItemParameter(type, 'name');
+        },
+        itemPropertyName: function(){
+          return assets.getItemParameter(type, 'itemPropertyName');
+        }
+      }
+    });
+
+
+    addModal.result.then(function(){
+      server.get(assets.getItemParameter(type, 'createUrl'), {
+        instanceUrl: userProfile.getInstanceUrl()
+      }).then(function(data){
+        $scope.ownershipTypes = data._embedded.asset_ownership_type;
+        console.log(data);
+      })
+    })
   }
 
   function showUploadModal(type){

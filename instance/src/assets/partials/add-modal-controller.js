@@ -3,20 +3,23 @@
  */
 angular.module('isfi.assets')
 
-  .controller('location-add-modal-controller', function($scope, server, $timeout, $location, $modalInstance){
+  .controller('add-modal-controller', function($scope, server, $timeout, userProfile, $modalInstance, category, createUrl, name, itemPropertyName){
 
-    $scope.createLocation = createLocation;
+    $scope.create = create;
     $scope.exit = exit;
+    $scope.name = name;
 
-    function createLocation(){
+
+    function create(){
 
       var payload = {
         "action": "create",
-        "instanceUrl": $location.host().split('.')[0],
-        "locationName": $scope.location
+        "instanceUrl": userProfile.getInstanceUrl()
       };
 
-      server.post('/api/asset/location', payload).then(function(){
+      payload[itemPropertyName] = $scope.item;
+
+      server.post(createUrl, payload).then(function(){
         $scope.successMessage = true;
 
         $timeout(function(){
@@ -30,5 +33,6 @@ angular.module('isfi.assets')
     function exit(){
       $modalInstance.close();
     }
+
 
   });

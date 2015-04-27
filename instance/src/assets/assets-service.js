@@ -131,6 +131,13 @@ angular.module('isfi.assets')
       }
     ]
   };
+  var _addItemData = {
+    ownershipType: {
+      createUrl: '/api/asset/ownership-type',
+      name: 'Ownership Type',
+      itemPropertyName: 'ownershipTypeName'
+    }
+  };
 
   var exports = {
     getCategories: function(){
@@ -174,7 +181,11 @@ angular.module('isfi.assets')
 
       return deferred.promise;
 
+    },
+    getItemParameter: function(entity, parameter){
+      return _addItemData[entity][parameter];
     }
+
   };
 
   return exports;

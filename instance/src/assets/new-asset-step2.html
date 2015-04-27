@@ -134,10 +134,10 @@
         <label>Ownership Type</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.ownershipType">
-            <ui-select-match>{{ $item.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in [] | filter: $select.search">
-              <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+          <ui-select ng-model="asset.ownership.ownershipType" custom-option='{"buttonText": "Add New Ownership Type", "click" : "showAddModal", "type": "ownershipType"}'>
+            <ui-select-match>{{ $select.selected.ownershipTypeName }}</ui-select-match>
+            <ui-select-choices repeat="ownershipType.id as ownershipType in ownershipTypes | filter: $select.search">
+              <span ng-bind-html="ownershipType.ownershipTypeName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
         </p>
@@ -219,7 +219,7 @@
       <label for="linked-assets">Linked Assets</label>
 
       <tags-input display-property="name" add-from-autocomplete-only="true" placeholder="Add linked asset" ng-model="asset.linkedAssets" type="text" max-tags="10">
-        <auto-complete source="getLinkedAssets($query)">
+        <auto-complete source="getLinkedAssets($query)" min-length="1">
 
         </auto-complete>
       </tags-input>

@@ -13,6 +13,7 @@ angular.module('isfi.customOption')
 
       var buttonText = options.buttonText;
       var func = options.click;
+      var type = options.type;
       var template = "<div class='custom-option-container'><button type='button' class='btn btn-primary'><span class='glyphicon glyphicon-plus-sign'></span>" + buttonText + "</button></div>";
 
       el.find('li.ui-select-choices-group').append(template);
@@ -24,7 +25,7 @@ angular.module('isfi.customOption')
       });
 
       el.find('div.custom-option-container button').bind('click', function(){
-        scope[func].apply();
+        scope[func].apply(null, [type]);
       })
 
     }
