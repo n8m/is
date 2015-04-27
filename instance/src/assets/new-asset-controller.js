@@ -5,8 +5,6 @@ angular.module('isfi.assets')
 
 .controller('new-asset-controller', function($scope, assets, $state, $stateParams, $modal, server, userProfile, tagsInputConvert){
 
-  $scope.categories = assets.getCategories();
-  $scope.assetsStatuses = assets.getAssetsStatuses();
   $scope.asset = {};
   $scope.getLinkedAssets = getLinkedAssets;
 
@@ -35,11 +33,6 @@ angular.module('isfi.assets')
   server.get('/api/asset/category', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
     $scope.categories = data._embedded.asset_category;
   });
-
-
-
-
-
 
 
   if($stateParams.assetId){
