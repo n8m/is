@@ -264,7 +264,7 @@ angular.module('isfi.assets')
 
     assets.postAsset(payload, $stateParams.assetId).then(function(data){
 
-      $state.go('base.main.assetsList', {category: data.data.category})
+      $state.go('base.main.assetsList', {category: data.data.category.categoryKey})
     }, function(response){
       console.log(response);
     });
