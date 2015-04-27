@@ -25,7 +25,7 @@
           <ui-select ng-model="asset.category" on-select="categoryChangedCallback()">
             <ui-select-match>{{ $select.selected.displayName }}
             </ui-select-match>
-            <ui-select-choices repeat="category.value as category in categories | filter: $select.search">
+            <ui-select-choices repeat="category.id as category in categories | filter: $select.search">
               <span ng-bind-html="category.displayName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
