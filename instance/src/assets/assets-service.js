@@ -156,13 +156,14 @@ angular.module('isfi.assets')
     getDeviceTypes: function(){
       return _deviceTypes;
     },
-    getLinkedAssets: function(query){
+    getLinkedAssets: function(query, currentAssetId){
 
       var deferred = $q.defer();
 
       var payload = {
         "instanceUrl": userProfile.getInstanceUrl(),
-        "assetName": query
+        "assetName": query,
+        "currentAssetId": currentAssetId
       };
 
       server.get('/api/asset/search', payload).then(function(data){

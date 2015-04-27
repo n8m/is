@@ -8,7 +8,8 @@ angular.module('isfi.assets')
   $scope.categories = assets.getCategories();
   $scope.assetsStatuses = assets.getAssetsStatuses();
   $scope.asset = {};
-  $scope.getLinkedAssets = assets.getLinkedAssets;
+  $scope.getLinkedAssets = getLinkedAssets;
+
 
   //@todo refactor
   server.get('/api/asset/location', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
@@ -167,6 +168,10 @@ angular.module('isfi.assets')
         $scope.statuses = data._embedded.asset_status;
       });
     })
+  }
+
+  function getLinkedAssets(query){
+    return assets.getLinkedAssets(query, $stateParams.assetId);
   }
 
   function next(){
