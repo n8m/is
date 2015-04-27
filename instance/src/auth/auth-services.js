@@ -93,7 +93,7 @@ angular.module('isfi.auth')
         ipCookie.remove('isf_accessToken');
         userProfile.cleanUserProfile();
         delete $http.defaults.headers.common.Authorization;
-        $state.go('base.home');
+        $state.go('base.login');
       }
 
     }

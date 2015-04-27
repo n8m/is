@@ -18,27 +18,8 @@ angular.module('isfi.router', [])
       }
     })
     //////////////////////////////////////not required auth states
-    .state('base.home', {
-      url: '/',
-      templateUrl: 'home/home.html',
-      controller: 'home-controller'
-    })
-    .state('base.pricing', {
-      url: '/pricing',
-      templateUrl: 'registration/pricing.html'
-    })
-    .state('base.registration', {
-      url: '/profile/registration',
-      templateUrl: 'registration/registration.html',
-      controller: 'registration-controller'
-    })
-    .state('base.regSuccess', {
-      url: '/profile/registration/success?uniqueUrl',
-      templateUrl: 'registration/registration-success.html',
-      controller: 'registration-success-controller'
-    })
     .state('base.login',{
-      url: '/profile/login',
+      url: '/',
       controller: 'login-controller',
       templateUrl: 'login/login.html'
     })
