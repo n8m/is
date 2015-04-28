@@ -58,6 +58,10 @@ angular.module('isfi.assets')
       $scope.asset.status = $scope.asset.status ? $scope.asset.status.id : null;
       $scope.asset.supplier = $scope.asset.supplier ? $scope.asset.supplier.id : null;
 
+      if($scope.asset.qrCodeNumber){
+        $scope.showQrInput = true;
+      }
+
     }, function(response){
 
     })

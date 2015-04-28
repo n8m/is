@@ -69,17 +69,17 @@
 
       <div class="input-field">
         <button type="button" class="btn btn-large btn-primary form-control"
-                ng-show="asset.qrCodeNumber === undefined || asset.qrCodeNumber === null"
-                ng-click="asset.qrCodeNumber=''">
+                ng-hide="showQrInput"
+                ng-click="showQrInput=true">
           <span class="glyphicon glyphicon-plus-sign size-2x"></span>
           <span class="button-text">Add Asset QR Code Number</span>
         </button>
 
-        <div ng-show="asset.qrCodeNumber !== undefined && asset.qrCodeNumber !== null">
-          <label for="asset-name">QR Code Number</label>
-          <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('qrCodeNumber')"></span>
-          <input type="text" class="form-control" name="asset-name" ng-pattern="/^\d{4}$/" ng-model="asset.qrCodeNumber">
-          <span class="help-block" ng-show="step1.asset-name.$error.pattern">QR code should be 8 digits only</span>
+        <div ng-show="showQrInput">
+          <label for="assetname">QR Code Number</label>
+          <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('qrCodeNumber');showQrInput=false"></span>
+          <input type="text" class="form-control" name="assetname" ng-pattern="/^\d{8}$/" ng-model="asset.qrCodeNumber">
+          <span class="help-block" ng-show="step1.assetname.$error.pattern">QR code should be 8 digits only</span>
         </div>
 
       </div>
