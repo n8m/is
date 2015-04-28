@@ -8,7 +8,6 @@ angular.module('isfi.assets')
   $scope.asset = {};
   $scope.getLinkedAssets = getLinkedAssets;
 
-
   //@todo refactor
   server.get('/api/asset/location', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
     $scope.locations = data._embedded.asset_location;
@@ -126,12 +125,14 @@ angular.module('isfi.assets')
       }
     });
 
+    var itemArrayName = assets.getItemParameter(type, 'itemArrayName');
+    var itemResponseProp = assets.getItemParameter(type, 'itemResponseProp');
 
     addModal.result.then(function(){
       server.get(assets.getItemParameter(type, 'createUrl'), {
         instanceUrl: userProfile.getInstanceUrl()
       }).then(function(data){
-        $scope.ownershipTypes = data._embedded.asset_ownership_type;
+        $scope[itemArrayName] = data._embedded[itemResponseProp];
         console.log(data);
       })
     })

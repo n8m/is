@@ -22,7 +22,7 @@
         <label>Asset Category <em>*</em></label>
 
         <p>
-          <ui-select ng-model="asset.category" on-select="categoryChangedCallback()">
+          <ui-select ng-model="asset.category" on-select="categoryChangedCallback()" custom-option='{"buttonText": "Add New Category", "click" : "showAddModal", "type": "category"}'>
             <ui-select-match>{{ $select.selected.categoryName }}
             </ui-select-match>
             <ui-select-choices repeat="category.id as category in categories | filter: $select.search">

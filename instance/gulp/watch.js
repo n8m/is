@@ -32,7 +32,14 @@ module.exports = function(options) {
     });
 
     gulp.watch(options.src + '/**/*.html', function(event) {
-      browserSync.reload(event.path);
+      //browserSync.reload(event.path);
     });
   });
+
+  gulp.task('watchDev', function(){
+
+    gulp.watch([options.src + '/**/*'], ['build']);
+
+  })
+
 };

@@ -12,7 +12,16 @@ angular.module('isfi.assets')
     ownershipType: {
       createUrl: '/api/asset/ownership-type',
       name: 'Ownership Type',
-      itemPropertyName: 'ownershipTypeName'
+      itemPropertyName: 'ownershipTypeName',
+      itemArrayName: 'ownershipTypes',
+      itemResponseProp: 'asset_ownership_type'
+    },
+    category: {
+      createUrl: '/api/asset/category',
+      name: 'Category',
+      itemPropertyName: 'categoryName',
+      itemArrayName: 'categories',
+      itemResponseProp: 'asset_category'
     }
   };
 
