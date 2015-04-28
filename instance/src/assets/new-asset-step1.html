@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<form ng-submit="next()">
+<form name="step1" ng-submit="next()">
 
   <div class="row">
     <div class="col-xs-4">
@@ -78,7 +78,8 @@
         <div ng-show="asset.qrCodeNumber !== undefined && asset.qrCodeNumber !== null">
           <label for="asset-name">QR Code Number</label>
           <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('qrCodeNumber')"></span>
-          <input type="text" class="form-control" name="asset-name" ng-model="asset.qrCodeNumber">
+          <input type="text" class="form-control" name="asset-name" ng-pattern="/^\d{4}$/" ng-model="asset.qrCodeNumber">
+          <span class="help-block" ng-show="step1.asset-name.$error.pattern">QR code should be 8 digits only</span>
         </div>
 
       </div>
@@ -160,7 +161,7 @@
 
       <hr>
 
-      <button type="submit" class="btn btn-primary pull-right">
+      <button type="submit" class="btn btn-primary pull-right" ng-disabled="step1.$invalid">
         <span class="glyphicon glyphicon-menu-right"></span>
         Next
       </button>
