@@ -26,8 +26,7 @@ angular.module('isf.cabinet')
         }, 3000);
 
         //update instancesList
-        userProfile.queryInstancesList().then(function(data){
-          console.log(data);
+        userProfile.getInstancesList().then(function(data){
           $scope.instances = data._embedded.instance;
         });
 
