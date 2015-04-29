@@ -173,7 +173,7 @@
         <label for="model">Assigned User</label>
 
         <p>
-          <input type="text" class="form-control" name="model" ng-model="asset.ownership.assignedUser" ng-disabled="asset.ownership.sharing === '82f14085101c4f5391beb06f0ee830b1'">
+          <input type="text" class="form-control" name="model" ng-model="asset.ownership.assignedUser" ng-disabled="asset.ownership.sharing === '9bbc04a0fd5749e8a06aabe0b5c9b13b'">
         </p>
       </div>
 
@@ -181,7 +181,7 @@
         <label>Company</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.assignedCompany" ng-disabled="asset.ownership.sharing === '82f14085101c4f5391beb06f0ee830b1'">
+          <ui-select ng-model="asset.ownership.assignedCompany" ng-disabled="asset.ownership.sharing === '82f14085101c4f5391beb06f0ee830b1'" custom-option='{"buttonText": "Add New Company", "click" : "showAddModal", "type": "company"}'>
             <ui-select-match>{{ $select.selected.companyName }}</ui-select-match>
             <ui-select-choices repeat="company.id as company in companies | filter: $select.search">
               <span ng-bind-html="company.companyName | highlight: $select.search"></span>
@@ -194,7 +194,7 @@
         <label>Department</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.assignedDepartment" ng-disabled="asset.ownership.sharing === '9bbc04a0fd5749e8a06aabe0b5c9b13b'">
+          <ui-select ng-model="asset.ownership.assignedDepartment" ng-disabled="asset.ownership.sharing === '82f14085101c4f5391beb06f0ee830b1'" custom-option='{"buttonText": "Add New Department", "click" : "showAddModal", "type": "department"}'>
             <ui-select-match>{{ $select.selected.departmentName }}</ui-select-match>
             <ui-select-choices repeat="department.id as department in departments | filter: $select.search">
               <span ng-bind-html="department.departmentName | highlight: $select.search"></span>

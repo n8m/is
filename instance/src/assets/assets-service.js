@@ -13,13 +13,25 @@ angular.module('isfi.assets')
       createUrl: '/api/asset/ownership-type',
       name: 'Ownership Type',
       itemPropertyName: 'ownershipTypeName',
-      itemArrayName: 'ownershipTypes',
+      itemArrayName: 'ownershipTypes'
     },
     category: {
       createUrl: '/api/asset/category',
       name: 'Category',
       itemPropertyName: 'categoryName',
-      itemArrayName: 'categories',
+      itemArrayName: 'categories'
+    },
+    company:{
+      createUrl: 'api/asset/company',
+      name: 'Company',
+      itemPropertyName: 'companyName',
+      itemArrayName: 'companies'
+    },
+    department:{
+      createUrl: 'api/asset/department',
+      name: 'Department',
+      itemPropertyName: 'departmentName',
+      itemArrayName: 'departments'
     }
   };
 
