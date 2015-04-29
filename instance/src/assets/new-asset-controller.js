@@ -33,6 +33,15 @@ angular.module('isfi.assets')
     $scope.categories = data._embedded.items;
   });
 
+  //@todo refactor
+  server.get('/api/asset/sharing', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+    $scope.shareOptions = data._embedded.items;
+  });
+
+  //@todo refactor
+  server.get('/api/company', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+    $scope.companies = data._embedded.items;
+  });
 
 
     if($stateParams.assetId){
@@ -83,10 +92,37 @@ angular.module('isfi.assets')
   $scope.save = save;
   $scope.removeProp = removeProp;
   $scope.categoryChangedCallback = categoryChangedCallback;
+  $scope.ownershipTypeChangedCallback = ownershipTypeChangedCallback;
+  $scope.companyChangedCallback = companyChangedCallback;
 
 
-  function removeProp(prop){
+
+    function removeProp(prop){
     delete $scope.asset[prop];
+  }
+
+  function ownershipTypeChangedCallback(){
+
+    delete $scope.asset.ownership.ownerCompany;
+
+    server.get('/api/company', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+      $scope.companies = data._embedded.items;
+    }, function(){
+      $scope.companies = [];
+      console.log(response);
+    })
+
+  }
+
+  function companyChangedCallback(){
+    delete $scope.asset.ownership.assignedDepartment;
+
+    server.get('/api/department', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+      $scope.departments = data._embedded.items;
+    }, function(){
+      $scope.departments = [];
+      console.log(response);
+    })
   }
 
   function categoryChangedCallback(){

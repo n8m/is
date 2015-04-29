@@ -111,7 +111,7 @@
     <div class="input-field">
       <button class="btn btn-large btn-primary">
         <span class="glyphicon glyphicon-plus-sign size-2x"></span>
-        <span class="button-text">Add Customer Asset ID</span>
+        <span class="button-text">Add Lease Information</span>
       </button>
     </div>
 
@@ -119,7 +119,7 @@
       <label for="warranty-expiry">Warranty Expiry</label>
 
       <p>
-        <input type="text" bs-datepicker name="asset-name" class="warranty-expiry form-control"
+        <input type="text" bs-datepicker id="warranty-expiry" name="asset-name" class="warranty-expiry form-control"
                ng-model="asset.warrantyExpirity">
       </p>
     </div>
@@ -134,7 +134,7 @@
         <label>Ownership Type</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.ownershipType" custom-option='{"buttonText": "Add New Ownership Type", "click" : "showAddModal", "type": "ownershipType"}'>
+          <ui-select ng-model="asset.ownership.ownershipType" on-select="ownershipTypeChangedCallback()" custom-option='{"buttonText": "Add New Ownership Type", "click" : "showAddModal", "type": "ownershipType"}'>
             <ui-select-match>{{ $select.selected.ownershipTypeName }}</ui-select-match>
             <ui-select-choices repeat="ownershipType.id as ownershipType in ownershipTypes | filter: $select.search">
               <span ng-bind-html="ownershipType.ownershipTypeName | highlight: $select.search"></span>
@@ -147,10 +147,10 @@
         <label>Owner</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.owner" ng-disabled="asset.ownership.ownershipType !== 'a76865d03b2c4c9ba05b39a3a48ed5a1'">
+          <ui-select ng-model="asset.ownership.ownerCompany" ng-disabled="asset.ownership.ownershipType !== 'a76865d03b2c4c9ba05b39a3a48ed5a1'">
             <ui-select-match>{{ $select.selected.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in [] | filter: $select.search">
-              <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+            <ui-select-choices repeat="owner.id as owner in owners | filter: $select.search">
+              <span ng-bind-html="owner.displayName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
         </p>
@@ -161,9 +161,9 @@
 
         <p>
           <ui-select ng-model="asset.ownership.sharing">
-            <ui-select-match>{{ $item.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in [] | filter: $select.search">
-              <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+            <ui-select-match>{{ $select.selected.sharingName }}</ui-select-match>
+            <ui-select-choices repeat="option.id as option in shareOptions | filter: $select.search">
+              <span ng-bind-html="option.sharingName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
         </p>
@@ -173,7 +173,7 @@
         <label for="model">Assigned User</label>
 
         <p>
-          <input type="text" class="form-control" name="model" ng-model="asset.ownership.assignedUser">
+          <input type="text" class="form-control" name="model" ng-model="asset.ownership.assignedUser" ng-disabled="asset.ownership.sharing === '82f14085101c4f5391beb06f0ee830b1'">
         </p>
       </div>
 
@@ -181,10 +181,10 @@
         <label>Company</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.company">
-            <ui-select-match>{{ $item.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in [] | filter: $select.search">
-              <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+          <ui-select ng-model="asset.ownership.assignedCompany" ng-disabled="asset.ownership.sharing === '82f14085101c4f5391beb06f0ee830b1'">
+            <ui-select-match>{{ $select.selected.companyName }}</ui-select-match>
+            <ui-select-choices repeat="company.id as company in companies | filter: $select.search">
+              <span ng-bind-html="company.companyName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
         </p>
@@ -194,10 +194,10 @@
         <label>Department</label>
 
         <p>
-          <ui-select ng-model="asset.ownershipp.department">
-            <ui-select-match>{{ $item.displayName }}</ui-select-match>
-            <ui-select-choices repeat="category in [] | filter: $select.search">
-              <span ng-bind-html="category.displayName | highlight: $select.search"></span>
+          <ui-select ng-model="asset.ownership.assignedDepartment" ng-disabled="asset.ownership.sharing === '9bbc04a0fd5749e8a06aabe0b5c9b13b'">
+            <ui-select-match>{{ $select.selected.departmentName }}</ui-select-match>
+            <ui-select-choices repeat="department.id as department in departments | filter: $select.search">
+              <span ng-bind-html="department.departmentName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
         </p>
