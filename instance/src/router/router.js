@@ -15,6 +15,15 @@ angular.module('isfi.router', [])
         },
         'header@base': {templateUrl: 'base/partials/header.html'},
         'footer@base': {templateUrl: 'base/partials/footer.html'}
+      },
+      resolve: {
+        checkInstance: function(auth){
+          auth.checkInstance().then(function(){
+            console.log('ok');
+          }, function(){
+            console.log('fail');
+          })
+        }
       }
     })
     //////////////////////////////////////not required auth states

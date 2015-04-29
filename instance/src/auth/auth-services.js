@@ -96,6 +96,18 @@ angular.module('isfi.auth')
         $state.go('base.login');
       }
 
+    },
+    checkInstance: function(){
+      var deferred = $q.defer();
+
+      server.get('api/validation/instance-url', {instanceUrl: userProfile.getInstanceUrl()}).then(function(){
+        deferred.resolve();
+      }, function(){
+        deferred.reject();
+      });
+
+      return deferred.promise;
+
     }
   };
 
