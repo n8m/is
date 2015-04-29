@@ -31,7 +31,7 @@ angular.module('isfi.assets')
       createUrl: 'api/asset/department',
       name: 'Department',
       itemPropertyName: 'departmentName',
-      itemArrayName: 'departments'
+      itemArrayName: 'departments',
     }
   };
 

@@ -54,8 +54,10 @@ angular.module('isfi.assets')
         $scope.asset.deviceType = $scope.asset.deviceType ? $scope.asset.deviceType.id : null;
         $scope.asset.assignedLocation = $scope.asset.assignedLocation ? $scope.asset.assignedLocation.id : null;
         $scope.asset.ownership.ownershipType = $scope.asset.ownership ? $scope.asset.ownership.ownershipType.id : null;
+
         $scope.asset.status = $scope.asset.status ? $scope.asset.status.id : null;
         $scope.asset.supplier = $scope.asset.supplier ? $scope.asset.supplier.id : null;
+
 
         if($scope.asset.qrCodeNumber){
           $scope.showQrInput = true;
