@@ -11,19 +11,10 @@ angular.module('isfi.router', [])
       views: {
         '': {
           templateUrl: 'base/base.html',
-          controller: 'base-controller'
+          controller: 'base-controller',
         },
         'header@base': {templateUrl: 'base/partials/header.html'},
         'footer@base': {templateUrl: 'base/partials/footer.html'}
-      },
-      resolve: {
-        checkInstance: function(auth){
-          auth.checkInstance().then(function(){
-            return true;
-          }, function(){
-            return false;
-          })
-        }
       }
     })
     //////////////////////////////////////not required auth states

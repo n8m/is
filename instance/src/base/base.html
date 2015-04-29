@@ -1,13 +1,14 @@
 <div ui-view="header">
 </div>
 
-<div class="wrap container" ui-view>
-
-  <div class="alert alert-danger" ng-show="showNotExist">
-    Instance Not Exist
-  </div>
+<div ng-hide="showNotExist" class="wrap container" ui-view>
 
 </div>
+
+<div class="alert alert-danger text-center" ng-show="showNotExist">
+  <h2>Instance Not Exist</h2>
+</div>
+
 
 <div ui-view="footer">
 </div>
