@@ -19,9 +19,9 @@ angular.module('isfi.router', [])
       resolve: {
         checkInstance: function(auth){
           auth.checkInstance().then(function(){
-            console.log('ok');
+            return true;
           }, function(){
-            console.log('fail');
+            return false;
           })
         }
       }

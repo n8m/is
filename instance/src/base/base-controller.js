@@ -3,7 +3,12 @@
  */
 angular.module('isfi.base')
 
-.controller('base-controller', function($scope, userProfile){
+.controller('base-controller', function($scope, userProfile, checkInstance){
+
+    if(!checkInstance){
+      $scope.showNotExist = true;
+      return;
+    }
 
     //this variable with dot-notation will be inherit in 'main-controller' which contains profilePanel
     $scope.profilePanel = {

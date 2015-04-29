@@ -2,6 +2,11 @@
 </div>
 
 <div class="wrap container" ui-view>
+
+  <div class="alert alert-danger" ng-show="showNotExist">
+    Instance Not Exist
+  </div>
+
 </div>
 
 <div ui-view="footer">

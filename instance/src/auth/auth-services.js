@@ -101,9 +101,9 @@ angular.module('isfi.auth')
       var deferred = $q.defer();
 
       server.get('api/validation/instance-url', {instanceUrl: userProfile.getInstanceUrl()}).then(function(){
-        deferred.resolve();
-      }, function(){
         deferred.reject();
+      }, function(){
+        deferred.resolve();
       });
 
       return deferred.promise;
