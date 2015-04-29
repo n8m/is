@@ -10,27 +10,27 @@ angular.module('isfi.assets')
 
   //@todo refactor
   server.get('/api/asset/location', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-    $scope.locations = data._embedded.asset_location;
+    $scope.locations = data._embedded.items;
   });
 
   //@todo refactor
   server.get('/api/supplier').then(function(data){
-    $scope.suppliers = data._embedded.supplier;
+    $scope.suppliers = data._embedded.items;
   });
 
   //@todo refactor
   server.get('/api/asset/status', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-    $scope.statuses = data._embedded.asset_status;
+    $scope.statuses = data._embedded.items;
   });
 
   //@todo refactor
   server.get('/api/asset/ownership-type', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-    $scope.ownershipTypes = data._embedded.asset_ownership_type;
+    $scope.ownershipTypes = data._embedded.items;
   });
 
   //@todo refactor
   server.get('/api/asset/category', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-    $scope.categories = data._embedded.asset_category;
+    $scope.categories = data._embedded.items;
   });
 
 
@@ -96,7 +96,7 @@ angular.module('isfi.assets')
       instanceUrl: userProfile.getInstanceUrl(),
       assetCategory: $scope.asset.category
     }).then(function(data){
-      $scope.deviceTypes = data._embedded.asset_device_type;
+      $scope.deviceTypes = data._embedded.items;
       console.log(data);
     }, function(){
       $scope.deviceTypes = [];
@@ -126,13 +126,12 @@ angular.module('isfi.assets')
     });
 
     var itemArrayName = assets.getItemParameter(type, 'itemArrayName');
-    var itemResponseProp = assets.getItemParameter(type, 'itemResponseProp');
 
     addModal.result.then(function(){
       server.get(assets.getItemParameter(type, 'createUrl'), {
         instanceUrl: userProfile.getInstanceUrl()
       }).then(function(data){
-        $scope[itemArrayName] = data._embedded[itemResponseProp];
+        $scope[itemArrayName] = data._embedded.items;
         console.log(data);
       })
     })
@@ -159,7 +158,7 @@ angular.module('isfi.assets')
     //@todo refactor (put into service)
     locationModal.result.then(function(){
       server.get('/api/asset/location', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-        $scope.locations = data._embedded.asset_location;
+        $scope.locations = data._embedded.items;
       });
     })
   }
@@ -173,7 +172,7 @@ angular.module('isfi.assets')
     //@todo refactor (put into service)
     supplierModal.result.then(function(){
       server.get('/api/supplier').then(function(data){
-        $scope.suppliers = data._embedded.supplier;
+        $scope.suppliers = data._embedded.items;
       });
     })
   }
@@ -197,7 +196,7 @@ angular.module('isfi.assets')
         instanceUrl: userProfile.getInstanceUrl(),
         assetCategory: $scope.asset.category
       }).then(function(data){
-        $scope.deviceTypes = data._embedded.asset_device_type;
+        $scope.deviceTypes = data._embedded.items;
         console.log(data);
       })
     })
@@ -220,7 +219,7 @@ angular.module('isfi.assets')
     //@todo refactor (put into service)
     statusModal.result.then(function(){
       server.get('/api/asset/status', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-        $scope.statuses = data._embedded.asset_status;
+        $scope.statuses = data._embedded.items;
       });
     })
   }
