@@ -129,8 +129,14 @@ angular.module('isfi.router', [])
       url: '/asset/:assetId/view',
       views:{
         '':{
-          templateUrl: 'assets/view-edit/view/main.html',
+          templateUrl: 'assets/view-edit/main.html',
           controller: 'view-edit-asset-controller'
+        },
+        'title-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/title-section-view.html'
+        },
+        'title-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/title-section-edit.html'
         }
       }
     })

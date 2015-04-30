@@ -1,0 +1,92 @@
+<div>
+
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="input-field">
+        <label for="assetname">Asset Name<em>*</em></label>
+        <input type="text" ng-model="asset.name" name="assetname" id="assetname" class="form-control">
+      </div>
+
+      <div class="input-field">
+        <label for="assetId">IsItUp Asset ID</label>
+        <input type="text" disabled ng-model="asset.assetId" name="assetId" id="assetId" class="form-control">
+      </div>
+
+    </div>
+    <div class="col-xs-4">
+      <div class="input-field">
+        <label for="assetname">Asset Category<em>*</em></label>
+        <ui-select ng-model="asset.category" ng-disabled="true">
+          <ui-select-match>{{ $select.selected.categoryName }}
+          </ui-select-match>
+          <ui-select-choices repeat="category.id as category in categories | filter: $select.search">
+            <span ng-bind-html="category.categoryName | highlight: $select.search"></span>
+          </ui-select-choices>
+        </ui-select>
+      </div>
+
+      <div class="input-field">
+        <button type="button" class="btn btn-large btn-primary form-control input-button"
+                ng-hide="showQrInput"
+                ng-click="showQrInput=true">
+          <span class="glyphicon glyphicon-plus-sign size-2x"></span>
+          <span class="button-text">Add Asset QR Code Number</span>
+        </button>
+
+        <div ng-show="showQrInput">
+          <label for="assetname">QR Code Number</label>
+          <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('qrCodeNumber');showQrInput=false"></span>
+          <input type="text" class="form-control" name="assetname" ng-pattern="/^\d{8}$/" ng-model="asset.qrCodeNumber">
+          <span class="help-block" ng-show="step1.assetname.$error.pattern">QR code should be 8 digits only</span>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-xs-4">
+
+      <div class="input-field">
+        <label>Device Type</label>
+
+        <p>
+          <ui-select ng-model="asset.deviceType"
+                     custom-option='{"buttonText": "Add New Device Type", "click" : "showDeviceModal"}'>
+            <ui-select-match>{{ $select.selected.deviceTypeName }}</ui-select-match>
+            <ui-select-choices
+              repeat="deviceType.id as deviceType in deviceTypes | filter: $select.search">
+              <span ng-bind-html="deviceType.deviceTypeName | highlight: $select.search"></span>
+            </ui-select-choices>
+          </ui-select>
+        </p>
+      </div>
+
+      <div class="input-field">
+        <button type="button" class="btn btn-large btn-primary form-control input-button"
+                ng-show="asset.customerAssetId === undefined || asset.customerAssetId === null"
+                ng-click="asset.customerAssetId=''">
+          <span class="glyphicon glyphicon-plus-sign size-2x"></span>
+          <span class="button-text">Add Customer Asset ID</span>
+        </button>
+
+        <div ng-show="asset.customerAssetId !== undefined && asset.customerAssetId !== null ">
+          <label for="customer-asset-id">Customer Asset ID</label>
+          <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('customerAssetId')"></span>
+          <input type="text" class="form-control" id="customer-asset-id" name="customer-asset-id" ng-model="asset.customerAssetId">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="button-group pull-right">
+    <button class="btn btn-primary" type="button">
+      Save
+    </button>
+
+    <button class="btn btn-default" type="button" ng-click="editSection.titleSection=false">
+      Cancel
+    </button>
+
+  </div>
+
+</div>

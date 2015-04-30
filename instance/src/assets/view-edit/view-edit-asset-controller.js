@@ -5,6 +5,10 @@ angular.module('isfi.assets')
 
 .controller('view-edit-asset-controller', function($scope, $stateParams, assetsService){
 
+    $scope.editSection = {
+      titleSection: false
+    };
+
     assetsService.queryAsset($stateParams.assetId).then(function(data){
       $scope.asset = data;
     }, function(response){
