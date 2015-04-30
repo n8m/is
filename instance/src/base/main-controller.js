@@ -3,13 +3,13 @@
  */
 angular.module('isfi.main')
 
-.controller('main-controller', function($scope, $state, userProfile, auth, assets, server){
+.controller('main-controller', function($scope, $state, userProfile, auth, assetsService, server){
 
     $scope.userProfile = userProfile.getUserProfile();
     $scope.logout = auth.logout;
 
     server.get('/api/asset/category', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-      $scope.categories = data._embedded.asset_category;
+      $scope.categories = data._embedded.items;
     });
 
 

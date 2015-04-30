@@ -3,7 +3,7 @@
  */
 angular.module('isfi.assets')
 
-.controller('new-asset-controller', function($scope, assets, $state, $stateParams, $modal, server, userProfile, tagsInputConvert){
+.controller('new-asset-controller', function($scope, assetsService, $state, $stateParams, $modal, server, userProfile, tagsInputConvert){
 
   $scope.asset = {};
   $scope.getLinkedAssets = getLinkedAssets;
@@ -80,10 +80,7 @@ angular.module('isfi.assets')
     }
 
 
-
-
   $scope.showUploadModal = showUploadModal;
-  $scope.showModalAddLocation = showModalAddLocation;
   $scope.showModalPurchaseInfo = showModalPurchaseInfo;
   $scope.showSupplierModal = showSupplierModal;
   $scope.showDeviceModal = showDeviceModal;
@@ -152,21 +149,21 @@ angular.module('isfi.assets')
           return $scope.asset.category;
         },
         createUrl: function(){
-          return assets.getItemParameter(type, 'createUrl');
+          return assetsService.getItemParameter(type, 'createUrl');
         },
         name: function(){
-          return assets.getItemParameter(type, 'name');
+          return assetsService.getItemParameter(type, 'name');
         },
         itemPropertyName: function(){
-          return assets.getItemParameter(type, 'itemPropertyName');
+          return assetsService.getItemParameter(type, 'itemPropertyName');
         }
       }
     });
 
-    var itemArrayName = assets.getItemParameter(type, 'itemArrayName');
+    var itemArrayName = assetsService.getItemParameter(type, 'itemArrayName');
 
     addModal.result.then(function(){
-      server.get(assets.getItemParameter(type, 'createUrl'), {
+      server.get(assetsService.getItemParameter(type, 'createUrl'), {
         instanceUrl: userProfile.getInstanceUrl()
       }).then(function(data){
         $scope[itemArrayName] = data._embedded.items;
@@ -185,20 +182,6 @@ angular.module('isfi.assets')
         }
       }
     });
-  }
-
-  function showModalAddLocation(){
-    var locationModal = $modal.open({
-      templateUrl: 'assets/partials/location-add-modal.html',
-      controller: 'location-add-modal-controller'
-    });
-
-    //@todo refactor (put into service)
-    locationModal.result.then(function(){
-      server.get('/api/asset/location', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-        $scope.locations = data._embedded.items;
-      });
-    })
   }
 
   function showSupplierModal(){
@@ -263,7 +246,7 @@ angular.module('isfi.assets')
   }
 
   function getLinkedAssets(query){
-    return assets.getLinkedAssets(query, $stateParams.assetId);
+    return assetsService.getLinkedAssets(query, $stateParams.assetId);
   }
 
   function next(){
@@ -284,7 +267,7 @@ angular.module('isfi.assets')
         payload.action = "update";
       }
                                 //@TODO: refactor
-      assets.postAsset(payload, $stateParams.assetId).then(function(data){
+      assetsService.postAsset(payload, $stateParams.assetId).then(function(data){
         $state.go('base.main.assetEditStep2', {assetId: data.data.id});
       }, function(response){
         console.log(response);
@@ -300,7 +283,7 @@ angular.module('isfi.assets')
     payload.macAddresses = tagsInputConvert(payload.macAddresses);
 
 
-    assets.postAsset(payload, $stateParams.assetId).then(function(data){
+    assetsService.postAsset(payload, $stateParams.assetId).then(function(data){
 
       $state.go('base.main.assetsList', {category: data.data.category.categoryKey})
     }, function(response){

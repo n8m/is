@@ -21,7 +21,7 @@
 
       <p>
         <ui-select ng-model="asset.assignedLocation"
-                   custom-option='{"buttonText": "Add New Location", "click" : "showModalAddLocation"}'>
+                   custom-option='{"buttonText": "Add New Location", "click" : "showAddModal", "type": "location"}'>
           <ui-select-match>{{ $select.selected.locationName }}</ui-select-match>
           <ui-select-choices repeat="location.id as location in locations | filter: $select.search">
             <span ng-bind-html="location.locationName | highlight: $select.search"></span>

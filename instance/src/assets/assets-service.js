@@ -3,7 +3,7 @@
  */
 angular.module('isfi.assets')
 
-.factory('assets', function(server, $q, userProfile){
+.factory('assetsService', function(server, $q, userProfile){
   var _assets = {
 
   };
@@ -31,7 +31,13 @@ angular.module('isfi.assets')
       createUrl: 'api/asset/department',
       name: 'Department',
       itemPropertyName: 'departmentName',
-      itemArrayName: 'departments',
+      itemArrayName: 'departments'
+    },
+    location:{
+      createUrl: 'api/asset/location',
+      name: 'Location',
+      itemPropertyName: 'locationName',
+      itemArrayName: 'locations'
     }
   };
 
@@ -80,8 +86,19 @@ angular.module('isfi.assets')
     },
     getItemParameter: function(entity, parameter){
       return _addItemData[entity][parameter];
-    }
+    },
+    queryAsset: function(assetId){
+      var deferred = $q.defer();
 
+      server.get('/api/asset/' + assetId).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+
+      return deferred.promise;
+
+    }
   };
 
   return exports;
