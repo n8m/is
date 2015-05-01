@@ -22,13 +22,13 @@ angular.module('isfi.assets')
       itemArrayName: 'categories'
     },
     company:{
-      createUrl: 'api/asset/company',
+      createUrl: 'api/company',
       name: 'Company',
       itemPropertyName: 'companyName',
       itemArrayName: 'companies'
     },
     department:{
-      createUrl: 'api/asset/department',
+      createUrl: 'api/department',
       name: 'Department',
       itemPropertyName: 'departmentName',
       itemArrayName: 'departments'
