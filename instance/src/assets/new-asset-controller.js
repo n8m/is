@@ -53,7 +53,16 @@ angular.module('isfi.assets')
         $scope.asset.category = $scope.asset.category ? $scope.asset.category.id : null;
         $scope.asset.deviceType = $scope.asset.deviceType ? $scope.asset.deviceType.id : null;
         $scope.asset.assignedLocation = $scope.asset.assignedLocation ? $scope.asset.assignedLocation.id : null;
-        $scope.asset.ownership.ownershipType = $scope.asset.ownership ? $scope.asset.ownership.ownershipType.id : null;
+
+        //@todo filter this on 'posting step' instead of 'receiving'
+        if($scope.asset.ownership){
+          $scope.asset.ownership.ownershipType = $scope.asset.ownership.ownershipType ? $scope.asset.ownership.ownershipType.id : null;
+          $scope.asset.ownership.assignedCompany = $scope.asset.ownership.assignedCompany ? $scope.asset.ownership.assignedCompany.id : null;
+          $scope.asset.ownership.assignedDepartment = $scope.asset.ownership.assignedDepartment ? $scope.asset.ownership.assignedDepartment.id : null;
+          $scope.asset.ownership.sharing = $scope.asset.ownership.sharing ? $scope.asset.ownership.sharing.id : null;
+        }
+
+
 
         $scope.asset.status = $scope.asset.status ? $scope.asset.status.id : null;
         $scope.asset.supplier = $scope.asset.supplier ? $scope.asset.supplier.id : null;
