@@ -3,7 +3,7 @@
  */
 angular.module('isfi.assets')
 
-  .controller('add-modal-controller', function($scope, server, $timeout, userProfile, $modalInstance, category, createUrl, name, itemPropertyName){
+  .controller('add-modal-controller', function($scope, server, $timeout, userProfile, $modalInstance, createUrl, name, itemPropertyName, asset){
 
     $scope.create = create;
     $scope.exit = exit;
@@ -14,10 +14,13 @@ angular.module('isfi.assets')
 
       var payload = {
         "action": "create",
-        "instanceUrl": userProfile.getInstanceUrl()
+        "instanceUrl": userProfile.getInstanceUrl(),
+        "category": asset.category
       };
 
       payload[itemPropertyName] = $scope.item;
+
+      payload.company = asset.ownership.assignedCompany;
 
       server.post(createUrl, payload).then(function(){
         $scope.successMessage = true;

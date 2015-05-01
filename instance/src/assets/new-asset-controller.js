@@ -156,6 +156,9 @@ angular.module('isfi.assets')
         },
         itemPropertyName: function(){
           return assetsService.getItemParameter(type, 'itemPropertyName');
+        },
+        asset: function(){
+          return $scope.asset;
         }
       }
     });
@@ -164,7 +167,8 @@ angular.module('isfi.assets')
 
     addModal.result.then(function(){
       server.get(assetsService.getItemParameter(type, 'createUrl'), {
-        instanceUrl: userProfile.getInstanceUrl()
+        instanceUrl: userProfile.getInstanceUrl(),
+        category: $scope.asset.category
       }).then(function(data){
         $scope[itemArrayName] = data._embedded.items;
         console.log(data);
