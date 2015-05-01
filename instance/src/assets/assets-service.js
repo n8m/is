@@ -51,6 +51,16 @@ angular.module('isfi.assets')
     postAsset: function(payload, assetId){
       var deferred = $q.defer();
 
+      if(payload.category && payload.category.id){
+        payload.category = payload.category.id;
+      }
+
+      if(assetId){
+        payload.action = "update";
+      } else{
+        payload.action = "create";
+      }
+
       var url = assetId ? '/api/asset/' + assetId : '/api/asset';
 
       server.post(url, payload).then(function(data){
