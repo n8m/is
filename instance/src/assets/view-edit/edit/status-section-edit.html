@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-xs-6">
+    <div class="input-field">
+      <label>Asset Status</label>
+      <p>
+        <ui-select ng-model="asset.status" custom-option='{"buttonText": "Add New Status", "click" : "showModalAddStatus"}'>
+          <ui-select-match>{{ $select.selected.statusName }}</ui-select-match>
+          <ui-select-choices repeat="status.id as status in statuses | filter: $select.search">
+            <span ng-bind-html="status.statusName | highlight: $select.search"></span>
+          </ui-select-choices>
+        </ui-select>
+      </p>
+    </div>
+
+    <div class="input-field">
+      <label>Maintenance Service Provider (if applicable)</label>
+      <input type="text" class="form-control">
+    </div>
+
+  </div>
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label>Comment <em>*</em></label>
+      <input type="text" class="form-control">
+    </div>
+
+    <div class="input-field">
+      <label>Maintenance Cost (if applicable)</label>
+      <input type="text" class="form-control">
+    </div>
+
+    <a href>Asset Status / Maintenance History</a>
+
+  </div>
+</div>
+
+
+<div class="button-group pull-right">
+  <button class="btn btn-primary" type="button">
+    Save
+  </button>
+
+  <button class="btn btn-default" type="button" ng-click="editSection.statusSection=false">
+    Cancel
+  </button>
+</div>

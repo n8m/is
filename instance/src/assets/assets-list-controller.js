@@ -10,7 +10,7 @@ angular.module('isfi.assets')
       instanceUrl: userProfile.getInstanceUrl(),
       category: $stateParams.category
     }).then(function(data){
-    $scope.assets = data._embedded.asset;
+    $scope.assets = data._embedded.items;
   }, function(response){
     console.log(response);
   });

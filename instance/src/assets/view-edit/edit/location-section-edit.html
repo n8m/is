@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-6">
+    <div class="input-field">
+      <label>Assigned Location</label>
+
+      <p>
+        <ui-select ng-model="asset.assignedLocation"
+                   custom-option='{"buttonText": "Add New Location", "click" : "showAddModal", "type": "location"}'>
+          <ui-select-match>{{ $select.selected.locationName }}</ui-select-match>
+          <ui-select-choices repeat="location.id as location in locations | filter: $select.search">
+            <span ng-bind-html="location.locationName | highlight: $select.search"></span>
+          </ui-select-choices>
+        </ui-select>
+      </p>
+    </div>
+  </div>
+  <div class="col-xs-6">
+
+  </div>
+</div>
+
+
+<div class="button-group pull-right">
+  <button class="btn btn-primary" type="button">
+    Save
+  </button>
+
+  <button class="btn btn-default" type="button" ng-click="editSection.locationSection=false">
+    Cancel
+  </button>
+</div>
