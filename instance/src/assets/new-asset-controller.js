@@ -46,46 +46,17 @@ angular.module('isfi.assets')
 
     if($stateParams.assetId){
 
-      server.get('/api/asset/' + $stateParams.assetId).then(function(data){
+      assetsService.queryAsset($stateParams.assetId).then(function(data){
         $scope.asset = data;
-
-        //@TODO: refactor this with API changes
-        $scope.asset.category = $scope.asset.category ? $scope.asset.category.id : null;
-        $scope.asset.deviceType = $scope.asset.deviceType ? $scope.asset.deviceType.id : null;
-        $scope.asset.assignedLocation = $scope.asset.assignedLocation ? $scope.asset.assignedLocation.id : null;
-
-        //@todo filter this on 'posting step' instead of 'receiving'
-        if($scope.asset.ownership){
-          $scope.asset.ownership.ownershipType = $scope.asset.ownership.ownershipType ? $scope.asset.ownership.ownershipType.id : null;
-          $scope.asset.ownership.assignedCompany = $scope.asset.ownership.assignedCompany ? $scope.asset.ownership.assignedCompany.id : null;
-          $scope.asset.ownership.assignedDepartment = $scope.asset.ownership.assignedDepartment ? $scope.asset.ownership.assignedDepartment.id : null;
-          $scope.asset.ownership.sharing = $scope.asset.ownership.sharing ? $scope.asset.ownership.sharing.id : null;
-        }
-
-
-
-        $scope.asset.status = $scope.asset.status ? $scope.asset.status.id : null;
-        $scope.asset.supplier = $scope.asset.supplier ? $scope.asset.supplier.id : null;
-
 
         if($scope.asset.qrCodeNumber){
           $scope.showQrInput = true;
         }
 
-        server.get('/api/asset/devicetype', {
-          instanceUrl: userProfile.getInstanceUrl(),
-          assetCategory: $scope.asset.category
-        }).then(function(data){
-          $scope.deviceTypes = data._embedded.asset_device_type;
-          console.log(data);
-        }, function(){
-          $scope.deviceTypes = [];
-        });
-
-
       }, function(response){
+        console.log(response);
+      });
 
-      })
     }
 
 
@@ -102,7 +73,6 @@ angular.module('isfi.assets')
   $scope.categoryChangedCallback = categoryChangedCallback;
   $scope.ownershipTypeChangedCallback = ownershipTypeChangedCallback;
   $scope.companyChangedCallback = companyChangedCallback;
-
 
 
     function removeProp(prop){
@@ -125,7 +95,10 @@ angular.module('isfi.assets')
   function companyChangedCallback(){
     delete $scope.asset.ownership.assignedDepartment;
 
-    server.get('/api/department', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+    server.get('/api/department', {
+      instanceUrl: userProfile.getInstanceUrl(),
+      company: $scope.asset.ownership.assignedCompany
+    }).then(function(data){
       $scope.departments = data._embedded.items;
     }, function(){
       $scope.departments = [];

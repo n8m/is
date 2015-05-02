@@ -181,7 +181,7 @@
         <label>Company</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.assignedCompany" ng-disabled="asset.ownership.sharing === '82f14085101c4f5391beb06f0ee830b1'" custom-option='{"buttonText": "Add New Company", "click" : "showAddModal", "type": "company"}'>
+          <ui-select ng-model="asset.ownership.assignedCompany" on-select="companyChangedCallback()" ng-disabled="asset.ownership.sharing === '82f14085101c4f5391beb06f0ee830b1'" custom-option='{"buttonText": "Add New Company", "click" : "showAddModal", "type": "company"}'>
             <ui-select-match>{{ $select.selected.companyName }}</ui-select-match>
             <ui-select-choices repeat="company.id as company in companies | filter: $select.search">
               <span ng-bind-html="company.companyName | highlight: $select.search"></span>

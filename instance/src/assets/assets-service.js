@@ -55,6 +55,42 @@ angular.module('isfi.assets')
         payload.category = payload.category.id;
       }
 
+      if(payload.deviceType && payload.deviceType.id){
+        payload.deviceType = payload.deviceType.id;
+      }
+
+      if(payload.assignedLocation && payload.assignedLocation.id){
+        payload.assignedLocation = payload.assignedLocation.id;
+      }
+
+      if(payload.status && payload.status.id){
+        payload.status = payload.status.id;
+      }
+
+      if(payload.supplier && payload.supplier.id){
+        payload.supplier = payload.supplier.id;
+      }
+
+      if(payload.ownership){
+
+        if(payload.ownership.ownershipType && payload.ownership.ownershipType.id){
+          payload.ownership.ownershipType = payload.ownership.ownershipType.id;
+        }
+
+        if(payload.ownership.assignedCompany && payload.ownership.assignedCompany.id){
+          payload.ownership.assignedCompany = payload.ownership.assignedCompany.id;
+        }
+
+        if(payload.ownership.assignedDepartment && payload.ownership.assignedDepartment.id){
+          payload.ownership.assignedDepartment = payload.ownership.assignedDepartment.id;
+        }
+
+        if(payload.ownership.sharing && payload.ownership.sharing.id){
+          payload.ownership.sharing = payload.ownership.sharing.id;
+        }
+
+      }
+
       if(assetId){
         payload.action = "update";
       } else{
