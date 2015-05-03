@@ -219,19 +219,98 @@ angular.module('isfi.assets')
 
 
   function showModalPurchaseInfo(){
-    $modal.open({
-      templateUrl: 'assets/partials/purchase-modal.html',
-      controller: 'purchase-modal-controller',
-      size: 'lg'
-    });
+
+    var purchaseModal, confirmModal;
+
+    if($scope.asset.purchaseInfo){
+      confirmModal = $modal.open({
+        templateUrl: 'assets/partials/confirm-modal.html',
+        controller: 'confirm-modal-controller',
+        size: 'sm',
+        resolve:{
+          title: function(){
+            return "Change to Purchase Information"
+          },
+          message: function(){
+            return "Are you sure you want to change your selection? All input in this section will be discarded"
+          }
+        }
+      });
+
+      confirmModal.result.then(function(){
+        openPurchaseModal();
+      })
+
+    }else{
+      openPurchaseModal();
+    }
+
+    function openPurchaseModal(){
+      purchaseModal = $modal.open({
+        templateUrl: 'assets/partials/purchase-modal.html',
+        controller: 'purchase-modal-controller',
+        size: 'lg',
+        resolve: {
+          purchaseInfo: function(){
+            return $scope.asset.purchaseInfo;
+          }
+        }
+      });
+
+      purchaseModal.result.then(function(data){
+        $scope.asset.purchaseInfo = data.data.id;
+      }, function(){
+        console.log('dismiss');
+      });
+    }
+
   }
 
   function showModalLeaseInfo(){
-    $modal.open({
-      templateUrl: 'assets/partials/lease-modal.html',
-      controller: 'lease-modal-controller',
-      size: 'lg'
-    });
+
+    var leaseModal, confirmModal;
+
+    if($scope.asset.leaseInfo){
+      confirmModal = $modal.open({
+        templateUrl: 'assets/partials/confirm-modal.html',
+        controller: 'confirm-modal-controller',
+        size: 'sm',
+        resolve:{
+          title: function(){
+            return "Change to Lease Information"
+          },
+          message: function(){
+            return "Are you sure you want to change your selection? All input in this section will be discarded"
+          }
+        }
+      });
+
+      confirmModal.result.then(function(){
+        openLeaseModal();
+      })
+
+    }else{
+      openLeaseModal();
+    }
+
+    function openLeaseModal(){
+      leaseModal = $modal.open({
+        templateUrl: 'assets/partials/lease-modal.html',
+        controller: 'lease-modal-controller',
+        size: 'lg',
+        resolve: {
+          leaseInfo: function(){
+            return $scope.asset.leaseInfo;
+          }
+        }
+      });
+
+      leaseModal.result.then(function(data){
+        $scope.asset.leaseInfo = data.data.id;
+      })
+    }
+
+
   }
 
 

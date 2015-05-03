@@ -152,10 +152,27 @@ angular.module('isfi.assets')
       return deferred.promise;
 
     },
-    postPurchaseInfo: function(payload){
+    postPurchaseInfo: function(payload, purchaseInfo){
+
+      payload.invoice = {
+        "invoiceNumber": "",
+        "invoiceDate": ""
+      };
+
+      payload.cheque = {
+        "chequeNumber": "",
+        "chequeDate": ""
+      };
+
+      payload.voucher = {
+        "voucherNumber": "",
+        "voucherDate": ""
+      };
+
+      var url = purchaseInfo ? '/api/purchase-info/' + purchaseInfo : '/api/purchase-info';
 
       var deferred = $q.defer();
-      server.post('/api/purchase-info', payload).then(function(data){
+      server.post(url, payload).then(function(data){
         deferred.resolve(data)
       }, function(response){
         deferred.reject(response);
@@ -164,11 +181,36 @@ angular.module('isfi.assets')
       return deferred.promise;
 
     },
-    postLeaseInfo: function(payload){
+    postLeaseInfo: function(payload, leaseInfoId){
+
+      var url = leaseInfoId ? '/api/lease-info/' + leaseInfoId : '/api/lease-info';
 
       var deferred = $q.defer();
-      server.post('/api/lease-info', payload).then(function(data){
+      server.post(url, payload).then(function(data){
         deferred.resolve(data)
+      }, function(response){
+        deferred.reject(response);
+      });
+
+      return deferred.promise;
+
+    },
+    queryLeaseInfo: function(leaseInfoId){
+      var deferred = $q.defer();
+
+      server.get('/api/lease-info/' + leaseInfoId).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+
+      return deferred.promise;
+    },
+    queryPurchaseInfo: function(purchaseInfoId){
+      var deferred = $q.defer();
+
+      server.get('/api/purchase-info/' + purchaseInfoId).then(function(data){
+        deferred.resolve(data);
       }, function(response){
         deferred.reject(response);
       });

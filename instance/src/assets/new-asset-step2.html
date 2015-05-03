@@ -13,6 +13,8 @@
   </div>
 </div>
 
+  {{asset}}
+
 <div class="row">
   <div class="col-xs-4">
 
@@ -56,8 +58,17 @@
 
     <div class="input-field">
       <button class="btn btn-primary" ng-click="showModalPurchaseInfo()">
-        <span class="glyphicon glyphicon-plus-sign size-2x"></span>
-        <span class="button-text">Add Purchase Information</span>
+
+        <span ng-show="!asset.purchaseInfo">
+          <span class="glyphicon glyphicon-plus-sign size-2x"></span>
+          <span class="button-text">Add Purchase Information</span>
+        </span>
+
+        <span ng-show="asset.purchaseInfo">
+          <span class="glyphicon glyphicon-pencil size-2x"></span>
+          <span class="button-text">Change to Purchase Information</span>
+        </span>
+
       </button>
     </div>
 
@@ -110,8 +121,16 @@
 
     <div class="input-field">
       <button class="btn btn-large btn-primary" ng-click="showModalLeaseInfo()">
-        <span class="glyphicon glyphicon-plus-sign size-2x"></span>
-        <span class="button-text">Add Lease Information</span>
+        <span ng-show="!asset.leaseInfo">
+          <span class="glyphicon glyphicon-plus-sign size-2x"></span>
+          <span class="button-text">Add Lease Information</span>
+        </span>
+
+        <span ng-show="asset.leaseInfo">
+          <span class="glyphicon glyphicon-pencil size-2x"></span>
+          <span class="button-text">Change to Lease Information</span>
+        </span>
+
       </button>
     </div>
 
