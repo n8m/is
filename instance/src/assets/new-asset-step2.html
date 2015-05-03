@@ -13,8 +13,6 @@
   </div>
 </div>
 
-  {{asset}}
-
 <div class="row">
   <div class="col-xs-4">
 
@@ -166,10 +164,10 @@
         <label>Owner</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.ownerCompany" ng-disabled="asset.ownership.ownershipType.ownershipTypeKey !== 'company_owned'">
-            <ui-select-match>{{ $select.selected.displayName }}</ui-select-match>
-            <ui-select-choices repeat="owner in owners | filter: $select.search">
-              <span ng-bind-html="owner.displayName | highlight: $select.search"></span>
+          <ui-select ng-model="asset.ownership.ownerCompany" ng-disabled="asset.ownership.ownershipType.ownershipTypeKey !== 'company_owned'" custom-option='{"buttonText": "Add New Company", "click" : "showAddModal", "type": "company"}'>
+            <ui-select-match>{{ $select.selected.companyName }}</ui-select-match>
+            <ui-select-choices repeat="company in companies | filter: $select.search">
+              <span ng-bind-html="company.companyName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
         </p>
@@ -186,8 +184,13 @@
       </div>
 
       <div class="input-field">
-        <label for="model">Assigned User</label>
-        <input type="text" class="form-control" name="model" ng-model="asset.ownership.assignedUser" ng-disabled="asset.ownership.sharing.sharingName !== 'Not shared (Individual)'">
+        <label>Assigned User</label>
+        <ui-select ng-model="asset.ownership.assignedUser" on-select="sharingChangedCallback()" ng-disabled="asset.ownership.sharing.sharingName !== 'Not shared (Individual)'">
+          <ui-select-match>{{ $select.selected.username }}</ui-select-match>
+          <ui-select-choices repeat="user in users | filter: $select.search">
+            <span ng-bind-html="option.username | highlight: $select.search"></span>
+          </ui-select-choices>
+        </ui-select>
       </div>
 
       <div class="input-field">

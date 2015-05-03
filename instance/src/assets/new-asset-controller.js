@@ -43,6 +43,10 @@ angular.module('isfi.assets')
     $scope.companies = data._embedded.items;
   });
 
+  server.get('/api/asset/assigned-user', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+    $scope.users = data._embedded.items;
+  })
+
 
     if($stateParams.assetId){
 
