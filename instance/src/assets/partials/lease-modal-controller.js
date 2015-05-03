@@ -3,24 +3,27 @@
  */
 angular.module('isfi.assets')
 
-  .controller('purchase-modal-controller', function($scope, $modalInstance, assetsService, userProfile){
+  .controller('lease-modal-controller', function($scope, $modalInstance, assetsService, userProfile){
 
     $scope.isPanelExpanded = isPanelExpanded;
     $scope.exit = exit;
-    $scope.postPurchaseInfo = postPurchaseInfo;
+    $scope.postLeaseInfo = postLeaseInfo;
 
 
-
-    function postPurchaseInfo(){
+    function postLeaseInfo(){
 
       var payload = {
         action: "create",
         instanceUrl: userProfile.getInstanceUrl(),
-        purchaseOrder: $scope.purchase,
-        deliveryOrder: $scope.delivery
+        leaseAgreement: $scope.agreement,
+        deliveryOrder: {
+          "orderNumber": "",
+          "orderDate": "",
+          "actualDateReceived": ""
+        }
       };
 
-      assetsService.postPurchaseInfo(payload);
+      assetsService.postLeaseInfo(payload);
 
     }
 

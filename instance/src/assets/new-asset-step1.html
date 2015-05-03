@@ -13,6 +13,9 @@
   </div>
 </div>
 
+{{asset}}
+
+
 <form name="step1" ng-submit="next()">
 
   <div class="row">
@@ -25,7 +28,7 @@
           <ui-select ng-model="asset.category" on-select="categoryChangedCallback()" custom-option='{"buttonText": "Add New Category", "click" : "showAddModal", "type": "category"}'>
             <ui-select-match>{{ $select.selected.categoryName }}
             </ui-select-match>
-            <ui-select-choices repeat="category.id as category in categories | filter: $select.search">
+            <ui-select-choices repeat="category in categories | filter: $select.search">
               <span ng-bind-html="category.categoryName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -34,18 +37,12 @@
 
       <div class="input-field">
         <label for="asset-name">Asset Name <em>*</em></label>
-
-        <p>
-          <input type="text" class="form-control" name="asset-name" ng-model="asset.name" required>
-        </p>
+        <input type="text" class="form-control" id="asset-name" name="asset-name" ng-model="asset.name" required>
       </div>
 
       <div class="input-field">
         <label>Description</label>
-
-        <p>
-          <textarea type="text" class="form-control" name="asset-description" ng-model="asset.description"></textarea>
-        </p>
+        <textarea type="text" class="form-control" name="asset-description" ng-model="asset.description"></textarea>
       </div>
 
     </div>
@@ -60,7 +57,7 @@
                      custom-option='{"buttonText": "Add New Device Type", "click" : "showDeviceModal"}'>
             <ui-select-match>{{ $select.selected.deviceTypeName }}</ui-select-match>
             <ui-select-choices
-              repeat="deviceType.id as deviceType in deviceTypes | filter: $select.search">
+              repeat="deviceType in deviceTypes | filter: $select.search">
               <span ng-bind-html="deviceType.deviceTypeName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -68,7 +65,7 @@
       </div>
 
       <div class="input-field">
-        <button type="button" class="btn btn-large btn-primary form-control"
+        <button type="button" class="btn btn-large btn-primary form-control input-cotrol-margin-top"
                 ng-hide="showQrInput"
                 ng-click="showQrInput=true">
           <span class="glyphicon glyphicon-plus-sign size-2x"></span>
@@ -78,14 +75,14 @@
         <div ng-show="showQrInput">
           <label for="assetname">QR Code Number</label>
           <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('qrCodeNumber');showQrInput=false"></span>
-          <input type="text" class="form-control" name="assetname" ng-pattern="/^\d{8}$/" ng-model="asset.qrCodeNumber">
+          <input type="text" class="form-control" id="assetname" name="assetname" ng-pattern="/^\d{8}$/" ng-model="asset.qrCodeNumber">
           <span class="help-block" ng-show="step1.assetname.$error.pattern">QR code should be 8 digits only</span>
         </div>
 
       </div>
 
       <div class="input-field">
-        <button type="button" class="btn btn-large btn-primary form-control"
+        <button type="button" class="btn btn-large btn-primary form-control input-cotrol-margin-top"
                 ng-show="asset.customerAssetId === undefined || asset.customerAssetId === null"
                 ng-click="asset.customerAssetId=''">
           <span class="glyphicon glyphicon-plus-sign size-2x"></span>

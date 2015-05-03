@@ -1,0 +1,130 @@
+<div class="modal-header">
+  Lease Information
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="exit()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body" bs-collapse allow-multiple="true" ng-model="expandedPanels">
+
+  <div class="clear">
+    <div class="well">
+      <h4 class="pull-left">Lease Agreement</h4>
+      <span class="glyphicon size-2x pull-right" bs-collapse-toggle ng-class="{'glyphicon-plus-sign': isPanelExpanded(0), 'glyphicon-minus-sign': !isPanelExpanded(0)}"></span>
+    </div>
+    <div class="panel-collapse" bs-collapse-target>
+      <div class="row">
+        <div class="col-xs-6">
+
+          <div class="input-field">
+            <label for="leaseAgreementNo">Lease Agreement #</label>
+            <input type="text" class="form-control" ng-model="agreement.agreementNumber" id="leaseAgreementNo">
+          </div>
+
+          <div class="input-field">
+            <label>Lease Agreement Date</label>
+            <div>
+              <input ng-model="agreement.agreementDate" type=text class="form-control" bs-datepicker>
+            </div>
+          </div>
+
+          <div class="row input-field">
+            <div class="col-xs-3">
+              <label class="nowrap">Lease Cost</label>
+              <select class="form-control" ng-model="agreement.leaseCost.currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+              </select>
+            </div>
+
+            <div class="col-xs-9">
+              <input type="text" ng-model="agreement.leaseCost.cost" class="form-control input-control-margin-top">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xs-6 well">
+
+          <p>Lease Period</p>
+
+          <div class="input-field">
+            <label>Lease Duration (Months)</label>
+            <input ng-model="agreement.leaseDuration" type=text class="form-control">
+          </div>
+
+          <div class="input-field">
+            <label>Lease Start Date</label>
+            <div>
+              <input ng-model="agreement.leaseStartDate" type=text class="form-control" bs-datepicker>
+            </div>
+          </div>
+
+          <div class="input-field">
+            <label>Lease End Date</label>
+            <div>
+              <input ng-model="agreement.leaseEndDate" type=text class="form-control" bs-datepicker>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="clear">
+    <div class="well">
+      <h4 class="pull-left">Delivery Order</h4>
+      <span class="glyphicon size-2x pull-right" bs-collapse-toggle ng-class="{'glyphicon-plus-sign': isPanelExpanded(1), 'glyphicon-minus-sign': !isPanelExpanded(1)}"></span>
+    </div>
+    <div class="panel-collapse" bs-collapse-target>
+
+      <div class="row">
+        <div class="col-xs-6">
+
+          <div class="input-field">
+            <label for="do">DO #</label>
+            <input type="text" ng-model="delivery.orderNumber" class="form-control" id="do">
+          </div>
+
+          <div class="input-field">
+            <label for="actualDate">Actual Date Received</label>
+            <div>
+              <input ng-model="delivery.orderDate" type="text" id="actualDate" bs-datepicker class="form-control">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xs-6">
+          <div class="input-field">
+            <label for="doDate">DO Date</label>
+            <div>
+              <input ng-model="delivery.actualDateReceived" type="text" id="doDate" bs-datepicker class="form-control">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-footer">
+
+  <div class="pull-right btn-group">
+    <button ng-click="postLeaseInfo()" class="btn btn-primary">
+      Save
+    </button>
+
+    <button ng-click="exit()" class="btn btn-default">
+      Cancel
+    </button>
+
+  </div>
+
+
+</div>

@@ -5,6 +5,8 @@
   </div>
 </div>
 
+  {{asset}}
+
 <div class="row">
   <div class="col-xs-12">
     <span>Step1</span>
@@ -23,7 +25,7 @@
         <ui-select ng-model="asset.assignedLocation"
                    custom-option='{"buttonText": "Add New Location", "click" : "showAddModal", "type": "location"}'>
           <ui-select-match>{{ $select.selected.locationName }}</ui-select-match>
-          <ui-select-choices repeat="location.id as location in locations | filter: $select.search">
+          <ui-select-choices repeat="location in locations | filter: $select.search">
             <span ng-bind-html="location.locationName | highlight: $select.search"></span>
           </ui-select-choices>
         </ui-select>
@@ -55,7 +57,7 @@
     </div>
 
     <div class="input-field">
-      <button class="btn btn-primary"> <!--ng-click="showModalPurchaseInfo()"-->
+      <button class="btn btn-primary" ng-click="showModalPurchaseInfo()">
         <span class="glyphicon glyphicon-plus-sign size-2x"></span>
         <span class="button-text">Add Purchase Information</span>
       </button>
@@ -79,7 +81,7 @@
       <p>
         <ui-select ng-model="asset.status" custom-option='{"buttonText": "Add New Status", "click" : "showModalAddStatus"}'>
           <ui-select-match>{{ $select.selected.statusName }}</ui-select-match>
-          <ui-select-choices repeat="status.id as status in statuses | filter: $select.search">
+          <ui-select-choices repeat="status in statuses | filter: $select.search">
             <span ng-bind-html="status.statusName | highlight: $select.search"></span>
           </ui-select-choices>
         </ui-select>
@@ -101,7 +103,7 @@
         <ui-select ng-model="asset.supplier"
                    custom-option='{"buttonText": "Add New Supplier", "click" : "showSupplierModal"}'>
           <ui-select-match>{{ $select.selected.title }}</ui-select-match>
-          <ui-select-choices repeat="supplier.id as supplier in suppliers | filter: $select.search">
+          <ui-select-choices repeat="supplier in suppliers | filter: $select.search">
             <span ng-bind-html="supplier.title | highlight: $select.search"></span>
           </ui-select-choices>
         </ui-select>
@@ -109,7 +111,7 @@
     </div>
 
     <div class="input-field">
-      <button class="btn btn-large btn-primary">
+      <button class="btn btn-large btn-primary" ng-click="showModalLeaseInfo()">
         <span class="glyphicon glyphicon-plus-sign size-2x"></span>
         <span class="button-text">Add Lease Information</span>
       </button>
@@ -136,7 +138,7 @@
         <p>
           <ui-select ng-model="asset.ownership.ownershipType" on-select="ownershipTypeChangedCallback()" custom-option='{"buttonText": "Add New Ownership Type", "click" : "showAddModal", "type": "ownershipType"}'>
             <ui-select-match>{{ $select.selected.ownershipTypeName }}</ui-select-match>
-            <ui-select-choices repeat="ownershipType.id as ownershipType in ownershipTypes | filter: $select.search">
+            <ui-select-choices repeat="ownershipType in ownershipTypes | filter: $select.search">
               <span ng-bind-html="ownershipType.ownershipTypeName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -147,9 +149,9 @@
         <label>Owner</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.ownerCompany" ng-disabled="asset.ownership.ownershipType !== 'a76865d03b2c4c9ba05b39a3a48ed5a1'">
+          <ui-select ng-model="asset.ownership.ownerCompany" ng-disabled="asset.ownership.ownershipType.ownershipTypeKey !== 'company_owned'">
             <ui-select-match>{{ $select.selected.displayName }}</ui-select-match>
-            <ui-select-choices repeat="owner.id as owner in owners | filter: $select.search">
+            <ui-select-choices repeat="owner in owners | filter: $select.search">
               <span ng-bind-html="owner.displayName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -158,32 +160,26 @@
 
       <div class="input-field">
         <label>Asset Sharing</label>
-
-        <p>
-          <ui-select ng-model="asset.ownership.sharing">
-            <ui-select-match>{{ $select.selected.sharingName }}</ui-select-match>
-            <ui-select-choices repeat="option.id as option in shareOptions | filter: $select.search">
-              <span ng-bind-html="option.sharingName | highlight: $select.search"></span>
-            </ui-select-choices>
-          </ui-select>
-        </p>
+        <ui-select ng-model="asset.ownership.sharing" on-select="sharingChangedCallback()">
+          <ui-select-match>{{ $select.selected.sharingName }}</ui-select-match>
+          <ui-select-choices repeat="option in shareOptions | filter: $select.search">
+            <span ng-bind-html="option.sharingName | highlight: $select.search"></span>
+          </ui-select-choices>
+        </ui-select>
       </div>
 
       <div class="input-field">
         <label for="model">Assigned User</label>
-
-        <p>
-          <input type="text" class="form-control" name="model" ng-model="asset.ownership.assignedUser" ng-disabled="asset.ownership.sharing === '9bbc04a0fd5749e8a06aabe0b5c9b13b'">
-        </p>
+        <input type="text" class="form-control" name="model" ng-model="asset.ownership.assignedUser" ng-disabled="asset.ownership.sharing.sharingName !== 'Not shared (Individual)'">
       </div>
 
       <div class="input-field">
         <label>Company</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.assignedCompany" on-select="companyChangedCallback()" ng-disabled="asset.ownership.sharing === '82f14085101c4f5391beb06f0ee830b1'" custom-option='{"buttonText": "Add New Company", "click" : "showAddModal", "type": "company"}'>
+          <ui-select ng-model="asset.ownership.assignedCompany" on-select="companyChangedCallback()" ng-disabled="asset.ownership.sharing.sharingName !== 'Shared (Company or Department)'" custom-option='{"buttonText": "Add New Company", "click" : "showAddModal", "type": "company"}'>
             <ui-select-match>{{ $select.selected.companyName }}</ui-select-match>
-            <ui-select-choices repeat="company.id as company in companies | filter: $select.search">
+            <ui-select-choices repeat="company in companies | filter: $select.search">
               <span ng-bind-html="company.companyName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -194,9 +190,9 @@
         <label>Department</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.assignedDepartment" ng-disabled="asset.ownership.sharing === '82f14085101c4f5391beb06f0ee830b1'" custom-option='{"buttonText": "Add New Department", "click" : "showAddModal", "type": "department"}'>
+          <ui-select ng-model="asset.ownership.assignedDepartment" ng-disabled="asset.ownership.sharing.sharingName !== 'Shared (Company or Department)'" custom-option='{"buttonText": "Add New Department", "click" : "showAddModal", "type": "department"}'>
             <ui-select-match>{{ $select.selected.departmentName }}</ui-select-match>
-            <ui-select-choices repeat="department.id as department in departments | filter: $select.search">
+            <ui-select-choices repeat="department in departments | filter: $select.search">
               <span ng-bind-html="department.departmentName | highlight: $select.search"></span>
             </ui-select-choices>
           </ui-select>
@@ -207,7 +203,7 @@
 
     <div class="well">
       <div class="input-field">
-        <label for="mac">MAC Address</label>
+        <label>MAC Address</label>
 
         <tags-input placeholder="Add MAC address" ng-model="asset.macAddresses" type="text" max-tags="5" allowed-tags-pattern="^(([A-Fa-f0-9]{2}[:]){5}[A-Fa-f0-9]{2}[,]?)+$">
         </tags-input>

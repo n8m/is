@@ -62,6 +62,7 @@ angular.module('isfi.assets')
 
   $scope.showUploadModal = showUploadModal;
   $scope.showModalPurchaseInfo = showModalPurchaseInfo;
+  $scope.showModalLeaseInfo = showModalLeaseInfo;
   $scope.showSupplierModal = showSupplierModal;
   $scope.showDeviceModal = showDeviceModal;
   $scope.showModalAddStatus = showModalAddStatus;
@@ -73,6 +74,7 @@ angular.module('isfi.assets')
   $scope.categoryChangedCallback = categoryChangedCallback;
   $scope.ownershipTypeChangedCallback = ownershipTypeChangedCallback;
   $scope.companyChangedCallback = companyChangedCallback;
+  $scope.sharingChangedCallback = sharingChangedCallback;
 
 
     function removeProp(prop){
@@ -90,6 +92,12 @@ angular.module('isfi.assets')
       console.log(response);
     })
 
+  }
+
+  function sharingChangedCallback(){
+    delete $scope.asset.ownership.assignedCompany;
+    delete $scope.asset.ownership.assignedDepartment;
+    delete $scope.asset.ownership.assignedUser;
   }
 
   function companyChangedCallback(){
@@ -213,9 +221,19 @@ angular.module('isfi.assets')
   function showModalPurchaseInfo(){
     $modal.open({
       templateUrl: 'assets/partials/purchase-modal.html',
-      controller: 'purchase-modal-controller'
+      controller: 'purchase-modal-controller',
+      size: 'lg'
     });
   }
+
+  function showModalLeaseInfo(){
+    $modal.open({
+      templateUrl: 'assets/partials/lease-modal.html',
+      controller: 'lease-modal-controller',
+      size: 'lg'
+    });
+  }
+
 
   function showModalAddStatus(){
     var statusModal = $modal.open({

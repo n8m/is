@@ -26,5 +26,6 @@ angular.module('isfi', [
   'isfi.user',
   'isfi.assets',
   'isfi.customOption',
-  'isfi.tags-input-utility'
+  'isfi.tags-input-utility',
+  'isfi.datepickerIcon'
 ]);

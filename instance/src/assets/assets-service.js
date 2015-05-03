@@ -137,7 +137,39 @@ angular.module('isfi.assets')
       var deferred = $q.defer();
 
       server.get('/api/asset/' + assetId).then(function(data){
+
+        //refactor
+
+        if(data.warrantyExpirity){
+          data.warrantyExpirity = data.warrantyExpirity.date;
+        }
+
+
         deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+
+      return deferred.promise;
+
+    },
+    postPurchaseInfo: function(payload){
+
+      var deferred = $q.defer();
+      server.post('/api/purchase-info', payload).then(function(data){
+        deferred.resolve(data)
+      }, function(response){
+        deferred.reject(response);
+      });
+
+      return deferred.promise;
+
+    },
+    postLeaseInfo: function(payload){
+
+      var deferred = $q.defer();
+      server.post('/api/lease-info', payload).then(function(data){
+        deferred.resolve(data)
       }, function(response){
         deferred.reject(response);
       });

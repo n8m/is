@@ -35,6 +35,15 @@
   margin-top: 15px;
 }
 
-.input-button{
-  margin-top: 23px;
+.input-control-margin-top{
+  margin-top: 24px;
+}
+
+.nowrap{
+  white-space: nowrap;
+}
+
+div[disabled="disabled"] {
+  background-color: #eee;
+  cursor: not-allowed;
 }
