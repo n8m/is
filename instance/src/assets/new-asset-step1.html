@@ -13,9 +13,6 @@
   </div>
 </div>
 
-{{asset}}
-
-
 <form name="step1" ng-submit="next()">
 
   <div class="row">
@@ -54,7 +51,8 @@
 
         <p>
           <ui-select ng-model="asset.deviceType"
-                     custom-option='{"buttonText": "Add New Device Type", "click" : "showDeviceModal"}'>
+                     custom-option='{"buttonText": "Add New Device Type", "click" : "showDeviceModal"}'
+                     ng-disabled="!asset.category">
             <ui-select-match>{{ $select.selected.deviceTypeName }}</ui-select-match>
             <ui-select-choices
               repeat="deviceType in deviceTypes | filter: $select.search">

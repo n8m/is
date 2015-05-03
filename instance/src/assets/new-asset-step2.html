@@ -5,8 +5,6 @@
   </div>
 </div>
 
-  {{asset}}
-
 <div class="row">
   <div class="col-xs-12">
     <span>Step1</span>
@@ -190,7 +188,7 @@
         <label>Department</label>
 
         <p>
-          <ui-select ng-model="asset.ownership.assignedDepartment" ng-disabled="asset.ownership.sharing.sharingName !== 'Shared (Company or Department)'" custom-option='{"buttonText": "Add New Department", "click" : "showAddModal", "type": "department"}'>
+          <ui-select ng-model="asset.ownership.assignedDepartment" ng-disabled="asset.ownership.sharing.sharingName !== 'Shared (Company or Department)' || !asset.ownership.assignedCompany" custom-option='{"buttonText": "Add New Department", "click" : "showAddModal", "type": "department"}'>
             <ui-select-match>{{ $select.selected.departmentName }}</ui-select-match>
             <ui-select-choices repeat="department in departments | filter: $select.search">
               <span ng-bind-html="department.departmentName | highlight: $select.search"></span>

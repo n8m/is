@@ -138,10 +138,9 @@ angular.module('isfi.assets')
 
       server.get('/api/asset/' + assetId).then(function(data){
 
-        //refactor
 
         if(data.warrantyExpirity){
-          data.warrantyExpirity = data.warrantyExpirity.date;
+          data.warrantyExpirity = data.warrantyExpirity.date.split(' ')[0];
         }
 
 

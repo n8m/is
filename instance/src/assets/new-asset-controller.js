@@ -105,7 +105,7 @@ angular.module('isfi.assets')
 
     server.get('/api/department', {
       instanceUrl: userProfile.getInstanceUrl(),
-      company: $scope.asset.ownership.assignedCompany
+      company: $scope.asset.ownership.assignedCompany.id
     }).then(function(data){
       $scope.departments = data._embedded.items;
     }, function(){
@@ -119,7 +119,7 @@ angular.module('isfi.assets')
 
     server.get('/api/asset/devicetype', {
       instanceUrl: userProfile.getInstanceUrl(),
-      assetCategory: $scope.asset.category
+      assetCategory: $scope.asset.category.id
     }).then(function(data){
       $scope.deviceTypes = data._embedded.items;
       console.log(data);
