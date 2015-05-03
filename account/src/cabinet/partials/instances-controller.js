@@ -27,7 +27,7 @@ angular.module('isf.cabinet')
 
         //update instancesList
         userProfile.queryInstancesList().then(function(data){
-          $scope.instances = data._embedded.instance;
+          $scope.instances = data._embedded.items;
         });
 
       }, function(){
