@@ -1,32 +1,50 @@
 <div class="row">
   <div class="col-xs-6">
-    <div class="input-field">
-      <label>Manufacturer</label>
 
-      <p>
-        <ui-select ng-model="asset.assignedLocation"
-                   custom-option='{"buttonText": "Add New Location", "click" : "showAddModal", "type": "location"}'>
-          <ui-select-match>{{ $select.selected.locationName }}</ui-select-match>
-          <ui-select-choices repeat="location.id as location in locations | filter: $select.search">
-            <span ng-bind-html="location.locationName | highlight: $select.search"></span>
-          </ui-select-choices>
-        </ui-select>
-      </p>
+    <div class="input-field">
+      <label for="manufacturer">Manufacturer</label>
+      <input type="text" id="manufacturer" class="form-control" ng-model="asset.manufacturer">
     </div>
+
+    <div class="input-field">
+      <label for="serial-number">Serial Number <span class="glyphicon glyphicon-question-sign"></span></label>
+      <input type="text" class="form-control" id="serial-number" ng-model="asset.serialNumber">
+    </div>
+
+    <div class="input-field">
+      <label for="imei">IMEI <small>(for mobile assets only)</small></label>
+      <input type="text" class="form-control" id="imei" ng-model="asset.imei">
+    </div>
+
   </div>
   <div class="col-xs-6">
-    <label>Last Seen Location</label>
-    <a href>Assigned Location History</a>
+
+    <div class="input-field">
+      <label for="model">Model</label>
+      <input type="text" class="form-control" id="model" ng-model="asset.model">
+    </div>
+
+    <div class="input-field">
+      <label>Supplier</label>
+      <ui-select ng-model="asset.supplier"
+                 custom-option='{"buttonText": "Add New Supplier", "click" : "showSupplierModal"}'>
+        <ui-select-match>{{ $select.selected.title }}</ui-select-match>
+        <ui-select-choices repeat="supplier in suppliers | filter: $select.search">
+          <span ng-bind-html="supplier.title | highlight: $select.search"></span>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
   </div>
 </div>
 
 
 <div class="button-group pull-right">
-  <button class="btn btn-primary" type="button" ng-click="saveSection('locationSection')">
+  <button class="btn btn-primary" type="button" ng-click="saveSection('techSection')">
     Save
   </button>
 
-  <button class="btn btn-default" type="button" ng-click="cancelSection('locationSection')">
+  <button class="btn btn-default" type="button" ng-click="cancelSection('techSection')">
     Cancel
   </button>
 </div>

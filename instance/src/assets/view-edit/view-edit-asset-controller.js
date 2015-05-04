@@ -18,7 +18,8 @@ angular.module('isfi.assets')
       titleSection: false,
       descriptionSection: false,
       locationSection: false,
-      statusSection: false
+      statusSection: false,
+      techSection: false
     };
 
     $scope.updateAsset = updateAsset;
@@ -99,8 +100,5 @@ angular.module('isfi.assets')
       queryAsset();
       $scope.editSection[section] = false;
     }
-
-
-
 
 });

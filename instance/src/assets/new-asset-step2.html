@@ -47,11 +47,8 @@
     </div>
 
     <div class="input-field">
-      <label for="imei">IMEI (for mobile assets only)</label>
-
-      <p>
-        <input type="text" class="form-control" id="imei" ng-model="asset.imei">
-      </p>
+      <label for="imei">IMEI <small>(for mobile assets only)</small></label>
+      <input type="text" class="form-control" id="imei" ng-model="asset.imei">
     </div>
 
     <div class="input-field">
@@ -97,16 +94,11 @@
 
     <div class="input-field">
       <label for="model">Model</label>
-
-      <p>
-        <input type="text" class="form-control" id="model" ng-model="asset.model">
-      </p>
+      <input type="text" class="form-control" id="model" ng-model="asset.model">
     </div>
 
     <div class="input-field">
       <label>Supplier</label>
-
-      <p>
         <ui-select ng-model="asset.supplier"
                    custom-option='{"buttonText": "Add New Supplier", "click" : "showSupplierModal"}'>
           <ui-select-match>{{ $select.selected.title }}</ui-select-match>
@@ -114,7 +106,6 @@
             <span ng-bind-html="supplier.title | highlight: $select.search"></span>
           </ui-select-choices>
         </ui-select>
-      </p>
     </div>
 
     <div class="input-field">
