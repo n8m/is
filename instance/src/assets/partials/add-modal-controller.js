@@ -15,12 +15,12 @@ angular.module('isfi.assets')
       var payload = {
         "action": "create",
         "instanceUrl": userProfile.getInstanceUrl(),
-        "category": asset.category
+        "category": asset.category.id
       };
 
       payload[itemPropertyName] = $scope.item;
 
-      payload.company = asset.ownership.assignedCompany;
+      payload.company = asset.ownership.assignedCompany.id;
 
       server.post(createUrl, payload).then(function(){
         $scope.successMessage = true;

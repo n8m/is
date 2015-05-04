@@ -10,10 +10,10 @@ angular.module('isfi.assets')
 
   var _addItemData = {
     ownershipType: {
-      createUrl: '/api/asset/ownership-type',
-      name: 'Ownership Type',
-      itemPropertyName: 'ownershipTypeName',
-      itemArrayName: 'ownershipTypes'
+      createUrl: '/api/asset/ownership-type', //url for doing GET/POST request
+      name: 'Ownership Type', //Human readable label for template
+      itemPropertyName: 'ownershipTypeName', //name of the property for POST request
+      itemArrayName: 'ownershipTypes' //arrayName for storing resource on frontend
     },
     category: {
       createUrl: '/api/asset/category',
@@ -38,6 +38,12 @@ angular.module('isfi.assets')
       name: 'Location',
       itemPropertyName: 'locationName',
       itemArrayName: 'locations'
+    },
+    status:{
+      createUrl: '/api/asset/status',
+      name: 'Status',
+      itemPropertyName: 'statusName',
+      itemArrayName: 'statuses'
     }
   };
 

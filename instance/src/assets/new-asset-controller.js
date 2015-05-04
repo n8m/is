@@ -45,7 +45,7 @@ angular.module('isfi.assets')
 
   server.get('/api/asset/assigned-user', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
     $scope.users = data._embedded.items;
-  })
+  });
 
 
     if($stateParams.assetId){
@@ -67,10 +67,9 @@ angular.module('isfi.assets')
   $scope.showUploadModal = showUploadModal;
   $scope.showModalPurchaseInfo = showModalPurchaseInfo;
   $scope.showModalLeaseInfo = showModalLeaseInfo;
-  $scope.showSupplierModal = showSupplierModal;
   $scope.showDeviceModal = showDeviceModal;
-  $scope.showModalAddStatus = showModalAddStatus;
   $scope.showAddModal = showAddModal;
+  $scope.showSupplierModal = showSupplierModal;
 
   $scope.next = next;
   $scope.save = save;
@@ -162,7 +161,7 @@ angular.module('isfi.assets')
     addModal.result.then(function(){
       server.get(assetsService.getItemParameter(type, 'createUrl'), {
         instanceUrl: userProfile.getInstanceUrl(),
-        category: $scope.asset.category
+        category: $scope.asset.category.id
       }).then(function(data){
         $scope[itemArrayName] = data._embedded.items;
         console.log(data);
@@ -220,7 +219,6 @@ angular.module('isfi.assets')
       })
     })
   }
-
 
   function showModalPurchaseInfo(){
 
@@ -315,21 +313,6 @@ angular.module('isfi.assets')
     }
 
 
-  }
-
-
-  function showModalAddStatus(){
-    var statusModal = $modal.open({
-      templateUrl: 'assets/partials/status-add-modal.html',
-      controller: 'status-add-modal-controller'
-    });
-
-    //@todo refactor (put into service)
-    statusModal.result.then(function(){
-      server.get('/api/asset/status', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-        $scope.statuses = data._embedded.items;
-      });
-    })
   }
 
   function getLinkedAssets(query){
