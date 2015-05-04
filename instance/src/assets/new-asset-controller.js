@@ -39,7 +39,7 @@ angular.module('isfi.assets')
   });
 
   assetsService.querySharingTypes().then(function(data){
-    $scope.sharingType = data._embedded.items;
+    $scope.sharingTypes = data._embedded.items;
   }, function(response){
     console.log(response);
   });
@@ -61,6 +61,8 @@ angular.module('isfi.assets')
 
     assetsService.queryAsset($stateParams.assetId).then(function(data){
       $scope.asset = data;
+
+      queryDeviceTypes();
 
       if($scope.asset.qrCodeNumber){
         $scope.showQrInput = true;
@@ -128,14 +130,7 @@ angular.module('isfi.assets')
 
   function categoryChangedCallback(){
     delete $scope.asset.deviceType;
-
-    assetsService.queryDeviceTypes($scope.asset.category.id).then(function(data){
-      $scope.deviceTypes = data._embedded.items;
-    }, function(response){
-      console.log(response);
-      $scope.deviceTypes = [];
-    });
-
+    queryDeviceTypes();
   }
 
   function showAddModal(type){
@@ -184,6 +179,15 @@ angular.module('isfi.assets')
           return type;
         }
       }
+    });
+  }
+
+  function queryDeviceTypes(){
+    assetsService.queryDeviceTypes($scope.asset.category.id).then(function(data){
+      $scope.deviceTypes = data._embedded.items;
+    }, function(response){
+      console.log(response);
+      $scope.deviceTypes = [];
     });
   }
 

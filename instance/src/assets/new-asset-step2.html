@@ -177,8 +177,8 @@
         <label>Asset Sharing</label>
         <ui-select ng-model="asset.ownership.sharing" on-select="sharingChangedCallback()">
           <ui-select-match>{{ $select.selected.sharingName }}</ui-select-match>
-          <ui-select-choices repeat="option in shareOptions | filter: $select.search">
-            <span ng-bind-html="option.sharingName | highlight: $select.search"></span>
+          <ui-select-choices repeat="sharingType in sharingTypes | filter: $select.search">
+            <span ng-bind-html="sharingType.sharingName | highlight: $select.search"></span>
           </ui-select-choices>
         </ui-select>
       </div>
