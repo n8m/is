@@ -8,60 +8,69 @@ angular.module('isfi.assets')
   $scope.asset = {};
   $scope.getLinkedAssets = getLinkedAssets;
 
-  //@todo refactor
-  server.get('/api/asset/location', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+  assetsService.queryLocations().then(function(data){
     $scope.locations = data._embedded.items;
+  }, function(response){
+    console.log(response);
   });
 
-  //@todo refactor
-  server.get('/api/supplier').then(function(data){
+  assetsService.querySuppliers().then(function(data){
     $scope.suppliers = data._embedded.items;
+  }, function(response){
+    console.log(response);
   });
 
-  //@todo refactor
-  server.get('/api/asset/status', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+  assetsService.queryStatuses().then(function(data){
     $scope.statuses = data._embedded.items;
+  }, function(response){
+    console.log(response);
   });
 
-  //@todo refactor
-  server.get('/api/asset/ownership-type', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+  assetsService.queryOwnershipTypes().then(function(data){
     $scope.ownershipTypes = data._embedded.items;
+  }, function(response){
+    console.log(response);
   });
 
-  //@todo refactor
-  server.get('/api/asset/category', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+  assetsService.queryCategories().then(function(data){
     $scope.categories = data._embedded.items;
+  }, function(response){
+    console.log(response);
   });
 
-  //@todo refactor
-  server.get('/api/asset/sharing', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
-    $scope.shareOptions = data._embedded.items;
+  assetsService.querySharingTypes().then(function(data){
+    $scope.sharingType = data._embedded.items;
+  }, function(response){
+    console.log(response);
   });
 
-  //@todo refactor
-  server.get('/api/company', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+  assetsService.queryCompanies().then(function(data){
     $scope.companies = data._embedded.items;
+  }, function(response){
+    console.log(response);
   });
 
-  server.get('/api/asset/assigned-user', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+  assetsService.queryUsers().then(function(data){
     $scope.users = data._embedded.items;
+  }, function(response){
+    console.log(response);
   });
 
 
-    if($stateParams.assetId){
+  if($stateParams.assetId){
 
-      assetsService.queryAsset($stateParams.assetId).then(function(data){
-        $scope.asset = data;
+    assetsService.queryAsset($stateParams.assetId).then(function(data){
+      $scope.asset = data;
 
-        if($scope.asset.qrCodeNumber){
-          $scope.showQrInput = true;
-        }
+      if($scope.asset.qrCodeNumber){
+        $scope.showQrInput = true;
+      }
 
-      }, function(response){
-        console.log(response);
-      });
+    }, function(response){
+      console.log(response);
+    });
 
-    }
+  }
 
 
   $scope.showUploadModal = showUploadModal;
@@ -80,7 +89,7 @@ angular.module('isfi.assets')
   $scope.sharingChangedCallback = sharingChangedCallback;
 
 
-    function removeProp(prop){
+  function removeProp(prop){
     delete $scope.asset[prop];
   }
 
@@ -120,15 +129,12 @@ angular.module('isfi.assets')
   function categoryChangedCallback(){
     delete $scope.asset.deviceType;
 
-    server.get('/api/asset/devicetype', {
-      instanceUrl: userProfile.getInstanceUrl(),
-      assetCategory: $scope.asset.category.id
-    }).then(function(data){
+    assetsService.queryDeviceTypes($scope.asset.category.id).then(function(data){
       $scope.deviceTypes = data._embedded.items;
-      console.log(data);
-    }, function(){
+    }, function(response){
+      console.log(response);
       $scope.deviceTypes = [];
-    })
+    });
 
   }
 

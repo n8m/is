@@ -1,0 +1,32 @@
+<button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.techSection=true">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+</button>
+
+<div class="row">
+  <div class="col-xs-6">
+    <div class="input-field">
+      <label>Manufacturer</label>
+      <p>{{asset.manufacturer}}</p>
+    </div>
+
+    <div class="input-field">
+      <label>Serial Number</label>
+      <p>{{asset.serialNumber}}</p>
+    </div>
+
+    <div class="input-field">
+      <label>IMEI <small>(for mobile assets only)</small></label>
+      <p>{{asset.imei}}</p>
+    </div>
+  </div>
+
+  <div class="col-xs-6">
+    <div class="input-field">
+      <label>Model</label>
+      <p>{{asset.model}}</p>
+    </div>
+    <div class="input-field">
+      <label>Supplier</label>
+      <p>{{asset.supplier.title}}</p>
+    </div>
+</div>

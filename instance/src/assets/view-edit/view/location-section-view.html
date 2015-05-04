@@ -1,19 +1,15 @@
+<button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.locationSection=true">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+</button>
+
 <div class="row">
-
-  <button type="button" class="btn btn-primary pull-right edit-button" ng-click="editSection.locationSection=true">
-    <span class="glyphicon glyphicon-pencil"></span> Edit
-  </button>
-
   <div class="col-xs-6">
     <label>Assigned Location</label>
-    <p>{{asset.assignedLocation}}</p>
+    <p>{{asset.assignedLocation.locationName}}</p>
   </div>
 
   <div class="col-xs-6">
-
+    <label>Last Seen Location</label>
+    <a href>Assigned Location History</a>
   </div>
 </div>
-
-
-
-

@@ -1,38 +1,46 @@
-<div class="row">
+<section id="view-edit-section">
+  <div class="row">
 
-  <div class="col-xs-12">
-    <div ui-view="title-section-view" ng-if="!editSection.titleSection"></div>
-    <div ui-view="title-section-edit" ng-if="editSection.titleSection"></div>
-  </div>
-
-</div>
-
-<hr>
-
-<div class="row">
-
-  <div class="col-xs-8">
-
-    <div ui-view="description-section-view" ng-if="!editSection.descriptionSection"></div>
-    <div ui-view="description-section-edit" ng-if="editSection.descriptionSection"></div>
-
-    <hr>
-
-    <div ui-view="location-section-view" ng-if="!editSection.locationSection"></div>
-    <div ui-view="location-section-edit" ng-if="editSection.locationSection"></div>
-
-    <hr>
-
-    <div ui-view="status-section-view" ng-if="!editSection.statusSection"></div>
-    <div ui-view="status-section-edit" ng-if="editSection.statusSection"></div>
-
+    <div class="col-xs-12">
+      <div ui-view="title-section-view" ng-if="!editSection.titleSection"></div>
+      <div ui-view="title-section-edit" ng-if="editSection.titleSection"></div>
+    </div>
 
   </div>
 
-  <div class="col-xs-4">
+  <hr>
+
+  <div class="row">
+
+    <div class="col-xs-8">
+
+      <div ui-view="description-section-view" ng-if="!editSection.descriptionSection"></div>
+      <div ui-view="description-section-edit" ng-if="editSection.descriptionSection"></div>
+
+      <hr>
+
+      <div ui-view="location-section-view" ng-if="!editSection.locationSection"></div>
+      <div ui-view="location-section-edit" ng-if="editSection.locationSection"></div>
+
+      <hr>
+
+      <div ui-view="status-section-view" ng-if="!editSection.statusSection"></div>
+      <div ui-view="status-section-edit" ng-if="editSection.statusSection"></div>
+
+      <hr>
+
+      <div ui-view="tech-section-view" ng-if="!editSection.techSection"></div>
+      <div ui-view="tech-section-edit" ng-if="editSection.techSection"></div>
+
+
+    </div>
+
+    <div class="col-xs-4">
+
+    </div>
+
 
   </div>
 
 
-</div>
-
+</section>

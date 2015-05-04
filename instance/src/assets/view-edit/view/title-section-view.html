@@ -1,14 +1,37 @@
-<div class="row">
+<button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.titleSection=true">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+</button>
 
-  <button type="button" class="btn btn-primary pull-right edit-button" ng-click="editSection.titleSection=true">
-    <span class="glyphicon glyphicon-pencil"></span> Edit
-  </button>
+<div class="row">
 
   <div class="col-xs-12">
     <h2>{{asset.name}}</h2>
+    <p>{{asset.category.categoryName}} <span ng-show="asset.deviceType"> > {{asset.deviceType.deviceTypeName}}</span></p>
+
+    <div>
+      <span>
+        IsItUp Asset ID:
+        <span class="well well-sm">
+          {{asset.assetId}}
+        </span>
+      </span>
+
+      <span ng-show="asset.qrCodeNumber">
+        |
+        Asset QR Code Number:
+        <span class="well well-sm">
+          {{asset.qrCodeNumber}}
+        </span>
+      </span>
+
+      <span ng-show="asset.customerAssetId">
+        |
+        Customer Asset ID:
+        <span class="well well-sm">
+          {{asset.customerAssetId}}
+        </span>
+      </span>
+    </div>
+
   </div>
 </div>
-
-
-
-

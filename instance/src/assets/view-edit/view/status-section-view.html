@@ -1,21 +1,16 @@
+<button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.statusSection=true">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+</button>
+
 <div class="row">
-
-  <button type="button" class="btn btn-primary pull-right edit-button" ng-click="editSection.statusSection=true">
-    <span class="glyphicon glyphicon-pencil"></span> Edit
-  </button>
-
   <div class="col-xs-6">
     <div class="input-field">
       <label>Asset Status</label>
-      <p>{{asset.status}}</p>
+      <p>{{asset.status.statusName}}</p>
     </div>
   </div>
 
   <div class="col-xs-6">
-
+    <a href>Asset Status / Maintenance History</a>
   </div>
 </div>
-
-
-
-

@@ -223,6 +223,91 @@ angular.module('isfi.assets')
 
       return deferred.promise;
 
+    },
+    queryLocations: function(){
+      var deferred = $q.defer();
+      server.get('/api/asset/location', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+      return deferred.promise;
+    },
+    querySuppliers: function(){
+      var deferred = $q.defer();
+      server.get('/api/supplier', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+      return deferred.promise;
+    },
+    queryStatuses: function(){
+      var deferred = $q.defer();
+      server.get('/api/asset/status', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+      return deferred.promise;
+    },
+    queryOwnershipTypes: function(){
+      var deferred = $q.defer();
+      server.get('/api/asset/ownership-type', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+      return deferred.promise;
+    },
+    queryCategories: function(){
+      var deferred = $q.defer();
+      server.get('/api/asset/category', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+      return deferred.promise;
+    },
+    querySharingTypes: function(){
+      var deferred = $q.defer();
+      server.get('/api/asset/sharing', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+      return deferred.promise;
+    },
+    queryCompanies: function(){
+      var deferred = $q.defer();
+      server.get('/api/company', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+      return deferred.promise;
+    },
+    queryUsers: function(){
+      var deferred = $q.defer();
+      server.get('/api/asset/assigned-user', {instanceUrl: userProfile.getInstanceUrl()}).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+      return deferred.promise;
+    },
+    queryDeviceTypes: function(categoryId){
+      var deferred = $q.defer();
+      server.get('/api/asset/devicetype',
+        {
+          instanceUrl: userProfile.getInstanceUrl(),
+          assetCategory: categoryId
+        }).then(function(data){
+        deferred.resolve(data);
+      }, function(response){
+        deferred.reject(response);
+      });
+      return deferred.promise;
     }
   };
 

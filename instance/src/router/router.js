@@ -155,6 +155,12 @@ angular.module('isfi.router', [])
         },
         'status-section-edit@base.main.assetView':{
           templateUrl: 'assets/view-edit/edit/status-section-edit.html'
+        },
+        'tech-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/tech-section-view.html'
+        },
+        'tech-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/tech-section-edit.html'
         }
       }
     })

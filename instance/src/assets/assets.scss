@@ -32,7 +32,8 @@
 }
 
 .edit-button{
-  margin-top: 15px;
+  position: absolute;
+  right: 0;
 }
 
 .input-control-margin-top{
@@ -46,4 +47,10 @@
 div[disabled="disabled"] {
   background-color: #eee;
   cursor: not-allowed;
+}
+
+#view-edit-section{
+  .row{
+    margin-right: 15px !important;
+  }
 }
