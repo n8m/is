@@ -179,6 +179,18 @@ angular.module('isfi.router', [])
         },
         'files-upload-section-edit@base.main.assetView':{
           templateUrl: 'assets/view-edit/edit/upload/files-upload-section-edit.html'
+        },
+        'ownership-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/ownership-section-view.html'
+        },
+        'ownership-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/ownership-section-edit.html'
+        },
+        'mac-address-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/mac-address-section-view.html'
+        },
+        'mac-address-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/mac-address-section-edit.html'
         }
       }
     })

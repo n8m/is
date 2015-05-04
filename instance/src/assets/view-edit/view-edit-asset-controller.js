@@ -12,6 +12,10 @@ angular.module('isfi.assets')
     queryLocations();
     queryStatuses();
     querySuppliers();
+    queryOwnershipTypes();
+    querySharingTypes();
+    queryCompanies();
+    queryUsers();
 
     //view mode is 'view' by default
     $scope.editSection = {
@@ -22,7 +26,9 @@ angular.module('isfi.assets')
       techSection: false,
       photosUploadSection: false,
       invoicesUploadSection: false,
-      filesUploadSection: false
+      filesUploadSection: false,
+      ownershipSection: false,
+      macAddressSection: false
     };
 
     $scope.updateAsset = updateAsset;
@@ -93,6 +99,38 @@ angular.module('isfi.assets')
       }, function(){
         console.log('error');
       })
+    }
+
+    function queryOwnershipTypes(){
+      assetsService.queryOwnershipTypes().then(function(data){
+        $scope.ownershipTypes = data._embedded.items;
+      }, function(response){
+        console.log(response);
+      });
+    }
+
+    function querySharingTypes(){
+      assetsService.querySharingTypes().then(function(data){
+        $scope.sharingTypes = data._embedded.items;
+      }, function(response){
+        console.log(response);
+      });
+    }
+
+    function queryCompanies(){
+      assetsService.queryCompanies().then(function(data){
+        $scope.companies = data._embedded.items;
+      }, function(response){
+        console.log(response);
+      });
+    }
+
+    function queryUsers(){
+      assetsService.queryUsers().then(function(data){
+        $scope.users = data._embedded.items;
+      }, function(response){
+        console.log(response);
+      });
     }
 
     function saveSection(section){

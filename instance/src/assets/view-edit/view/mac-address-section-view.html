@@ -1,0 +1,12 @@
+<button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.macAddressSection=true">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+</button>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="well">
+      <label>Mac Address</label>
+      <p ng-repeat="macAddress in asset.macAddresses">{{macAddress}}</p>
+    </div>
+  </div>
+</div>

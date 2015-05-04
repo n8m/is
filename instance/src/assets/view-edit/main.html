@@ -46,6 +46,21 @@
       <div ui-view="files-upload-section-view" ng-if="!editSection.filesUploadSection"></div>
       <div ui-view="files-upload-section-edit" ng-if="editSection.filesUploadSection"></div>
 
+      <div class="input-field">
+        <a class="btn btn-large btn-success">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+          Submit for Data Entry
+        </a>
+        <p>Remaining credits: 1</p>
+      </div>
+
+      <div ui-view="ownership-section-view" ng-if="!editSection.ownershipSection"></div>
+      <div ui-view="ownership-section-edit" ng-if="editSection.ownershipSection"></div>
+
+      <div ui-view="mac-address-section-view" ng-if="!editSection.macAddressSection"></div>
+      <div ui-view="mac-address-section-edit" ng-if="editSection.macAddressSection"></div>
+
+
     </div>
 
 
