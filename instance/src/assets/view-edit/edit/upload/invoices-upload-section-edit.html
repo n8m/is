@@ -1,0 +1,25 @@
+
+<div class="well input-well">
+  <span class="pull-left">Invoices <span class="glyphicon glyphicon-question-sign"></span></span>
+
+  <span class="pull-right">
+    <button class="btn btn-sm btn-primary" type="button"> <!-- ng-click="showUploadModal('Invoices')" -->
+      <span class="glyphicon glyphicon-plus-sign">Upload Invoices</span>
+    </button>
+  </span>
+
+  <p class="message">
+    No invoices uploaded. Click button to upload
+  </p>
+
+  <div class="button-group text-center">
+    <button class="btn btn-primary" type="button" ng-click="saveSection('invoicesUploadSection')">
+      Save
+    </button>
+
+    <button class="btn btn-default" type="button" ng-click="cancelSection('invoicesUploadSection')">
+      Cancel
+    </button>
+  </div>
+
+</div>

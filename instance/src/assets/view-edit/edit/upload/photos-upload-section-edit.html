@@ -1,0 +1,25 @@
+<div class="well input-well">
+
+  <span class="pull-right">
+    <button class="btn btn-sm btn-primary" type="button"> <!-- ng-click="showUploadModal('Photos')" -->
+      <span class="glyphicon glyphicon-plus-sign">Upload Photos</span>
+    </button>
+  </span>
+
+  <span class="pull-left">Photos <span class="glyphicon glyphicon-question-sign"></span></span>
+
+  <p class="message">
+    No photos uploaded. Click button to upload
+  </p>
+
+  <div class="button-group text-center">
+    <button class="btn btn-primary" type="button" ng-click="saveSection('photosUploadSection')">
+      Save
+    </button>
+
+    <button class="btn btn-default" type="button" ng-click="cancelSection('photosUploadSection')">
+      Cancel
+    </button>
+  </div>
+
+</div>

@@ -37,6 +37,15 @@
 
     <div class="col-xs-4">
 
+      <div ui-view="photos-upload-section-view" ng-if="!editSection.photosUploadSection"></div>
+      <div ui-view="photos-upload-section-edit" ng-if="editSection.photosUploadSection"></div>
+
+      <div ui-view="invoices-upload-section-view" ng-if="!editSection.invoicesUploadSection"></div>
+      <div ui-view="invoices-upload-section-edit" ng-if="editSection.invoicesUploadSection"></div>
+
+      <div ui-view="files-upload-section-view" ng-if="!editSection.filesUploadSection"></div>
+      <div ui-view="files-upload-section-edit" ng-if="editSection.filesUploadSection"></div>
+
     </div>
 
 

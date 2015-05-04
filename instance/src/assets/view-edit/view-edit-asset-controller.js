@@ -19,7 +19,10 @@ angular.module('isfi.assets')
       descriptionSection: false,
       locationSection: false,
       statusSection: false,
-      techSection: false
+      techSection: false,
+      photosUploadSection: false,
+      invoicesUploadSection: false,
+      filesUploadSection: false
     };
 
     $scope.updateAsset = updateAsset;
