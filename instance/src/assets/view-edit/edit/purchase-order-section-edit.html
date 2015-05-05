@@ -1,0 +1,92 @@
+<div class="row">
+
+  <h3>Purchase Order</h3>
+  <hr>
+
+  <div class="col-xs-6">
+    <div class="input-field">
+      <label for="po">PO #</label>
+      <input type="text" class="form-control" ng-model="purchaseInfo.purchaseOrder.orderNumber" id="po">
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3">
+        <label>Unit Cost</label>
+
+        <select class="form-control" ng-model="purchaseInfo.purchaseOrder.unitCost.currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+
+      <div class="col-xs-5">
+        <input type="text" ng-model="purchaseInfo.purchaseOrder.unitCost.cost" class="form-control input-control-margin-top">
+      </div>
+
+      <div class="col-xs-4">
+        <label for="quantity">Total Quantity</label>
+        <input type="number" name="quantity" id="quantity" ng-model="purchaseInfo.purchaseOrder.quantity" class="form-control">
+      </div>
+    </div>
+
+
+    <div class="input-field">
+      <label>Purchase Date</label>
+      <div>
+        <input ng-model="purchaseInfo.purchaseOrder.orderDate" type=text class="form-control" bs-datepicker>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label>PO Date</label>
+      <div>
+        <input ng-model="purchaseInfo.purchaseOrder.purchaseDate" type=text bs-datepicker class="form-control">
+      </div>
+    </div>
+
+    <div class="row input-field">
+      <div class="col-xs-3">
+        <label class="nowrap">Total Cost</label>
+        <select class="form-control" ng-model="purchaseInfo.purchaseOrder.totalCost.currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+
+      <div class="col-xs-9">
+        <input type="text" ng-model="purchaseInfo.purchaseOrder.totalCost.cost" class="form-control input-control-margin-top">
+      </div>
+    </div>
+
+    <div class="row input-field">
+      <div class="col-xs-3">
+        <label class="nowrap">Purchase Price</label>
+        <select class="form-control" ng-model="purchaseInfo.purchaseOrder.purchasePrice.currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+
+      <div class="col-xs-9">
+        <input ng-model="purchaseInfo.purchaseOrder.purchasePrice.cost" type="text" class="form-control input-control-margin-top">
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="button-group pull-right">
+  <button class="btn btn-primary" type="button" ng-click="saveSection('purchaseOrderSection')">
+    Save
+  </button>
+
+  <button class="btn btn-default" type="button" ng-click="cancelSection('purchaseOrderSection')">
+    Cancel
+  </button>
+</div>

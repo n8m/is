@@ -1,0 +1,35 @@
+<div class="row">
+
+  <h3>Cheque / Payment Reference</h3>
+  <hr>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label for="chequenumber">Cheque #</label>
+      <input type="text" ng-model="purchaseInfo.cheque.chequeNumber" class="form-control" id="chequenumber">
+    </div>
+
+  </div>
+
+  <div class="col-xs-6">
+    <div class="input-field">
+      <label for="chequedate">Cheque Date</label>
+      <div>
+        <input ng-model="purchaseInfo.cheque.chequeDate" type="text" id="chequedate" bs-datepicker class="form-control">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="button-group pull-right">
+  <button class="btn btn-primary" type="button" ng-click="saveSection('chequeSection')">
+    Save
+  </button>
+
+  <button class="btn btn-default" type="button" ng-click="cancelSection('chequeSection')">
+    Cancel
+  </button>
+</div>

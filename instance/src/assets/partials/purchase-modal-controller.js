@@ -13,6 +13,9 @@ angular.module('isfi.assets')
       assetsService.queryPurchaseInfo(purchaseInfo).then(function(data){
         $scope.purchase = data.purchaseOrder;
         $scope.delivery = data.deliveryOrder;
+        $scope.invoice = data.invoice;
+        $scope.cheque = data.cheque;
+        $scope.voucher = data.voucher;
       }, function(response){
         console.log(response);
       })
@@ -26,7 +29,10 @@ angular.module('isfi.assets')
           action: "update",
           instanceUrl: userProfile.getInstanceUrl(),
           purchaseOrder: $scope.purchase,
-          deliveryOrder: $scope.delivery
+          deliveryOrder: $scope.delivery,
+          invoice: $scope.invoice,
+          voucher: $scope.voucher,
+          cheque: $scope.cheque
         };
 
         assetsService.postPurchaseInfo(payload, purchaseInfo).then(function(data){
@@ -39,7 +45,10 @@ angular.module('isfi.assets')
           action: "create",
           instanceUrl: userProfile.getInstanceUrl(),
           purchaseOrder: $scope.purchase,
-          deliveryOrder: $scope.delivery
+          deliveryOrder: $scope.delivery,
+          invoice: $scope.invoice,
+          voucher: $scope.voucher,
+          cheque: $scope.cheque
         };
 
         assetsService.postPurchaseInfo(payload).then(function(data){

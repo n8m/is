@@ -7,6 +7,8 @@ angular.module('isfi.assets')
 
     queryAsset().then(function(data){
       queryDeviceTypes(data.category.id);
+      queryPurchaseInfo(data.purchaseInfo);
+      queryLeaseInfo(data.leaseInfo);
     });
 
     queryLocations();
@@ -28,7 +30,8 @@ angular.module('isfi.assets')
       invoicesUploadSection: false,
       filesUploadSection: false,
       ownershipSection: false,
-      macAddressSection: false
+      macAddressSection: false,
+      purchaseOrderSection: false
     };
 
     $scope.updateAsset = updateAsset;
@@ -101,6 +104,18 @@ angular.module('isfi.assets')
       })
     }
 
+    function updatePurchaseInfo(section){
+
+      $scope.purchaseInfo.action = 'update';
+
+      assetsService.postPurchaseInfo($scope.purchaseInfo, $scope.asset.purchaseInfo).then(function(){
+        queryPurchaseInfo($scope.asset.purchaseInfo);
+        $scope.editSection[section] = false;
+      }, function(){
+        console.log('error');
+      })
+    }
+
     function queryOwnershipTypes(){
       assetsService.queryOwnershipTypes().then(function(data){
         $scope.ownershipTypes = data._embedded.items;
@@ -133,13 +148,42 @@ angular.module('isfi.assets')
       });
     }
 
+    function queryPurchaseInfo(puchaseInfoId){
+      assetsService.queryPurchaseInfo(puchaseInfoId).then(function(data){
+        $scope.purchaseInfo = data;
+      }, function(response){
+        console.log(response);
+      })
+    }
+
+    function queryLeaseInfo(leaseInfoId){
+      assetsService.queryLeaseInfo(leaseInfoId).then(function(data){
+        $scope.leaseInfo = data;
+      }, function(response){
+        console.log(response);
+      })
+    }
+
     function saveSection(section){
-      updateAsset(section)
+
+      if(['purchaseOrderSection', 'deliveryOrderSection', 'invoiceSection', 'chequeSection', 'voucherSection'].indexOf(section) !== -1){
+        updatePurchaseInfo(section);
+      } else{
+        updateAsset(section)
+      }
+
     }
 
     function cancelSection(section){
-      queryAsset();
+
+      if(['purchaseOrderSection', 'deliveryOrderSection', 'invoiceSection', 'chequeSection', 'voucherSection'].indexOf(section) !== -1) {
+        queryPurchaseInfo($scope.asset.purchaseInfo);
+      } else{
+        queryAsset();
+      }
+
       $scope.editSection[section] = false;
+
     }
 
 });

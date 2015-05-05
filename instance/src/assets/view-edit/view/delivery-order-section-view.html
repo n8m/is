@@ -1,0 +1,32 @@
+<button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.deliveryOrderSection=true">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+</button>
+
+<div class="row">
+
+  <h3>Delivery Order</h3>
+  <hr>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label>DO #</label>
+      <p>{{purchaseInfo.deliveryOrder.orderNumber}}</p>
+    </div>
+
+    <div class="input-field">
+      <label>Actual Date Received</label>
+      <p>{{purchaseInfo.deliveryOrder.actualDateReceived}}</p>
+    </div>
+
+  </div>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label>DO Date</label>
+      <p>{{purchaseInfo.deliveryOrder.orderDate}}</p>
+    </div>
+
+  </div>
+</div>

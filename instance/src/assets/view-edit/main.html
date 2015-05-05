@@ -32,6 +32,28 @@
       <div ui-view="tech-section-view" ng-if="!editSection.techSection"></div>
       <div ui-view="tech-section-edit" ng-if="editSection.techSection"></div>
 
+      <div class="well">
+        <button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.purchaseMainSection=true">
+          <span class="glyphicon glyphicon-pencil"></span> Edit
+        </button>
+        <h2>Purchase Information</h2>
+      </div>
+
+      <div ui-view="purchase-order-section-view" ng-if="!editSection.purchaseOrderSection"></div>
+      <div ui-view="purchase-order-section-edit" ng-if="editSection.purchaseOrderSection"></div>
+
+      <div ui-view="delivery-order-section-view" ng-if="!editSection.deliveryOrderSection"></div>
+      <div ui-view="delivery-order-section-edit" ng-if="editSection.deliveryOrderSection"></div>
+
+      <div ui-view="invoice-section-view" ng-if="!editSection.invoiceSection"></div>
+      <div ui-view="invoice-section-edit" ng-if="editSection.invoiceSection"></div>
+
+      <div ui-view="cheque-section-view" ng-if="!editSection.chequeSection"></div>
+      <div ui-view="cheque-section-edit" ng-if="editSection.chequeSection"></div>
+
+      <div ui-view="voucher-section-view" ng-if="!editSection.voucherSection"></div>
+      <div ui-view="voucher-section-edit" ng-if="editSection.voucherSection"></div>
+
 
     </div>
 

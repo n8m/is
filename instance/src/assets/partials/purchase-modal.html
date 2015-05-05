@@ -137,7 +137,29 @@
       <span class="glyphicon size-2x pull-right" bs-collapse-toggle ng-class="{'glyphicon-plus-sign': isPanelExpanded(2), 'glyphicon-minus-sign': !isPanelExpanded(2)}"></span>
     </div>
     <div class="panel-collapse" bs-collapse-target>
-      <h1>Content</h1>
+
+      <div class="row">
+
+        <div class="col-xs-6">
+
+          <div class="input-field">
+            <label for="invoicenumber">Invoice #</label>
+            <input type="text" ng-model="invoice.invoiceNumber" class="form-control" id="invoicenumber">
+          </div>
+
+        </div>
+
+        <div class="col-xs-6">
+          <div class="input-field">
+            <label for="invoicedate">Invoice Date</label>
+            <div>
+              <input ng-model="invoice.invoiceDate" type="text" id="invoicedate" bs-datepicker class="form-control">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </div>
 
@@ -147,7 +169,30 @@
       <span class="glyphicon size-2x pull-right" bs-collapse-toggle ng-class="{'glyphicon-plus-sign': isPanelExpanded(3), 'glyphicon-minus-sign': !isPanelExpanded(3)}"></span>
     </div>
     <div class="panel-collapse" bs-collapse-target>
-      <h1>Content</h1>
+
+      <div class="row">
+
+        <div class="col-xs-6">
+
+          <div class="input-field">
+            <label for="chequenumber">Cheque #</label>
+            <input type="text" ng-model="cheque.chequeNumber" class="form-control" id="chequenumber">
+          </div>
+
+        </div>
+
+        <div class="col-xs-6">
+          <div class="input-field">
+            <label for="chequedate">Cheque Date</label>
+            <div>
+              <input ng-model="cheque.chequeDate" type="text" id="chequedate" bs-datepicker class="form-control">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
     </div>
   </div>
 
@@ -157,7 +202,28 @@
       <span class="glyphicon glyphicon-plus-sign size-2x pull-right" bs-collapse-toggle ng-class="{'glyphicon-plus-sign': isPanelExpanded(4), 'glyphicon-minus-sign': !isPanelExpanded(4)}"></span>
     </div>
     <div class="panel-collapse" bs-collapse-target>
-      <h1>Content</h1>
+      <div class="row">
+
+        <div class="col-xs-6">
+
+          <div class="input-field">
+            <label for="vouchernumber">Voucher #</label>
+            <input type="text" ng-model="voucher.voucherNumber" class="form-control" id="vouchernumber">
+          </div>
+
+        </div>
+
+        <div class="col-xs-6">
+          <div class="input-field">
+            <label for="voucherdate">Voucher Date</label>
+            <div>
+              <input ng-model="voucher.voucherDate" type="text" id="voucherdate" bs-datepicker class="form-control">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </div>

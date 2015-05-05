@@ -160,21 +160,6 @@ angular.module('isfi.assets')
     },
     postPurchaseInfo: function(payload, purchaseInfo){
 
-      payload.invoice = {
-        "invoiceNumber": "",
-        "invoiceDate": ""
-      };
-
-      payload.cheque = {
-        "chequeNumber": "",
-        "chequeDate": ""
-      };
-
-      payload.voucher = {
-        "voucherNumber": "",
-        "voucherDate": ""
-      };
-
       var url = purchaseInfo ? '/api/purchase-info/' + purchaseInfo : '/api/purchase-info';
 
       var deferred = $q.defer();

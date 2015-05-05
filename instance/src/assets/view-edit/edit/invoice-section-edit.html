@@ -1,0 +1,35 @@
+<div class="row">
+
+  <h3>Invoice</h3>
+  <hr>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label for="invoicenumber">Invoice #</label>
+      <input type="text" ng-model="purchaseInfo.invoice.invoiceNumber" class="form-control" id="invoicenumber">
+    </div>
+
+  </div>
+
+  <div class="col-xs-6">
+    <div class="input-field">
+      <label for="invoicedate">Invoice Date</label>
+      <div>
+        <input ng-model="purchaseInfo.invoice.invoiceDate" type="text" id="invoicedate" bs-datepicker class="form-control">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="button-group pull-right">
+  <button class="btn btn-primary" type="button" ng-click="saveSection('invoiceSection')">
+    Save
+  </button>
+
+  <button class="btn btn-default" type="button" ng-click="cancelSection('invoiceSection')">
+    Cancel
+  </button>
+</div>

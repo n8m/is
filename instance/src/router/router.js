@@ -191,6 +191,36 @@ angular.module('isfi.router', [])
         },
         'mac-address-section-edit@base.main.assetView':{
           templateUrl: 'assets/view-edit/edit/mac-address-section-edit.html'
+        },
+        'purchase-order-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/purchase-order-section-view.html'
+        },
+        'purchase-order-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/purchase-order-section-edit.html'
+        },
+        'delivery-order-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/delivery-order-section-view.html'
+        },
+        'delivery-order-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/delivery-order-section-edit.html'
+        },
+        'cheque-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/cheque-section-view.html'
+        },
+        'cheque-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/cheque-section-edit.html'
+        },
+        'invoice-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/invoice-section-view.html'
+        },
+        'invoice-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/invoice-section-edit.html'
+        },
+        'voucher-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/voucher-section-view.html'
+        },
+        'voucher-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/voucher-section-edit.html'
         }
       }
     })

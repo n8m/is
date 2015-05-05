@@ -1,0 +1,27 @@
+<button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.chequeSection=true">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+</button>
+
+<div class="row">
+
+  <h3>Cheque / Payment Reference</h3>
+  <hr>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label>Payment #</label>
+      <p>{{purchaseInfo.cheque.chequeNumber}}</p>
+    </div>
+
+  </div>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label>Payment Date</label>
+      <p>{{purchaseInfo.cheque.chequeDate}}</p>
+    </div>
+
+  </div>
+</div>

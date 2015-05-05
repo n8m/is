@@ -1,0 +1,56 @@
+<button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.purchaseOrderSection=true">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+</button>
+
+<div class="row">
+
+  <h3>Purchase Order</h3>
+  <hr>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label>PO #</label>
+      <p>{{purchaseInfo.purchaseOrder.orderNumber}}</p>
+    </div>
+
+    <div class="input-field">
+      <div class="row">
+        <div class="col-xs-6">
+          <label>Unit Cost</label>
+          <span>{{purchaseInfo.purchaseOrder.unitCost.currency}} {{purchaseInfo.purchaseOrder.unitCost.cost}}</span>
+        </div>
+        <div class="col-xs-6">
+          <label>Total Quanitity</label>
+          <span>{{purchaseInfo.purchaseOrder.quantity}}</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="input-field">
+      <label>Purchase Date</label>
+      <p>{{purchaseInfo.purchaseOrder.purchaseDate}}</p>
+    </div>
+
+  </div>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label>PO Date</label>
+      <p>{{purchaseInfo.purchaseOrder.orderDate}}</p>
+    </div>
+
+    <div class="input-field">
+      <label>Total Cost</label>
+      <p>{{purchaseInfo.purchaseOrder.totalCost.currency}} {{purchaseInfo.purchaseOrder.totalCost.cost}}</p>
+    </div>
+
+    <div class="input-field">
+      <label>Purchase Price</label>
+      <p>{{purchaseInfo.purchaseOrder.purchasePrice.currency}} {{purchaseInfo.purchaseOrder.purchasePrice.cost}}</p>
+    </div>
+
+  </div>
+</div>

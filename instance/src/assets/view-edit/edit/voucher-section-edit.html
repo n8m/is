@@ -1,0 +1,34 @@
+<div class="row">
+
+  <h3>Voucher</h3>
+  <hr>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label for="vouchernumber">Voucher #</label>
+      <input type="text" ng-model="purchaseInfo.voucher.voucherNumber" class="form-control" id="vouchernumber">
+    </div>
+
+  </div>
+
+  <div class="col-xs-6">
+    <div class="input-field">
+      <label for="invoicedate">Voucher Date</label>
+      <div>
+        <input ng-model="purchaseInfo.voucher.voucherDate" type="text" id="voucherdate" bs-datepicker class="form-control">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="button-group pull-right">
+  <button class="btn btn-primary" type="button" ng-click="saveSection('voucherSection')">
+    Save
+  </button>
+
+  <button class="btn btn-default" type="button" ng-click="cancelSection('voucherSection')">
+    Cancel
+  </button>
+</div>
