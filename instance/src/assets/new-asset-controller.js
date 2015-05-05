@@ -5,7 +5,14 @@ angular.module('isfi.assets')
 
 .controller('new-asset-controller', function($scope, assetsService, $state, $stateParams, $modal, server, userProfile, tagsInputConvert){
 
-  $scope.asset = {};
+  $scope.asset = {
+    files:{
+      photos:[],
+      invoices:[],
+      other:[]
+    }
+  };
+
   $scope.getLinkedAssets = getLinkedAssets;
 
   assetsService.queryLocations().then(function(data){
@@ -55,7 +62,6 @@ angular.module('isfi.assets')
   }, function(response){
     console.log(response);
   });
-
 
   if($stateParams.assetId){
 
@@ -170,8 +176,9 @@ angular.module('isfi.assets')
     })
   }
 
-  function showUploadModal(type){
-    $modal.open({
+  function showUploadModal(type, property){
+
+    var uploadModal = $modal.open({
       templateUrl: 'assets/partials/upload-modal.html',
       controller: 'upload-modal-controller',
       resolve: {
@@ -180,6 +187,15 @@ angular.module('isfi.assets')
         }
       }
     });
+
+    uploadModal.result.then(function(fileId){
+      console.log(fileId);
+      $scope.asset.files[property].push(fileId);
+      console.log($scope.asset.files);
+    }, function(response){
+      console.log(response);
+    })
+
   }
 
   function queryDeviceTypes(){
@@ -339,7 +355,8 @@ angular.module('isfi.assets')
         "description": $scope.asset.description,
         "deviceType": $scope.asset.deviceType,
         "qrCodeNumber": $scope.asset.qrCodeNumber,
-        "customerAssetId": $scope.asset.customerAssetId
+        "customerAssetId": $scope.asset.customerAssetId,
+        "files": $scope.asset.files
       };
 
       //@TODO: refactor

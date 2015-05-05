@@ -6,11 +6,14 @@
 </div>
 
 <div class="modal-body">
-  <button ng-file-select ng-file-change="upload($files)">
+  <button class="btn btn-primary" ng-file-select ng-model="files">
     <span class="glyphicon glyphicon-upload"></span>
     Upload {{uploadType}} from your computer
   </button>
   <hr>
+
+  <img class="thumb" ng-repeat="thumb in thumbs" ng-src="{{thumb}}">
+
 </div>
 
 <div class="modal-footer">
@@ -18,7 +21,7 @@
   You can also drag and drop your files
 
   <div class="pull-right btn-group">
-    <button ng-click="exit()">
+    <button ng-click="upload()">
       Continue
     </button>
 
