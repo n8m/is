@@ -198,11 +198,11 @@ angular.module('isfi.router', [])
         'purchase-order-section-edit@base.main.assetView':{
           templateUrl: 'assets/view-edit/edit/purchase-order-section-edit.html'
         },
-        'delivery-order-section-view@base.main.assetView':{
-          templateUrl: 'assets/view-edit/view/delivery-order-section-view.html'
+        'purchase-delivery-order-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/purchase-delivery-order-section-view.html'
         },
-        'delivery-order-section-edit@base.main.assetView':{
-          templateUrl: 'assets/view-edit/edit/delivery-order-section-edit.html'
+        'purchase-delivery-order-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/purchase-delivery-order-section-edit.html'
         },
         'cheque-section-view@base.main.assetView':{
           templateUrl: 'assets/view-edit/view/cheque-section-view.html'
@@ -221,6 +221,24 @@ angular.module('isfi.router', [])
         },
         'voucher-section-edit@base.main.assetView':{
           templateUrl: 'assets/view-edit/edit/voucher-section-edit.html'
+        },
+        'warranty-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/warranty-section-view.html'
+        },
+        'warranty-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/warranty-section-edit.html'
+        },
+        'lease-agreement-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/lease-agreement-section-view.html'
+        },
+        'lease-agreement-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/lease-agreement-section-edit.html'
+        },
+        'lease-delivery-order-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/lease-delivery-order-section-view.html'
+        },
+        'lease-delivery-order-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/lease-delivery-order-section-edit.html'
         }
       }
     })

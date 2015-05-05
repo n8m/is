@@ -1,0 +1,42 @@
+<div class="row">
+
+  <h3>Delivery Order</h3>
+  <hr>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label for="do">DO #</label>
+      <input type="text" ng-model="leaseInfo.deliveryOrder.orderNumber" class="form-control" id="do">
+    </div>
+
+    <div class="input-field">
+      <label for="actualDate">Actual Date Received</label>
+      <div>
+        <input ng-model="leaseInfo.deliveryOrder.orderDate" type="text" id="actualDate" bs-datepicker class="form-control">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-xs-6">
+    <div class="input-field">
+      <label for="doDate">DO Date</label>
+      <div>
+        <input ng-model="leaseInfo.deliveryOrder.actualDateReceived" type="text" id="doDate" bs-datepicker class="form-control">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="button-group pull-right">
+  <button class="btn btn-primary" type="button" ng-click="saveSection('leaseDeliveryOrderSection')">
+    Save
+  </button>
+
+  <button class="btn btn-default" type="button" ng-click="cancelSection('leaseDeliveryOrderSection')">
+    Cancel
+  </button>
+</div>

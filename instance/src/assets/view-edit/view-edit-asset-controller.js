@@ -31,7 +31,13 @@ angular.module('isfi.assets')
       filesUploadSection: false,
       ownershipSection: false,
       macAddressSection: false,
-      purchaseOrderSection: false
+      purchaseOrderSection: false,
+      purchaseDeliveryOrderSection: false,
+      warrantySection: false,
+      invoiceSection: false,
+      voucherSection: false,
+      chequeSection: false,
+      leaseAgreementSection: false
     };
 
     $scope.updateAsset = updateAsset;
@@ -116,6 +122,18 @@ angular.module('isfi.assets')
       })
     }
 
+    function updateLeaseInfo(section){
+
+      $scope.leaseInfo.action = 'update';
+
+      assetsService.postLeaseInfo($scope.leaseInfo, $scope.asset.leaseInfo).then(function(){
+        queryLeaseInfo($scope.asset.leaseInfo);
+        $scope.editSection[section] = false;
+      }, function(){
+        console.log('error');
+      })
+    }
+
     function queryOwnershipTypes(){
       assetsService.queryOwnershipTypes().then(function(data){
         $scope.ownershipTypes = data._embedded.items;
@@ -166,9 +184,11 @@ angular.module('isfi.assets')
 
     function saveSection(section){
 
-      if(['purchaseOrderSection', 'deliveryOrderSection', 'invoiceSection', 'chequeSection', 'voucherSection'].indexOf(section) !== -1){
+      if(['purchaseOrderSection', 'purchaseDeliveryOrderSection', 'invoiceSection', 'chequeSection', 'voucherSection'].indexOf(section) !== -1){
         updatePurchaseInfo(section);
-      } else{
+      } else if(['leaseAgreementSection', 'leaseDeliveryOrderSection'].indexOf(section) !== -1){
+        updateLeaseInfo(section);
+      } else {
         updateAsset(section)
       }
 
@@ -176,8 +196,10 @@ angular.module('isfi.assets')
 
     function cancelSection(section){
 
-      if(['purchaseOrderSection', 'deliveryOrderSection', 'invoiceSection', 'chequeSection', 'voucherSection'].indexOf(section) !== -1) {
+      if(['purchaseOrderSection', 'purchaseDeliveryOrderSection', 'invoiceSection', 'chequeSection', 'voucherSection'].indexOf(section) !== -1) {
         queryPurchaseInfo($scope.asset.purchaseInfo);
+      } else if(['leaseAgreementSection', 'leaseDeliveryOrderSection'].indexOf(section) !== -1){
+        queryLeaseInfo($scope.asset.leaseInfo);
       } else{
         queryAsset();
       }

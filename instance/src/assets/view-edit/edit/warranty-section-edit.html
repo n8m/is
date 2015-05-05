@@ -1,0 +1,31 @@
+<div class="row">
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label for="costcenter">Cost Center</label>
+      <input type="text" ng-model="asset.costCenter" class="form-control" id="costcenter">
+    </div>
+
+  </div>
+
+  <div class="col-xs-6">
+    <div class="input-field">
+      <label for="warrantyexpiry">Warranty Expiry</label>
+      <div>
+        <input ng-model="asset.warrantyExpirity" type="text" id="warrantyexpiry" bs-datepicker class="form-control">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="button-group pull-right">
+  <button class="btn btn-primary" type="button" ng-click="saveSection('warrantySection')">
+    Save
+  </button>
+
+  <button class="btn btn-default" type="button" ng-click="cancelSection('warrantySection')">
+    Cancel
+  </button>
+</div>

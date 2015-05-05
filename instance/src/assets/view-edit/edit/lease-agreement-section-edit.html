@@ -1,0 +1,72 @@
+<div class="row">
+
+  <h3>Lease Agreement</h3>
+  <hr>
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label for="leaseAgreementNo">Lease Agreement #</label>
+      <input type="text" class="form-control" ng-model="leaseInfo.leaseAgreement.agreementNumber" id="leaseAgreementNo">
+    </div>
+
+    <div class="input-field">
+      <label>Lease Agreement Date</label>
+      <div>
+        <input ng-model="leaseInfo.leaseAgreement.agreementDate" type=text class="form-control" bs-datepicker>
+      </div>
+    </div>
+
+    <div class="row input-field">
+      <div class="col-xs-3">
+        <label class="nowrap">Lease Cost</label>
+        <select class="form-control" ng-model="leaseInfo.leaseAgreement.leaseCost.currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+
+      <div class="col-xs-9">
+        <input type="text" ng-model="leaseInfo.leaseAgreement.leaseCost.cost" class="form-control input-control-margin-top">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-xs-6 well">
+
+    <p>Lease Period</p>
+
+    <div class="input-field">
+      <label>Lease Duration (Months)</label>
+      <input ng-model="leaseInfo.leaseAgreement.leaseDuration" type=text class="form-control">
+    </div>
+
+    <div class="input-field">
+      <label>Lease Start Date</label>
+      <div>
+        <input ng-model="leaseInfo.leaseAgreement.leaseStartDate" type=text class="form-control" bs-datepicker>
+      </div>
+    </div>
+
+    <div class="input-field">
+      <label>Lease End Date</label>
+      <div>
+        <input ng-model="leaseInfo.leaseAgreement.leaseEndDate" type=text class="form-control" bs-datepicker>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="button-group pull-right">
+  <button class="btn btn-primary" type="button" ng-click="saveSection('leaseAgreementSection')">
+    Save
+  </button>
+
+  <button class="btn btn-default" type="button" ng-click="cancelSection('leaseAgreementSection')">
+    Cancel
+  </button>
+</div>

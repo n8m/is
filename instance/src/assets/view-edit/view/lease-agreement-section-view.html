@@ -1,0 +1,44 @@
+<button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.leaseAgreementSection=true">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+</button>
+
+<div class="row">
+
+  <div class="col-xs-6">
+
+    <div class="input-field">
+      <label>Lease Agreement #</label>
+      <p>{{leaseInfo.leaseAgreement.agreementNumber}}</p>
+    </div>
+
+    <div class="input-field">
+      <label>Lease Agreement Date</label>
+      <p>{{leaseInfo.leaseAgreement.agreementDate}}</p>
+    </div>
+
+    <div class="input-field">
+      <label>Lease Cost</label>
+      <p>{{leaseInfo.leaseAgreement.leaseCost.currency}} {{leaseInfo.leaseAgreement.leaseCost.cost}}</p>
+    </div>
+
+  </div>
+
+  <div class="col-xs-6 well">
+
+    <div class="input-field">
+      <label>Lease Duration <small>(Months)</small></label>
+      <p>{{leaseInfo.leaseAgreement.leaseDuration}}</p>
+    </div>
+
+    <div class="input-field">
+      <label>Lease Start Date</label>
+      <p>{{leaseInfo.leaseAgreement.leaseStartDate}}</p>
+    </div>
+
+    <div class="input-field">
+      <label>Lease End Date</label>
+      <p>{{leaseInfo.leaseAgreement.leaseEndDate}}</p>
+    </div>
+
+  </div>
+</div>

@@ -42,8 +42,8 @@
       <div ui-view="purchase-order-section-view" ng-if="!editSection.purchaseOrderSection"></div>
       <div ui-view="purchase-order-section-edit" ng-if="editSection.purchaseOrderSection"></div>
 
-      <div ui-view="delivery-order-section-view" ng-if="!editSection.deliveryOrderSection"></div>
-      <div ui-view="delivery-order-section-edit" ng-if="editSection.deliveryOrderSection"></div>
+      <div ui-view="purchase-delivery-order-section-view" ng-if="!editSection.purchaseDeliveryOrderSection"></div>
+      <div ui-view="purchase-delivery-order-section-edit" ng-if="editSection.purchaseDeliveryOrderSection"></div>
 
       <div ui-view="invoice-section-view" ng-if="!editSection.invoiceSection"></div>
       <div ui-view="invoice-section-edit" ng-if="editSection.invoiceSection"></div>
@@ -54,6 +54,23 @@
       <div ui-view="voucher-section-view" ng-if="!editSection.voucherSection"></div>
       <div ui-view="voucher-section-edit" ng-if="editSection.voucherSection"></div>
 
+      <hr>
+
+      <div ui-view="warranty-section-view" ng-if="!editSection.warrantySection"></div>
+      <div ui-view="warranty-section-edit" ng-if="editSection.warrantySection"></div>
+
+      <div class="well">
+        <button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.purchaseMainSection=true">
+          <span class="glyphicon glyphicon-pencil"></span> Edit
+        </button>
+        <h2>Lease Information</h2>
+      </div>
+
+      <div ui-view="lease-agreement-section-view" ng-if="!editSection.leaseAgreementSection"></div>
+      <div ui-view="lease-agreement-section-edit" ng-if="editSection.leaseAgreementSection"></div>
+
+      <div ui-view="lease-delivery-order-section-view" ng-if="!editSection.leaseDeliveryOrderSection"></div>
+      <div ui-view="lease-delivery-order-section-edit" ng-if="editSection.leaseDeliveryOrderSection"></div>
 
     </div>
 
