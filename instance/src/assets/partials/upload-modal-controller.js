@@ -3,12 +3,14 @@
  */
 angular.module('isfi.assets')
 
-.controller('upload-modal-controller', function($scope, type, $upload, $modalInstance, server){
+.controller('upload-modal-controller', function($scope, type, $upload, $modalInstance, server, userProfile){
 
   $scope.uploadType = type;
   $scope.upload = upload;
   $scope.exit = exit;
   $scope.fileReaderSupported = window.FileReader != null && (window.FileAPI == null || FileAPI.html5 != false);
+  $scope.thumbs = [];
+
 
   server.post('/api/sign-s3-form', {
     'awsBucket': getBucket(),
@@ -19,17 +21,30 @@ angular.module('isfi.assets')
     $scope.AWSAccessKeyId = response.data.AWSAccessKeyId;
   });
 
-  $scope.generateThumb = function(file) {
-    if (file != null) {
-      if ($scope.fileReaderSupported && file.type.indexOf('image') > -1) {
-        var fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
-        fileReader.onload = function(e) {
-          file.dataUrl = e.target.result;
-        };
+
+  $scope.$watch('files', function () {
+    $scope.generateThumb();
+  });
+
+  $scope.generateThumb = function() {
+
+    if($scope.files){
+      for(var i = 0,len = $scope.files.length;i<len;i++){
+        if ($scope.fileReaderSupported && $scope.files[i].type.indexOf('image') > -1) {
+          var fileReader = new FileReader();
+          fileReader.readAsDataURL($scope.files[i]);
+          fileReader.onload = function(e) {
+            $scope.thumbs.push(e.target.result);
+            $scope.$digest();
+          };
+        }
       }
     }
+
+
+
   };
+
 
   function getBucket() {
     if (type == 'Photos') {
@@ -41,16 +56,20 @@ angular.module('isfi.assets')
     }
   }
 
-  function upload(files){
+  function upload(){
+
+    var files = $scope.files;
+    var file, key;
+
     if (files && files.length) {
       for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        $scope.generateThumb(file);
+        file = files[i];
+        key = Math.round(Math.random()*10000) + '$$' + file.name;
         $upload.upload({
           url: 'http://' + getBucket() + '.s3.amazonaws.com/',
           method: 'POST',
           fields: {
-            key: Math.round(Math.random()*10000) + '$$' + file.name,
+            key: key,
             AWSAccessKeyId: $scope.AWSAccessKeyId,
             acl: 'public-read',
             policy: $scope.policy, // base64-encoded json policy (see article below)
@@ -66,7 +85,20 @@ angular.module('isfi.assets')
           var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
           console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
         }).success(function (data, status, headers, config) {
-          console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+
+          server.post('/api/file', {
+            "action": "create",
+            "instanceUrl": userProfile.getInstanceUrl(),
+            "key": key,
+            "mimeType": "image/jpeg",
+            "thumbnail": $scope.thumbs[i],
+            "type": "photo"
+          }).then(function(data){
+            $modalInstance.close(data.data.id);
+          }, function(response){
+            console.log(response);
+          })
+
         }).error(function(data, status, headers, config){
           console.info('{Error: '+data+'}');
           return false;
@@ -77,6 +109,6 @@ angular.module('isfi.assets')
 
   function exit(){
     $modalInstance.close();
-  };
+  }
 
 });
