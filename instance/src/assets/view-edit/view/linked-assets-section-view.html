@@ -1,0 +1,12 @@
+<button type="button" class="btn btn-primary btn-sm edit-button" ng-click="editSection.linkedAssetsSection=true">
+  <span class="glyphicon glyphicon-pencil"></span> Edit
+</button>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="well">
+      <label>Linked Assets</label>
+      <p ng-repeat="linkedAsset in asset.linkedAssets">{{linkedAsset.text}}</p>
+    </div>
+  </div>
+</div>

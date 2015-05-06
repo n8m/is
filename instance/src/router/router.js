@@ -239,6 +239,12 @@ angular.module('isfi.router', [])
         },
         'lease-delivery-order-section-edit@base.main.assetView':{
           templateUrl: 'assets/view-edit/edit/lease-delivery-order-section-edit.html'
+        },
+        'linked-assets-section-view@base.main.assetView':{
+          templateUrl: 'assets/view-edit/view/linked-assets-section-view.html'
+        },
+        'linked-assets-section-edit@base.main.assetView':{
+          templateUrl: 'assets/view-edit/edit/linked-assets-section-edit.html'
         }
       }
     })

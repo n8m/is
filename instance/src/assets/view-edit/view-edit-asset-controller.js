@@ -37,7 +37,8 @@ angular.module('isfi.assets')
       invoiceSection: false,
       voucherSection: false,
       chequeSection: false,
-      leaseAgreementSection: false
+      leaseAgreementSection: false,
+      linkedAssetsSection: false
     };
 
     $scope.updateAsset = updateAsset;
