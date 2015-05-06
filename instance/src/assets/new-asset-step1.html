@@ -90,7 +90,7 @@
         <div ng-show="asset.customerAssetId !== undefined && asset.customerAssetId !== null ">
           <label for="customer-asset-id">Customer Asset ID</label>
           <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeProp('customerAssetId')"></span>
-          <input type="text" class="form-control" name="customer-asset-id" ng-model="asset.customerAssetId">
+          <input type="text" class="form-control" id="customer-asset-id" ng-model="asset.customerAssetId">
         </div>
 
       </div>
@@ -110,6 +110,9 @@
         <p class="message">
           No photos uploaded. Click button to upload
         </p>
+
+        <img class="thumb" ng-repeat="img in asset.files.photos" ng-src="{{img.url}}">
+
       </div>
 
       <div class="well input-well">
@@ -123,8 +126,6 @@
         <p class="message">
           No invoices uploaded. Click button to upload
         </p>
-
-        <img ng-repeat="img in asset.files.photos" ng-src="{{img.url}}">
 
       </div>
 
