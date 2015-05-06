@@ -80,6 +80,10 @@ angular.module('isfi.assets')
 
   }
 
+  if($stateParams.categoryKey){
+    $scope.asset.category = $stateParams.categoryKey;
+  }
+
 
   $scope.showUploadModal = showUploadModal;
   $scope.showModalPurchaseInfo = showModalPurchaseInfo;

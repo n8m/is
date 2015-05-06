@@ -20,19 +20,10 @@
     <div class="menu-categories">
       <ul class="list-unstyled">
         <li ng-repeat="category in categories">
-          <a ui-sref="base.main.assetsList({category: category.categoryKey})">{{category.categoryName}}</a>
+          <a ui-sref="base.main.assetsList({categoryKey: category.categoryKey})">{{category.categoryName}}</a>
         </li>
       </ul>
     </div>
 
-
-  <!--<a ui-sref="base.main.device" class="menu-item ">-->
-      <!--<span class="glyphicon glyphicon-hdd"></span><br>-->
-      <!--IsItUp Raspberry Pi       -->
-    <!--</a>-->
-    <!--<a ui-sref="base.main.settings" class="menu-item ">-->
-      <!--<span class="glyphicon glyphicon-cog"></span><br>-->
-      <!--Settings          -->
-    <!--</a>-->
   </div>
 </div>

@@ -1,16 +1,17 @@
 <div class="row tool-bar">
   <div class="col-xs-6">
-    <span>
+    <a ui-sref="base.main.assetCreate({categoryKey:categoryKey})" class="btn btn-default">
       <span class="glyphicon glyphicon-plus-sign btn"></span> Add New Computer
-    </span>
+    </a>
 
-    <span>
+    <a ui-sref="base.main.assetEdit({assetId: getIdSelectedAsset()})" class="btn btn-default" ng-disabled="countSelectedAssets() !== 1">
       <span class="glyphicon glyphicon-pencil btn"></span> Edit Selected
-    </span>
+    </a>
 
-    <span>
+    <a href class="btn btn-default">
       <span class="glyphicon glyphicon-trash btn"></span> Delete Selected
-    </span>
+    </a>
+
   </div>
   <div class="col-xs-6">
     <div class="input-group">
@@ -28,7 +29,7 @@
     <thead>
     <tr>
       <th>
-        <input type="checkbox">
+        <input type="checkbox" ng-change="changeAllCheckboxes()" ng-model="commonCheckbox">
       </th>
       <th>IsItUp Asset ID</th>
       <th>Asset Name</th>
@@ -40,7 +41,7 @@
     <tbody>
     <tr ng-repeat="asset in assets">
       <td>
-        <input type="checkbox">
+        <input type="checkbox" ng-change="assetCheckedCallback(asset)" ng-model="asset.selected">
       </td>
       <td>
         <a ui-sref="base.main.assetEditStep1({assetId: asset.id})">{{asset.assetId}}</a>

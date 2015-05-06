@@ -3,7 +3,7 @@
  */
 angular.module('isfi.assets')
 
-.controller('view-edit-asset-controller', function($scope, $stateParams, assetsService, $q){
+.controller('view-edit-asset-controller', function($scope, $stateParams, assetsService, $q, editSection){
 
     queryAsset().then(function(data){
       queryDeviceTypes(data.category.id);
@@ -19,27 +19,7 @@ angular.module('isfi.assets')
     queryCompanies();
     queryUsers();
 
-    //view mode is 'view' by default
-    $scope.editSection = {
-      titleSection: false,
-      descriptionSection: false,
-      locationSection: false,
-      statusSection: false,
-      techSection: false,
-      photosUploadSection: false,
-      invoicesUploadSection: false,
-      filesUploadSection: false,
-      ownershipSection: false,
-      macAddressSection: false,
-      purchaseOrderSection: false,
-      purchaseDeliveryOrderSection: false,
-      warrantySection: false,
-      invoiceSection: false,
-      voucherSection: false,
-      chequeSection: false,
-      leaseAgreementSection: false,
-      linkedAssetsSection: false
-    };
+    $scope.editSection = editSection;
 
     $scope.updateAsset = updateAsset;
     $scope.saveSection = saveSection;
