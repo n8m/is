@@ -81,6 +81,14 @@ angular.module('isfi.assets')
   }
 
   if($stateParams.categoryKey){
+
+    server.get('/api/asset/category/' + $stateParams.categoryKey).then(function(data){
+      $scope.asset.category = data;
+    }, function(response){
+      conosle.log('wrong category!');
+      console.log(response);
+    });
+
     $scope.asset.category = $stateParams.categoryKey;
   }
 
