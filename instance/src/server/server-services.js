@@ -86,11 +86,11 @@ angular.module('isfi.server')
         return deferred.promise;
       },
 
-      delete: function (resource) {
+      delete: function (resource, payload) {
         var deferred = $q.defer();
         var url = httpRoot + resource;
 
-        $http({method:'DELETE',url:url})
+        $http({method:'DELETE',url:url,data:payload})
           .success(function(data,status,headers,request) {
             if(data) {
               deferred.resolve({'data': data, 'headers': headers});

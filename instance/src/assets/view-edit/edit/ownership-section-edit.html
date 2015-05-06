@@ -1,85 +1,81 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="well">
-      <div class="input-field">
-        <label>Ownership Type</label>
-        <p>
-          <ui-select ng-model="asset.ownership.ownershipType" on-select="ownershipTypeChangedCallback()" custom-option='{"buttonText": "Add New Ownership Type", "click" : "showAddModal", "type": "ownershipType"}'>
-            <ui-select-match>{{ $select.selected.ownershipTypeName }}</ui-select-match>
-            <ui-select-choices repeat="ownershipType in ownershipTypes | filter: $select.search">
-              <span ng-bind-html="ownershipType.ownershipTypeName | highlight: $select.search"></span>
-            </ui-select-choices>
-          </ui-select>
-        </p>
-      </div>
+<div class="well">
+  <div class="input-field">
+    <label>Ownership Type</label>
+    <p>
+      <ui-select ng-model="asset.ownership.ownershipType" on-select="ownershipTypeChangedCallback()" custom-option='{"buttonText": "Add New Ownership Type", "click" : "showAddModal", "type": "ownershipType"}'>
+        <ui-select-match>{{ $select.selected.ownershipTypeName }}</ui-select-match>
+        <ui-select-choices repeat="ownershipType in ownershipTypes | filter: $select.search">
+          <span ng-bind-html="ownershipType.ownershipTypeName | highlight: $select.search"></span>
+        </ui-select-choices>
+      </ui-select>
+    </p>
+  </div>
 
-      <div class="input-field">
-        <label>Owner</label>
-        <p>
-          <ui-select ng-model="asset.ownership.ownerCompany" ng-disabled="asset.ownership.ownershipType.ownershipTypeKey !== 'company_owned'" custom-option='{"buttonText": "Add New Company", "click" : "showAddModal", "type": "company"}'>
-            <ui-select-match>{{ $select.selected.companyName }}</ui-select-match>
-            <ui-select-choices repeat="company in companies | filter: $select.search">
-              <span ng-bind-html="company.companyName | highlight: $select.search"></span>
-            </ui-select-choices>
-          </ui-select>
-        </p>
-      </div>
+  <div class="input-field">
+    <label>Owner</label>
+    <p>
+      <ui-select ng-model="asset.ownership.ownerCompany" ng-disabled="asset.ownership.ownershipType.ownershipTypeKey !== 'company_owned'" custom-option='{"buttonText": "Add New Company", "click" : "showAddModal", "type": "company"}'>
+        <ui-select-match>{{ $select.selected.companyName }}</ui-select-match>
+        <ui-select-choices repeat="company in companies | filter: $select.search">
+          <span ng-bind-html="company.companyName | highlight: $select.search"></span>
+        </ui-select-choices>
+      </ui-select>
+    </p>
+  </div>
 
-      <div class="input-field">
-        <label>Asset Sharing</label>
-        <ui-select ng-model="asset.ownership.sharing" on-select="sharingChangedCallback()">
-          <ui-select-match>{{ $select.selected.sharingName }}</ui-select-match>
-          <ui-select-choices repeat="sharingType in sharingTypes | filter: $select.search">
-            <span ng-bind-html="sharingType.sharingName | highlight: $select.search"></span>
-          </ui-select-choices>
-        </ui-select>
-      </div>
+  <div class="input-field">
+    <label>Asset Sharing</label>
+    <ui-select ng-model="asset.ownership.sharing" on-select="sharingChangedCallback()">
+      <ui-select-match>{{ $select.selected.sharingName }}</ui-select-match>
+      <ui-select-choices repeat="sharingType in sharingTypes | filter: $select.search">
+        <span ng-bind-html="sharingType.sharingName | highlight: $select.search"></span>
+      </ui-select-choices>
+    </ui-select>
+  </div>
 
-      <div class="input-field">
-        <label>Assigned User</label>
-        <ui-select ng-model="asset.ownership.assignedUser" on-select="sharingChangedCallback()" ng-disabled="asset.ownership.sharing.sharingName !== 'Not shared (Individual)'">
-          <ui-select-match>{{ $select.selected.username }}</ui-select-match>
-          <ui-select-choices repeat="user in users | filter: $select.search">
-            <span ng-bind-html="option.username | highlight: $select.search"></span>
-          </ui-select-choices>
-        </ui-select>
-      </div>
+  <div class="input-field">
+    <label>Assigned User</label>
+    <ui-select ng-model="asset.ownership.assignedUser" on-select="sharingChangedCallback()" ng-disabled="asset.ownership.sharing.sharingName !== 'Not shared (Individual)'">
+      <ui-select-match>{{ $select.selected.username }}</ui-select-match>
+      <ui-select-choices repeat="user in users | filter: $select.search">
+        <span ng-bind-html="option.username | highlight: $select.search"></span>
+      </ui-select-choices>
+    </ui-select>
+  </div>
 
-      <div class="input-field">
-        <label>Company</label>
-        <p>
-          <ui-select ng-model="asset.ownership.assignedCompany" on-select="companyChangedCallback()" ng-disabled="asset.ownership.sharing.sharingName !== 'Shared (Company or Department)'" custom-option='{"buttonText": "Add New Company", "click" : "showAddModal", "type": "company"}'>
-            <ui-select-match>{{ $select.selected.companyName }}</ui-select-match>
-            <ui-select-choices repeat="company in companies | filter: $select.search">
-              <span ng-bind-html="company.companyName | highlight: $select.search"></span>
-            </ui-select-choices>
-          </ui-select>
-        </p>
-      </div>
+  <div class="input-field">
+    <label>Company</label>
+    <p>
+      <ui-select ng-model="asset.ownership.assignedCompany" on-select="companyChangedCallback()" ng-disabled="asset.ownership.sharing.sharingName !== 'Shared (Company or Department)'" custom-option='{"buttonText": "Add New Company", "click" : "showAddModal", "type": "company"}'>
+        <ui-select-match>{{ $select.selected.companyName }}</ui-select-match>
+        <ui-select-choices repeat="company in companies | filter: $select.search">
+          <span ng-bind-html="company.companyName | highlight: $select.search"></span>
+        </ui-select-choices>
+      </ui-select>
+    </p>
+  </div>
 
-      <div class="input-field">
-        <label>Department</label>
-        <p>
-          <ui-select ng-model="asset.ownership.assignedDepartment" ng-disabled="asset.ownership.sharing.sharingName !== 'Shared (Company or Department)' || !asset.ownership.assignedCompany" custom-option='{"buttonText": "Add New Department", "click" : "showAddModal", "type": "department"}'>
-            <ui-select-match>{{ $select.selected.departmentName }}</ui-select-match>
-            <ui-select-choices repeat="department in departments | filter: $select.search">
-              <span ng-bind-html="department.departmentName | highlight: $select.search"></span>
-            </ui-select-choices>
-          </ui-select>
-        </p>
-      </div>
+  <div class="input-field">
+    <label>Department</label>
+    <p>
+      <ui-select ng-model="asset.ownership.assignedDepartment" ng-disabled="asset.ownership.sharing.sharingName !== 'Shared (Company or Department)' || !asset.ownership.assignedCompany" custom-option='{"buttonText": "Add New Department", "click" : "showAddModal", "type": "department"}'>
+        <ui-select-match>{{ $select.selected.departmentName }}</ui-select-match>
+        <ui-select-choices repeat="department in departments | filter: $select.search">
+          <span ng-bind-html="department.departmentName | highlight: $select.search"></span>
+        </ui-select-choices>
+      </ui-select>
+    </p>
+  </div>
 
-      <div class="button-group pull-right">
-        <button class="btn btn-primary" type="button" ng-click="saveSection('ownershipSection')">
-          Save
-        </button>
+  <div class="button-group pull-right">
+    <button class="btn btn-primary" type="button" ng-click="saveSection('ownershipSection')">
+      Save
+    </button>
 
-        <button class="btn btn-default" type="button" ng-click="cancelSection('ownershipSection')">
-          Cancel
-        </button>
-      </div>
-
-    </div>
+    <button class="btn btn-default" type="button" ng-click="cancelSection('ownershipSection')">
+      Cancel
+    </button>
   </div>
 
 </div>
+

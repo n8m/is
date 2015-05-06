@@ -293,6 +293,36 @@ angular.module('isfi.assets')
         deferred.reject(response);
       });
       return deferred.promise;
+    },
+    deleteAsset: function(assetId){
+
+      var deferred = $q.defer();
+
+      server.delete('api/asset/' + assetId, {action: "delete"}).then(function(data){
+        deferred.resolve(data);
+      }, function(){
+        deferred.reject(data);
+      });
+
+      return deferred.promise;
+
+    },
+    queryAssetsList: function(categoryKey){
+      var deferred = $q.defer();
+
+      var payload = {
+        instanceUrl: userProfile.getInstanceUrl(),
+        category: categoryKey
+      };
+
+      server.get('/api/asset', payload).then(function(data){
+          deferred.resolve(data);
+        }, function(response){
+          deferred.reject(response);
+        });
+
+      return deferred.promise;
+
     }
   };
 
