@@ -24,7 +24,7 @@ angular.module('isfi.assets')
     }
 
   }
-
+var a
   function changeAllCheckboxes(){
 
     var i, len;
