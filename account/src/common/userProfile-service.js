@@ -120,6 +120,9 @@ angular.module('isf.user')
     queryUserSubscriptions: function(){
       var deferred = $q.defer();
 
+
+      console.log(_userProfile);
+
       server.get('/api/account/subscription/' + _userProfile.dataCredentials.accountUuid).then(function(data){
         userProfile.setUserSubscriptions(data);
         deferred.resolve(data);

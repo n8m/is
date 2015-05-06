@@ -8,11 +8,11 @@ angular.module('isf.cabinet')
   .controller('instances-controller', function($scope, userProfile, $timeout){
 
     userProfile.getInstancesList().then(function(data){
-      $scope.instances = data._embedded.instance;
+      $scope.instances = data._embedded.items;
     }, function(response){
       //if error - request for userDetails again:
       userProfile.queryInstancesList().then(function(data){
-        $scope.instances = data._embedded.instance;
+        $scope.instances = data._embedded.items;
       })
     });
 

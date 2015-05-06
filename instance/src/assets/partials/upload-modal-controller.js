@@ -64,6 +64,9 @@ angular.module('isfi.assets')
     if (files && files.length) {
       for (var i = 0; i < files.length; i++) {
         file = files[i];
+
+        //instanceUrl
+
         key = Math.round(Math.random()*10000) + '$$' + file.name;
         $upload.upload({
           url: 'http://' + getBucket() + '.s3.amazonaws.com/',
