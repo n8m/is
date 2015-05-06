@@ -65,14 +65,12 @@ angular.module('isfi.assets')
       for (var i = 0; i < files.length; i++) {
         file = files[i];
 
-        //instanceUrl
-
         key = Math.round(Math.random()*10000) + '$$' + file.name;
         $upload.upload({
           url: 'http://' + getBucket() + '.s3.amazonaws.com/',
           method: 'POST',
           fields: {
-            key: key,
+            key: userProfile.getInstanceUrl() + '/' + key,
             AWSAccessKeyId: $scope.AWSAccessKeyId,
             acl: 'public-read',
             policy: $scope.policy, // base64-encoded json policy (see article below)
