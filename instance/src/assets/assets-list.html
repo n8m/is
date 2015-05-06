@@ -18,7 +18,7 @@
     <span class="input-group-btn">
       <button class="btn btn-default" type="button">Go!</button>
     </span>
-      <input type="text" class="form-control" placeholder="Search for...">
+      <input type="text" class="form-control" ng-model="searchQuery" placeholder="Search for...">
     </div>
   </div>
 </div>
@@ -39,7 +39,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="asset in assets">
+    <tr ng-repeat="asset in assets | filter: searchQuery">
       <td>
         <input type="checkbox" ng-change="assetCheckedCallback(asset)" ng-model="asset.selected">
       </td>
