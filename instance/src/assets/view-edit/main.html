@@ -2,8 +2,8 @@
   <div class="row">
 
     <div class="col-xs-12">
-      <div ui-view="title-section-view" ng-if="!editSection.titleSection"></div>
-      <div ui-view="title-section-edit" ng-if="editSection.titleSection"></div>
+      <div class="section" ui-view="title-section-view" ng-if="!editSection.titleSection"></div>
+      <div class="section" ui-view="title-section-edit" ng-if="editSection.titleSection"></div>
     </div>
 
   </div>
@@ -14,70 +14,70 @@
 
     <div class="col-xs-8">
 
-      <div ui-view="description-section-view" ng-if="!editSection.descriptionSection"></div>
-      <div ui-view="description-section-edit" ng-if="editSection.descriptionSection"></div>
+      <div class="section" ui-view="description-section-view" ng-if="!editSection.descriptionSection"></div>
+      <div class="section" ui-view="description-section-edit" ng-if="editSection.descriptionSection"></div>
 
       <hr>
 
-      <div ui-view="location-section-view" ng-if="!editSection.locationSection"></div>
-      <div ui-view="location-section-edit" ng-if="editSection.locationSection"></div>
+      <div class="section" ui-view="location-section-view" ng-if="!editSection.locationSection"></div>
+      <div class="section" ui-view="location-section-edit" ng-if="editSection.locationSection"></div>
 
       <hr>
 
-      <div ui-view="status-section-view" ng-if="!editSection.statusSection"></div>
-      <div ui-view="status-section-edit" ng-if="editSection.statusSection"></div>
+      <div class="section" ui-view="status-section-view" ng-if="!editSection.statusSection"></div>
+      <div class="section" ui-view="status-section-edit" ng-if="editSection.statusSection"></div>
 
       <hr>
 
-      <div ui-view="tech-section-view" ng-if="!editSection.techSection"></div>
-      <div ui-view="tech-section-edit" ng-if="editSection.techSection"></div>
+      <div class="section" ui-view="tech-section-view" ng-if="!editSection.techSection"></div>
+      <div class="section" ui-view="tech-section-edit" ng-if="editSection.techSection"></div>
 
       <div class="well">
         <h2>Purchase Information</h2>
       </div>
 
-      <div ui-view="purchase-order-section-view" ng-if="!editSection.purchaseOrderSection"></div>
-      <div ui-view="purchase-order-section-edit" ng-if="editSection.purchaseOrderSection"></div>
+      <div class="section" ui-view="purchase-order-section-view" ng-if="!editSection.purchaseOrderSection"></div>
+      <div class="section" ui-view="purchase-order-section-edit" ng-if="editSection.purchaseOrderSection"></div>
 
-      <div ui-view="purchase-delivery-order-section-view" ng-if="!editSection.purchaseDeliveryOrderSection"></div>
-      <div ui-view="purchase-delivery-order-section-edit" ng-if="editSection.purchaseDeliveryOrderSection"></div>
+      <div class="section" ui-view="purchase-delivery-order-section-view" ng-if="!editSection.purchaseDeliveryOrderSection"></div>
+      <div class="section" ui-view="purchase-delivery-order-section-edit" ng-if="editSection.purchaseDeliveryOrderSection"></div>
 
-      <div ui-view="invoice-section-view" ng-if="!editSection.invoiceSection"></div>
-      <div ui-view="invoice-section-edit" ng-if="editSection.invoiceSection"></div>
+      <div class="section" ui-view="invoice-section-view" ng-if="!editSection.invoiceSection"></div>
+      <div class="section" ui-view="invoice-section-edit" ng-if="editSection.invoiceSection"></div>
 
-      <div ui-view="cheque-section-view" ng-if="!editSection.chequeSection"></div>
-      <div ui-view="cheque-section-edit" ng-if="editSection.chequeSection"></div>
+      <div class="section" ui-view="cheque-section-view" ng-if="!editSection.chequeSection"></div>
+      <div class="section" ui-view="cheque-section-edit" ng-if="editSection.chequeSection"></div>
 
-      <div ui-view="voucher-section-view" ng-if="!editSection.voucherSection"></div>
-      <div ui-view="voucher-section-edit" ng-if="editSection.voucherSection"></div>
+      <div class="section" ui-view="voucher-section-view" ng-if="!editSection.voucherSection"></div>
+      <div class="section" ui-view="voucher-section-edit" ng-if="editSection.voucherSection"></div>
 
       <hr>
 
-      <div ui-view="warranty-section-view" ng-if="!editSection.warrantySection"></div>
-      <div ui-view="warranty-section-edit" ng-if="editSection.warrantySection"></div>
+      <div class="section" ui-view="warranty-section-view" ng-if="!editSection.warrantySection"></div>
+      <div class="section" ui-view="warranty-section-edit" ng-if="editSection.warrantySection"></div>
 
       <div class="well">
         <h2>Lease Information</h2>
       </div>
 
-      <div ui-view="lease-agreement-section-view" ng-if="!editSection.leaseAgreementSection"></div>
-      <div ui-view="lease-agreement-section-edit" ng-if="editSection.leaseAgreementSection"></div>
+      <div class="section" ui-view="lease-agreement-section-view" ng-if="!editSection.leaseAgreementSection"></div>
+      <div class="section" ui-view="lease-agreement-section-edit" ng-if="editSection.leaseAgreementSection"></div>
 
-      <div ui-view="lease-delivery-order-section-view" ng-if="!editSection.leaseDeliveryOrderSection"></div>
-      <div ui-view="lease-delivery-order-section-edit" ng-if="editSection.leaseDeliveryOrderSection"></div>
+      <div class="section" ui-view="lease-delivery-order-section-view" ng-if="!editSection.leaseDeliveryOrderSection"></div>
+      <div class="section" ui-view="lease-delivery-order-section-edit" ng-if="editSection.leaseDeliveryOrderSection"></div>
 
     </div>
 
     <div class="col-xs-4">
 
-      <div ui-view="photos-upload-section-view" ng-if="!editSection.photosUploadSection"></div>
-      <div ui-view="photos-upload-section-edit" ng-if="editSection.photosUploadSection"></div>
+      <div class="section" ui-view="photos-upload-section-view" ng-if="!editSection.photosUploadSection"></div>
+      <div class="section" ui-view="photos-upload-section-edit" ng-if="editSection.photosUploadSection"></div>
 
-      <div ui-view="invoices-upload-section-view" ng-if="!editSection.invoicesUploadSection"></div>
-      <div ui-view="invoices-upload-section-edit" ng-if="editSection.invoicesUploadSection"></div>
+      <div class="section" ui-view="invoices-upload-section-view" ng-if="!editSection.invoicesUploadSection"></div>
+      <div class="section" ui-view="invoices-upload-section-edit" ng-if="editSection.invoicesUploadSection"></div>
 
-      <div ui-view="files-upload-section-view" ng-if="!editSection.filesUploadSection"></div>
-      <div ui-view="files-upload-section-edit" ng-if="editSection.filesUploadSection"></div>
+      <div class="section" ui-view="files-upload-section-view" ng-if="!editSection.filesUploadSection"></div>
+      <div class="section" ui-view="files-upload-section-edit" ng-if="editSection.filesUploadSection"></div>
 
       <div class="input-field">
         <a class="btn btn-large btn-success">
@@ -87,14 +87,14 @@
         <p>Remaining credits: 1</p>
       </div>
 
-      <div ui-view="ownership-section-view" ng-if="!editSection.ownershipSection"></div>
-      <div ui-view="ownership-section-edit" ng-if="editSection.ownershipSection"></div>
+      <div class="section" ui-view="ownership-section-view" ng-if="!editSection.ownershipSection"></div>
+      <div class="section" ui-view="ownership-section-edit" ng-if="editSection.ownershipSection"></div>
 
-      <div ui-view="mac-address-section-view" ng-if="!editSection.macAddressSection"></div>
-      <div ui-view="mac-address-section-edit" ng-if="editSection.macAddressSection"></div>
+      <div class="section" ui-view="mac-address-section-view" ng-if="!editSection.macAddressSection"></div>
+      <div class="section" ui-view="mac-address-section-edit" ng-if="editSection.macAddressSection"></div>
 
-      <div ui-view="linked-assets-section-view" ng-if="!editSection.linkedAssetsSection"></div>
-      <div ui-view="linked-assets-section-edit" ng-if="editSection.linkedAssetsSection"></div>
+      <div class="section" ui-view="linked-assets-section-view" ng-if="!editSection.linkedAssetsSection"></div>
+      <div class="section" ui-view="linked-assets-section-edit" ng-if="editSection.linkedAssetsSection"></div>
 
     </div>
 
